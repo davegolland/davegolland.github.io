@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How We Know — The Epistemology of the Early Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #06080f;
+  --bg-chapter: #0a0d18;
+  --bg-card: #0f1322;
+  --bg-card-hover: #141a2e;
+  --border-subtle: #1a2040;
+  --border-accent: #2a3060;
+  --text-primary: #d8dce8;
+  --text-secondary: #8890a8;
+  --text-dim: #555e78;
+  --text-bright: #eef0f6;
+  --gold: #c9a84c;
+  --gold-dim: #8a7030;
+  --gold-glow: #c9a84c33;
+  --blue: #4a8ec9;
+  --blue-dim: #2a5580;
+  --blue-glow: #4a8ec933;
+  --green: #4ac97a;
+  --green-dim: #2a7048;
+  --amber: #c98a4a;
+  --amber-dim: #7a5530;
+  --violet: #8a6ac9;
+  --violet-dim: #5040808;
+  --red-soft: #c96a6a;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Starfield canvas */
+#starfield {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Chapter navigation */
+.chapter-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(6,8,15,0.95) 0%, rgba(6,8,15,0.8) 80%, transparent 100%);
+  padding: 12px 24px 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+.chapter-nav.visible { transform: translateY(0); }
+
+.chapter-nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.chapter-nav-inner::-webkit-scrollbar { display: none; }
+
+.chapter-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 12px;
+  white-space: nowrap;
+  border-bottom: 1.5px solid transparent;
+  transition: all 0.3s ease;
+  letter-spacing: 0.04em;
+}
+.chapter-nav a:hover { color: var(--text-secondary); }
+.chapter-nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* Main content */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  position: relative;
+}
+
+.hero-overline {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-bright);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.5s forwards;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 540px;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 48px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+.hero-scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(180deg, var(--text-dim), transparent);
+  margin: 12px auto 0;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Chapter styling */
+.chapter {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.chapter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-number {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 12px;
+}
+
+.chapter h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.chapter h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.chapter-lead {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.chapter p {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.chapter strong {
+  font-weight: 500;
+  color: var(--text-bright);
+}
+
+/* Dividers */
+.chapter-divider {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.chapter-divider::before {
+  content: '· · ·';
+  color: var(--text-dim);
+  letter-spacing: 0.5em;
+  font-size: 0.8rem;
+}
+
+/* Blockquotes */
+.chapter blockquote {
+  border-left: 2px solid var(--gold-dim);
+  padding: 16px 0 16px 24px;
+  margin: 32px 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.chapter blockquote cite {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-style: normal;
+  color: var(--text-dim);
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* Evidence cards */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 32px 0;
+}
+@media (min-width: 600px) {
+  .evidence-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.evidence-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.evidence-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-accent);
+}
+.evidence-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+}
+.evidence-card[data-type="direct"]::before { background: var(--green); }
+.evidence-card[data-type="indirect"]::before { background: var(--amber); }
+.evidence-card[data-type="lab"]::before { background: var(--blue); }
+.evidence-card[data-type="theoretical"]::before { background: var(--violet); }
+
+.evidence-card .card-type {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.evidence-card[data-type="direct"] .card-type { color: var(--green); }
+.evidence-card[data-type="indirect"] .card-type { color: var(--amber); }
+.evidence-card[data-type="lab"] .card-type { color: var(--blue); }
+.evidence-card[data-type="theoretical"] .card-type { color: var(--violet); }
+
+.evidence-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+.evidence-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.evidence-card .card-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, margin-top 0.4s ease;
+  margin-top: 0;
+}
+.evidence-card.expanded .card-detail {
+  max-height: 300px;
+  margin-top: 12px;
+}
+.evidence-card .card-detail p {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 12px;
+}
+.evidence-card .expand-hint {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  position: absolute;
+  bottom: 8px; right: 12px;
+  transition: opacity 0.3s;
+}
+.evidence-card.expanded .expand-hint { opacity: 0; }
+
+/* Power spectrum visualization */
+.power-spectrum {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 32px 24px 24px;
+  margin: 36px 0;
+  position: relative;
+}
+.power-spectrum h4 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+.power-spectrum canvas {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+.spectrum-caption {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+.spectrum-caption strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* Concordance diagram */
+.concordance {
+  margin: 40px 0;
+  position: relative;
+}
+.concordance-center {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+  border: 1.5px solid var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.concordance-center:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px var(--gold-glow);
+}
+.concordance-center span {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.concordance-spokes {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: -30px;
+  padding-top: 50px;
+}
+
+.spoke-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+.spoke-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+}
+.spoke-card:hover {
+  border-color: var(--gold-dim);
+  background: var(--bg-card-hover);
+}
+.spoke-card.highlighted {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+.spoke-card h5 {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.spoke-card .spoke-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+.spoke-card .spoke-unit {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.spoke-card .spoke-detail {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.spoke-card .spoke-method {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Concordance result panel */
+.concordance-result {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-dim);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.concordance-result.show {
+  max-height: 200px;
+  opacity: 1;
+  padding: 20px;
+}
+.concordance-result p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 0;
+}
+
+/* Confidence gradient */
+.confidence-strip {
+  margin: 36px 0;
+  position: relative;
+}
+.confidence-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right,
+    #1a1a2e 0%,
+    #2d1b4e 15%,
+    #4a2068 25%,
+    #7b3fa0 40%,
+    #3a8fd4 60%,
+    #2ecc71 85%,
+    #27ae60 100%
+  );
+  margin-bottom: 8px;
+}
+.confidence-markers {
+  position: relative;
+  height: 140px;
+}
+.conf-marker {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100px;
+}
+.conf-marker::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 16px;
+  background: var(--text-dim);
+  margin: 0 auto 8px;
+}
+.conf-marker .conf-era {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 2px;
+}
+.conf-marker .conf-time {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  display: block;
+}
+.conf-marker .conf-physics {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Prediction table */
+.prediction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 0.82rem;
+}
+.prediction-table th {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.prediction-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+.prediction-table tr:hover td {
+  background: var(--bg-card);
+}
+.prediction-table .pred-year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.prediction-table .pred-what {
+  color: var(--text-bright);
+  font-weight: 400;
+}
+.prediction-table .pred-result {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.pred-confirmed { color: var(--green); }
+.pred-partial { color: var(--amber); }
+.pred-pending { color: var(--text-dim); }
+
+/* Unknown items */
+.unknown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 32px 0;
+}
+@media (max-width: 600px) {
+  .unknown-grid { grid-template-columns: 1fr; }
+  .concordance-spokes { grid-template-columns: 1fr; }
+}
+
+.unknown-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.unknown-card::after {
+  content: '?';
+  position: absolute;
+  top: -10px; right: 8px;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--border-subtle);
+  line-height: 1;
+}
+.unknown-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--red-soft);
+  margin-bottom: 8px;
+}
+.unknown-card p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Lesson callouts */
+.lesson-box {
+  background: linear-gradient(135deg, var(--bg-card), #12162a);
+  border: 1px solid var(--gold-dim);
+  border-radius: 10px;
+  padding: 28px;
+  margin: 32px 0;
+  position: relative;
+}
+.lesson-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.lesson-box h4 {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.lesson-box p {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* Inline annotations */
+.anno {
+  border-bottom: 1px dotted var(--text-dim);
+  cursor: help;
+  position: relative;
+}
+.anno:hover::after {
+  content: attr(data-note);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a2040;
+  border: 1px solid var(--border-accent);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  white-space: normal;
+  width: 260px;
+  z-index: 50;
+  line-height: 1.5;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* Over-constrained visualization */
+.overconst {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 28px;
+  margin: 36px 0;
+  text-align: center;
+}
+.overconst-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.overconst-num {
+  text-align: center;
+}
+.overconst-num .big {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.overconst-num .label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.overconst-arrow {
+  font-size: 1.5rem;
+  color: var(--text-dim);
+}
+.overconst-explain {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 16px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Colophon / footer */
+.colophon {
+  text-align: center;
+  padding: 80px 24px 60px;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.colophon p {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+/* Utility */
+.mt-s { margin-top: 16px; }
+.mt-m { margin-top: 32px; }
+.mb-0 p:last-child { margin-bottom: 0; }
+.text-gold { color: var(--gold); }
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
+.text-amber { color: var(--amber); }
+.text-dim { color: var(--text-dim); }
+
+/* Section heading variants */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .chapter { padding: 80px 20px 60px; }
+  .hero h1 { font-size: 2.5rem; }
+  .overconst-numbers { gap: 16px; }
+  .overconst-num .big { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+
+<!-- Chapter navigation -->
+<nav class="chapter-nav" id="chapterNav">
+  <div class="chapter-nav-inner">
+    <a href="#ch1">I. Deep Time</a>
+    <a href="#ch2">II. Ladder</a>
+    <a href="#ch3">III. CMB</a>
+    <a href="#ch4">IV. Concordance</a>
+    <a href="#ch5">V. Extrapolation</a>
+    <a href="#ch6">VI. Prediction</a>
+    <a href="#ch7">VII. Unknowns</a>
+    <a href="#ch8">VIII. Lessons</a>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-overline">A Course in Eight Chapters</div>
+    <h1>How We Know</h1>
+    <p class="hero-sub">The universe is 13.8 billion years old. We've been doing science for about 400 years. How can we claim to know what happened in the first three minutes — and why should anyone believe us?</p>
+    <div class="hero-scroll-hint">SCROLL</div>
+  </header>
+
+  <!-- CHAPTER 1: The Problem of Deep Time -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch1">
+    <div class="chapter-number">Chapter I</div>
+    <h2>The Problem of <em>Deep Time</em></h2>
+    <p class="chapter-lead">How do you know anything about events no one was present to witness?</p>
+
+    <p>Here is the epistemic challenge in its rawest form: we are claiming detailed, quantitative knowledge about physical processes that occurred 13.8 billion years ago, lasted fractions of a second, and will never happen again. No human was there. No instrument recorded them. The events are unrepeatable.</p>
+
+    <p>This puts cosmology in a different category from, say, chemistry. A chemist can rerun an experiment. A cosmologist cannot rerun the Big Bang. So what grounds do we have for any confidence at all?</p>
+
+    <p>The answer turns out to be surprisingly strong — but it requires understanding several distinct <strong>types</strong> of evidence and how they reinforce each other. The early universe didn't leave a diary. But it left <strong>physical traces</strong> that are still measurable today, and those traces must be consistent with each other if any given story about the past is true.</p>
+
+    <blockquote>
+      The universe is not a text to be interpreted. It is a system of physical constraints whose past states are <em>overdetermined</em> by present observations.
+      <cite>— The central claim of physical cosmology</cite>
+    </blockquote>
+
+    <p>The word to hold onto is <strong>overdetermined</strong>. We don't have one clue about the early universe — we have many independent clues, derived from different physics, measured by different instruments. And they agree. That pattern of agreement is the deep source of confidence.</p>
+
+    <p>This course walks through exactly how that works.</p>
+  </section>
+
+  <!-- CHAPTER 2: The Ladder of Evidence -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch2">
+    <div class="chapter-number">Chapter II</div>
+    <h2>The Ladder of <em>Evidence</em></h2>
+    <p class="chapter-lead">Not all evidence is created equal. A taxonomy of how we know.</p>
+
+    <p>Cosmological knowledge rests on four distinct types of evidence, each with different epistemic weight. Think of them as rungs on a ladder — the lower rungs are more certain, the higher rungs more speculative.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card" data-type="direct" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Direct Observation</div>
+        <h4>We see it happening</h4>
+        <p>Light or particles from the event reach our instruments. The CMB is the premier example — actual photons from 380,000 years after the Big Bang.</p>
+        <div class="card-detail">
+          <p>This is the strongest form of evidence. The CMB is not an inference — it's electromagnetic radiation that has been traveling for 13.8 billion years and lands on our detectors. Galaxy surveys are also direct: we observe the positions of millions of galaxies and measure their statistical patterns. The catch: direct observation is limited to events that produced detectable signals that survive to the present.</p>
+        </div>
+        <span class="expand-hint">click to expand</span>
+      </div>
+
+      <div class="evidence-card" data-type="lab" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Lab-Calibrated Physics</div>
+        <h4>Same physics, tested here</h4>
+        <p>Nuclear reactions, atomic transitions, particle interactions — all tested in terrestrial labs, then applied to early-universe conditions.</p>
+        <div class="card-detail">
+          <p>Big Bang Nucleosynthesis uses nuclear cross-sections measured in laboratories. The atomic physics governing recombination is the same physics that governs fluorescent lights. When we extrapolate this physics to the early universe, we're not guessing — we're applying well-tested laws in a new regime. The epistemic risk is that the laws might differ at extreme energies, but for nucleosynthesis-era physics (~MeV), the laws are thoroughly validated.</p>
+        </div>
+        <span class="expand-hint">click to expand</span>
+      </div>
+
+      <div class="evidence-card" data-type="indirect" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Indirect Inference</div>
+        <h4>Consistent with, but not unique</h4>
+        <p>The observations are what we'd expect <em>if</em> the theory is true, but other explanations might also fit.</p>
+        <div class="card-detail">
+          <p>Inflation is the canonical example. The CMB's near-perfect flatness and horizon-scale correlations are consistent with an inflationary epoch. But "consistent with" is weaker than "proven by." The observations don't uniquely demand inflation — they're necessary but not sufficient. This is a genuine epistemic distinction that cosmologists take seriously, even though popular accounts sometimes elide it.</p>
+        </div>
+        <span class="expand-hint">click to expand</span>
+      </div>
+
+      <div class="evidence-card" data-type="theoretical" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Theoretical Framework</div>
+        <h4>Mathematically plausible</h4>
+        <p>The theory is self-consistent and solves known problems, but lacks direct or indirect observational confirmation.</p>
+        <div class="card-detail">
+          <p>Quantum gravity proposals (string theory, loop quantum gravity) are in this category. They may be beautiful mathematics, but they currently make no confirmed predictions about observable phenomena. The Planck era (before 10⁻⁴³ seconds) lives entirely in this regime. Honesty demands we label this clearly: we don't know what happened. We have frameworks, not knowledge.</p>
+        </div>
+        <span class="expand-hint">click to expand</span>
+      </div>
+    </div>
+
+    <p>The critical skill in cosmological epistemology is knowing which rung you're on at any given moment. Public communication often fails here — treating speculative inflation with the same confidence as well-measured nucleosynthesis. The evidence gradient is steep, and acknowledging it honestly is a feature, not a weakness.</p>
+  </section>
+
+  <!-- CHAPTER 3: The CMB -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch3">
+    <div class="chapter-number">Chapter III</div>
+    <h2>The CMB: A <em>Photograph</em> of the Past</h2>
+    <p class="chapter-lead">How one dataset encodes an extraordinary amount of information.</p>
+
+    <p>Around 380,000 years after the Big Bang, the universe cooled below ~3,000 K. Electrons could finally bind to protons without being immediately knocked free. The universe went from opaque plasma to transparent gas. The light that was released at that moment has been traveling ever since, redshifted by the expansion of space from visible light down to microwaves.</p>
+
+    <p>We call it the <strong>Cosmic Microwave Background</strong>. It fills the entire sky at a temperature of 2.725 K, and it is extraordinarily uniform — the same temperature in every direction to one part in 100,000.</p>
+
+    <p>But those tiny <span class="anno" data-note="Temperature differences of about ±200 millionths of a degree. These correspond to density variations that would later grow into galaxies and galaxy clusters.">fluctuations</span> are where the information lives.</p>
+
+    <div class="section-label">The Power Spectrum</div>
+
+    <p>Decompose the CMB temperature map into spherical harmonics (the 2D equivalent of a Fourier transform). Plot the amplitude of fluctuations against their angular scale. You get a curve with distinctive peaks — the <strong>CMB power spectrum</strong>.</p>
+
+    <div class="power-spectrum">
+      <h4>CMB Angular Power Spectrum (Simplified)</h4>
+      <canvas id="spectrumCanvas"></canvas>
+      <p class="spectrum-caption">
+        Each peak encodes different physics. <strong>Peak 1</strong>: geometry (the universe is flat). <strong>Peak 2</strong>: baryon density. <strong>Peak 3</strong>: dark matter density. <strong>Relative heights</strong>: baryon-to-photon ratio. <strong>Damping tail</strong>: when the universe became transparent.
+      </p>
+    </div>
+
+    <p>The shape of this curve — the positions, heights, and widths of its peaks — is predicted by a cosmological model with just <strong>six free parameters</strong>. The data contains <strong>thousands of independent measurements</strong>. Six knobs, thousands of constraints.</p>
+
+    <div class="overconst">
+      <div class="overconst-numbers">
+        <div class="overconst-num">
+          <div class="big text-gold">6</div>
+          <div class="label">Free Parameters</div>
+        </div>
+        <div class="overconst-arrow">→</div>
+        <div class="overconst-num">
+          <div class="big text-blue">2,500+</div>
+          <div class="label">Data Points Fit</div>
+        </div>
+      </div>
+      <p class="overconst-explain">This is what <strong>"over-constrained"</strong> means. If your model has as many parameters as data points, you can always fit — it proves nothing. But fitting thousands of points with six parameters means the model is making <em>predictions</em> about most of the data, and those predictions succeed. This is extraordinarily hard to fake.</p>
+    </div>
+
+    <p>To appreciate what this means epistemologically: imagine someone claims to know the recipe for a cake. If they predict one fact about the cake correctly, that's weak evidence. If they predict 2,500 facts about the cake — its density, color, crumb structure, moisture content, rise height, flavor profile — from six ingredients, and they're right about all of them, the recipe is almost certainly correct.</p>
+  </section>
+
+  <!-- CHAPTER 4: Concordance -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch4">
+    <div class="chapter-number">Chapter IV</div>
+    <h2>Concordance: When <em>Independent</em> Lines Agree</h2>
+    <p class="chapter-lead">The deepest argument in cosmological epistemology isn't any single measurement. It's the pattern of agreement across measurements that have no business agreeing — unless the underlying story is true.</p>
+
+    <p>Consider a single number: the <strong>baryon density of the universe</strong> — how much ordinary matter exists per cubic meter, on average. We can measure this three completely different ways:</p>
+
+    <div class="concordance">
+      <div class="concordance-center" onclick="showConcordance()">
+        <span>Click to<br>compare</span>
+      </div>
+      <div class="concordance-spokes">
+        <div class="spoke-card" id="spoke-cmb">
+          <h5>CMB Sound Waves</h5>
+          <div class="spoke-value">4.86%</div>
+          <div class="spoke-unit">of total energy density</div>
+          <div class="spoke-detail">Ratio of odd to even peaks in the CMB power spectrum encodes baryon density via acoustic oscillation physics</div>
+          <div class="spoke-method">Method: angular power spectrum analysis</div>
+        </div>
+        <div class="spoke-card" id="spoke-bbn">
+          <h5>Nucleosynthesis</h5>
+          <div class="spoke-value">4.83%</div>
+          <div class="spoke-unit">of total energy density</div>
+          <div class="spoke-detail">Deuterium abundance in pristine gas clouds constrains baryon-to-photon ratio via nuclear reaction rates</div>
+          <div class="spoke-method">Method: spectroscopy of quasar absorption lines</div>
+        </div>
+        <div class="spoke-card" id="spoke-bao">
+          <h5>Galaxy Clustering</h5>
+          <div class="spoke-value">4.82%</div>
+          <div class="spoke-unit">of total energy density</div>
+          <div class="spoke-detail">The scale of baryon acoustic oscillations in galaxy distributions depends on the baryon fraction</div>
+          <div class="spoke-method">Method: statistical analysis of galaxy surveys</div>
+        </div>
+      </div>
+      <div class="concordance-result" id="concordResult">
+        <p>Three measurements. Three different physics. Three different instruments. Three different eras of the universe. <strong class="text-gold">Same answer to within 1%.</strong> The probability of this being coincidental is vanishingly small.</p>
+      </div>
+    </div>
+
+    <p>This pattern is called <strong>concordance</strong>, and it is the epistemological backbone of modern cosmology. A single measurement can be wrong — systematic errors, calibration mistakes, unknown biases. But when <em>independent</em> measurements, using <em>different physics</em>, performed by <em>different teams</em>, on <em>different observations</em>, converge on the same answer — the most parsimonious explanation is that the answer is correct.</p>
+
+    <blockquote>
+      Independent convergence is the closest thing the empirical sciences have to proof. It is to science what triangulation is to surveying — each sightline alone is uncertain, but their intersection is sharp.
+    </blockquote>
+
+    <p>This is not unique to cosmology. It's the same logic that convicts in court (multiple independent witnesses), diagnoses in medicine (multiple independent tests), and decodes in cryptography (multiple independent constraints). But cosmology is an unusually clean demonstration of it, because the measurements are so independent that shared systematic errors are implausible.</p>
+  </section>
+
+  <!-- CHAPTER 5: Extrapolation and Its Limits -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch5">
+    <div class="chapter-number">Chapter V</div>
+    <h2>Extrapolation and <em>Its Limits</em></h2>
+    <p class="chapter-lead">When can we trust lab-tested physics applied to conditions we'll never recreate?</p>
+
+    <p>Much of our knowledge about the early universe rests on a specific epistemic move: take physics that has been tested in laboratories, and apply it to conditions far more extreme than any lab can achieve. When is this justified?</p>
+
+    <p>The answer depends on <strong>how far</strong> you're extrapolating from tested regimes.</p>
+
+    <div class="confidence-strip">
+      <div class="confidence-bar"></div>
+      <div class="confidence-markers">
+        <div class="conf-marker" style="left: 90%">
+          <span class="conf-era">Nucleosynthesis</span>
+          <span class="conf-time">~3 minutes</span>
+          <span class="conf-physics">Nuclear physics — thoroughly tested in labs</span>
+        </div>
+        <div class="conf-marker" style="left: 65%">
+          <span class="conf-era">Electroweak</span>
+          <span class="conf-time">~10⁻¹² s</span>
+          <span class="conf-physics">Partially tested at LHC</span>
+        </div>
+        <div class="conf-marker" style="left: 35%">
+          <span class="conf-era">GUT / Inflation</span>
+          <span class="conf-time">~10⁻³⁶ s</span>
+          <span class="conf-physics">No direct lab tests possible</span>
+        </div>
+        <div class="conf-marker" style="left: 8%">
+          <span class="conf-era">Planck</span>
+          <span class="conf-time">~10⁻⁴³ s</span>
+          <span class="conf-physics">No known theory</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-m"><strong>Nucleosynthesis</strong> (~MeV energies): The nuclear cross-sections governing hydrogen-to-helium fusion have been measured in accelerators. The temperatures are extreme but the physics is familiar. Extrapolation distance: small. Confidence: high.</p>
+
+    <p><strong>Electroweak era</strong> (~TeV energies): The LHC reaches these energies. We've confirmed the Higgs mechanism. But we're at the edge of tested territory — the Standard Model works, but we know it's incomplete. Extrapolation distance: moderate. Confidence: moderate.</p>
+
+    <p><strong>Inflation</strong> (~10¹⁶ GeV): A trillion times beyond LHC energies. We have theoretical frameworks (various inflaton field models) and indirect evidence (CMB patterns are consistent), but no direct test of the physics. Extrapolation distance: enormous. Confidence: low.</p>
+
+    <p><strong>Planck era</strong> (~10¹⁹ GeV): Both general relativity and quantum mechanics are needed simultaneously, but they contradict each other. We don't even know which theory to extrapolate. Extrapolation distance: undefined. Confidence: essentially zero.</p>
+
+    <div class="lesson-box">
+      <h4>Key Epistemological Principle</h4>
+      <p>Confidence in extrapolation degrades <em>gracefully</em>, not suddenly. There is no sharp line between "known" and "unknown" — there is a gradient, and intellectual honesty requires tracking where you are on it. Beware anyone who presents the entire timeline with uniform confidence.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 6: The Role of Prediction -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch6">
+    <div class="chapter-number">Chapter VI</div>
+    <h2>The Role of <em>Prediction</em></h2>
+    <p class="chapter-lead">Explaining what you already know is easy. Predicting what you haven't seen yet is the real test.</p>
+
+    <p>Philosophers of science have long distinguished between <strong>accommodation</strong> (building a theory to fit existing data) and <strong>prediction</strong> (using a theory to forecast data you haven't yet collected). Both matter, but predictions carry more epistemic weight because they eliminate the possibility of unconscious fine-tuning.</p>
+
+    <p>Cosmology has an impressive track record of <span class="anno" data-note="A 'novel prediction' is one made before the observation. This is stronger than retrodiction (explaining data that already exists) because it rules out the possibility that the theory was engineered to fit.">novel predictions</span>:</p>
+
+    <table class="prediction-table">
+      <thead>
+        <tr>
+          <th>Predicted</th>
+          <th>What</th>
+          <th>Confirmed</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="pred-year">1948</td>
+          <td class="pred-what">Relic radiation from the hot early universe should fill all of space at ~5 K</td>
+          <td class="pred-year">1965</td>
+          <td class="pred-result pred-confirmed">✓ Measured at 2.725 K</td>
+        </tr>
+        <tr>
+          <td class="pred-year">1948</td>
+          <td class="pred-what">Primordial helium abundance should be ~25% by mass</td>
+          <td class="pred-year">1970s</td>
+          <td class="pred-result pred-confirmed">✓ Measured at 24.7%</td>
+        </tr>
+        <tr>
+          <td class="pred-year">1970</td>
+          <td class="pred-what">CMB should have a perfect blackbody spectrum</td>
+          <td class="pred-year">1990</td>
+          <td class="pred-result pred-confirmed">✓ COBE: most perfect blackbody ever measured</td>
+        </tr>
+        <tr>
+          <td class="pred-year">1970</td>
+          <td class="pred-what">CMB should show acoustic peaks at specific angular scales</td>
+          <td class="pred-year">2000</td>
+          <td class="pred-result pred-confirmed">✓ BOOMERanG, then WMAP, then Planck</td>
+        </tr>
+        <tr>
+          <td class="pred-year">1998</td>
+          <td class="pred-what">Galaxy distributions should show a "standard ruler" at 490 million light-years</td>
+          <td class="pred-year">2005</td>
+          <td class="pred-result pred-confirmed">✓ SDSS baryon acoustic oscillation detection</td>
+        </tr>
+        <tr>
+          <td class="pred-year">1980</td>
+          <td class="pred-what">Inflation predicts primordial gravitational wave imprint in CMB polarization</td>
+          <td class="pred-year">—</td>
+          <td class="pred-result pred-pending">○ Not yet detected</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Notice the pattern: predictions were made <strong>decades</strong> before confirmation, by theorists who couldn't have known the answer. The CMB temperature prediction was off by a factor of two (5 K vs. 2.7 K), which sounds imprecise until you realize the prediction was that <em>any radiation at all should exist</em>, at roughly the right temperature, filling all of space. That's an extraordinary claim that turned out to be correct.</p>
+
+    <p>Also notice the last row. Inflation predicts B-mode polarization from primordial gravitational waves, and we haven't found it yet. This is how science should work — the prediction is on the table, and if the observation eventually contradicts it, that specific version of inflation is falsified. The theory sticks its neck out.</p>
+
+    <div class="lesson-box">
+      <h4>Why Predictions Matter More Than Explanations</h4>
+      <p>A theory that only explains existing data might be a just-so story — reverse-engineered to fit. A theory that predicts new data correctly is constrained: it had to get the right answer <em>before seeing it</em>. The more surprising the prediction (the more ways it could have been wrong), the stronger the confirmation when it succeeds.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 7: What We Don't Know -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch7">
+    <div class="chapter-number">Chapter VII</div>
+    <h2>What We <em>Don't</em> Know</h2>
+    <p class="chapter-lead">Confidence in what we know coexists honestly with major open questions.</p>
+
+    <p>It's tempting to present cosmology as a finished story. It's not. Several deep problems remain unsolved, and intellectual honesty requires acknowledging them clearly. The remarkable thing is that these unknowns don't undermine the knowns — they coexist.</p>
+
+    <div class="unknown-grid">
+      <div class="unknown-card">
+        <h4>Dark Matter</h4>
+        <p>~27% of the universe's energy density. We know its gravitational effects precisely. We have no idea what it's made of. No particle candidate has been confirmed despite decades of experiments.</p>
+      </div>
+      <div class="unknown-card">
+        <h4>Dark Energy</h4>
+        <p>~68% of the universe's energy density. Drives accelerating expansion. Could be a cosmological constant, a dynamic field, or a sign that general relativity is wrong at large scales. We genuinely don't know.</p>
+      </div>
+      <div class="unknown-card">
+        <h4>The Inflation Mechanism</h4>
+        <p>Inflation solves several problems elegantly, but we don't know what physical field drove it, why it started, or why it stopped. There are hundreds of proposed models. No observation yet distinguishes between them.</p>
+      </div>
+      <div class="unknown-card">
+        <h4>The Hubble Tension</h4>
+        <p>Two methods of measuring the expansion rate give persistently different answers: 67.4 (CMB) vs. 73.0 (local distance ladder) km/s/Mpc. Either one measurement has a systematic error, or there's new physics we're missing.</p>
+      </div>
+      <div class="unknown-card">
+        <h4>Quantum Gravity</h4>
+        <p>General relativity and quantum mechanics are both correct in their domains but incompatible. At the Planck scale (10⁻⁴³ seconds), we need both and have neither. The origin of the universe is behind this wall.</p>
+      </div>
+      <div class="unknown-card">
+        <h4>Matter-Antimatter Asymmetry</h4>
+        <p>The universe contains matter but essentially no antimatter. The Standard Model can't explain the imbalance. Something happened in the first microseconds that we don't understand.</p>
+      </div>
+    </div>
+
+    <p class="mt-m">A naive view of science says: if you don't know everything, you don't know anything. This is wrong. We know the baryon density to 1% precision <em>and</em> we don't know what dark matter is. These are not in tension. Knowledge is not all-or-nothing — it is <strong>granular</strong>, with different claims at different confidence levels. The maturity of a field is reflected not in the absence of open questions, but in the clarity with which it distinguishes what it knows from what it doesn't.</p>
+  </section>
+
+  <!-- CHAPTER 8: Lessons for Epistemology -->
+  <div class="chapter-divider"></div>
+  <section class="chapter" id="ch8">
+    <div class="chapter-number">Chapter VIII</div>
+    <h2>Lessons for <em>Epistemology</em></h2>
+    <p class="chapter-lead">What cosmology teaches us about the nature of knowledge itself.</p>
+
+    <p>Cosmology is a remarkable case study in how knowledge works. The lessons extend far beyond physics.</p>
+
+    <div class="lesson-box">
+      <h4>Lesson 1 — Independent Convergence is the Gold Standard</h4>
+      <p>A single piece of evidence can always be doubted. But when multiple independent lines of evidence, using different methods and different physics, converge on the same answer, the probability that they're all wrong in exactly the same way becomes negligible. This principle applies everywhere: in medicine (multiple diagnostic tests), in law (corroborating witnesses), in engineering (redundant safety checks). Cosmology is just an unusually clean example.</p>
+    </div>
+
+    <div class="lesson-box">
+      <h4>Lesson 2 — Quantitative Predictions Beat Qualitative Stories</h4>
+      <p>"The universe started hot and cooled down" is a story. "The primordial helium fraction should be 24.7 ± 0.1% by mass" is a prediction. The difference is that the prediction can be <em>wrong</em>. Theories that make precise, falsifiable, quantitative predictions — and survive — earn proportionally more credence than theories that only tell plausible narratives.</p>
+    </div>
+
+    <div class="lesson-box">
+      <h4>Lesson 3 — Confidence Degrades Gracefully</h4>
+      <p>Knowledge is not binary. "We know X" vs. "we don't know X" is almost always the wrong framing. The right framing is: "How confident are we in X, and why?" Cosmology models this well — confidence varies smoothly from ~99.99% (CMB blackbody spectrum) through ~95% (baryon density) to ~50% (inflation specifics) to ~0% (Planck-era physics). Every field should be this honest about its confidence gradient.</p>
+    </div>
+
+    <div class="lesson-box">
+      <h4>Lesson 4 — Simplicity is Evidence</h4>
+      <p>The standard cosmological model has six free parameters. It fits the CMB, nucleosynthesis abundances, galaxy clustering, supernovae distances, and gravitational lensing. A model this parsimonious succeeding this broadly is itself strong evidence that it captures something real. If the model were wrong, you'd expect to need many more parameters — patches, corrections, special cases. The absence of such patches is informative.</p>
+    </div>
+
+    <div class="lesson-box">
+      <h4>Lesson 5 — Honest Uncertainty is Strength, Not Weakness</h4>
+      <p>Cosmology's credibility comes partly from its willingness to say "we don't know" about dark matter, dark energy, and quantum gravity — while simultaneously defending what it does know. A field that claimed certainty about everything would be less trustworthy, not more. The explicit acknowledgment of boundaries is what makes the claims within those boundaries believable.</p>
+    </div>
+
+    <blockquote>
+      The universe left receipts. They're internally consistent. And where they're not — where measurements disagree, where theories break down, where the data runs out — we say so. That's not a limitation of the method. That's the method working.
+    </blockquote>
+  </section>
+
+  <!-- Colophon -->
+  <div class="colophon">
+    <p>· · ·</p>
+    <p class="mt-s">A course in eight chapters on cosmological epistemology.</p>
+    <p>Assembled from the receipts the universe left behind.</p>
+  </div>
+
+</div>
+
+<script>
+// Starfield
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  const STAR_COUNT = 200;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    resize();
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random() * 0.5 + 0.1,
+        speed: Math.random() * 0.0008 + 0.0002,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const s of stars) {
+      const flicker = Math.sin(t * s.speed * 1000 + s.phase) * 0.15 + 0.85;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,210,240,${s.a * flicker})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  init();
+  requestAnimationFrame(draw);
+})();
+
+// Chapter nav visibility
+(function() {
+  const nav = document.getElementById('chapterNav');
+  const hero = document.querySelector('.hero');
+  const chapters = document.querySelectorAll('.chapter');
+  const navLinks = nav.querySelectorAll('a');
+
+  const observer = new IntersectionObserver(([entry]) => {
+    nav.classList.toggle('visible', !entry.isIntersecting);
+  }, { threshold: 0.1 });
+  observer.observe(hero);
+
+  // Active chapter tracking
+  const chapterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: 0.3 });
+  chapters.forEach(ch => chapterObserver.observe(ch));
+})();
+
+// Scroll-triggered chapter reveals
+(function() {
+  const chapters = document.querySelectorAll('.chapter');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  chapters.forEach(ch => observer.observe(ch));
+})();
+
+// Power spectrum visualization
+(function() {
+  const canvas = document.getElementById('spectrumCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = 220 * dpr;
+    ctx.scale(dpr, dpr);
+    const W = rect.width;
+    const H = 220;
+
+    // Simulated CMB power spectrum curve
+    const points = [];
+    for (let i = 0; i < W; i++) {
+      const x = i / W;
+      // Simulate acoustic peaks
+      const scale = x * 8;
+      const envelope = Math.exp(-x * 2.5) * (1 - Math.exp(-x * 15));
+      const peak1 = Math.exp(-Math.pow(scale - 1.0, 2) / 0.08) * 1.0;
+      const peak2 = Math.exp(-Math.pow(scale - 2.1, 2) / 0.1) * 0.55;
+      const peak3 = Math.exp(-Math.pow(scale - 3.2, 2) / 0.12) * 0.35;
+      const peak4 = Math.exp(-Math.pow(scale - 4.3, 2) / 0.15) * 0.2;
+      const peak5 = Math.exp(-Math.pow(scale - 5.4, 2) / 0.18) * 0.12;
+      const base = envelope * 0.15;
+      const y = (peak1 + peak2 + peak3 + peak4 + peak5 + base);
+      points.push({ x: i, y: H - 30 - y * (H - 60) });
+    }
+
+    // Grid
+    ctx.strokeStyle = 'rgba(40,50,80,0.3)';
+    ctx.lineWidth = 0.5;
+    for (let y = 30; y < H - 20; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+
+    // Data points (scattered)
+    const gold = '#c9a84c';
+    for (let i = 5; i < points.length; i += 3) {
+      const p = points[i];
+      const noise = (Math.random() - 0.5) * 14;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y + noise, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,0.35)`;
+      ctx.fill();
+    }
+
+    // Theory curve
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i++) {
+      ctx.lineTo(points[i].x, points[i].y);
+    }
+    ctx.strokeStyle = '#4a8ec9';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Peak labels
+    const peaks = [
+      { x: 0.125, label: '1st' },
+      { x: 0.2625, label: '2nd' },
+      { x: 0.4, label: '3rd' },
+    ];
+    ctx.font = '500 10px "IBM Plex Mono"';
+    ctx.textAlign = 'center';
+    peaks.forEach(pk => {
+      const px = pk.x * W;
+      const py = points[Math.floor(pk.x * W)]?.y || H / 2;
+      ctx.fillStyle = 'rgba(200,210,240,0.5)';
+      ctx.fillText(pk.label, px, py - 12);
+    });
+
+    // Axis labels
+    ctx.font = '400 9px "IBM Plex Mono"';
+    ctx.fillStyle = 'rgba(100,110,140,0.6)';
+    ctx.textAlign = 'left';
+    ctx.fillText('Large scales', 4, H - 6);
+    ctx.textAlign = 'right';
+    ctx.fillText('Small scales', W - 4, H - 6);
+    ctx.textAlign = 'left';
+    ctx.save();
+    ctx.translate(10, H / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText('Power', 0, 0);
+    ctx.restore();
+
+    // Legend
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#4a8ec9';
+    ctx.fillRect(W - 100, 10, 12, 2);
+    ctx.font = '400 9px "IBM Plex Mono"';
+    ctx.fillStyle = 'rgba(150,160,190,0.6)';
+    ctx.fillText('Theory (6 params)', W - 8, 15);
+
+    ctx.fillStyle = 'rgba(201,168,76,0.6)';
+    ctx.beginPath(); ctx.arc(W - 94, 26, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(150,160,190,0.6)';
+    ctx.fillText('Data (2500+ points)', W - 8, 30);
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+
+// Concordance interaction
+function showConcordance() {
+  const cards = document.querySelectorAll('.spoke-card');
+  const result = document.getElementById('concordResult');
+  cards.forEach((c, i) => {
+    setTimeout(() => c.classList.add('highlighted'), i * 200);
+  });
+  setTimeout(() => result.classList.add('show'), 700);
+  // Toggle off on second click
+  const center = document.querySelector('.concordance-center');
+  center.onclick = function() {
+    cards.forEach(c => c.classList.remove('highlighted'));
+    result.classList.remove('show');
+    center.onclick = function() { showConcordance(); };
+  };
+}
+</script>
+
+</body>
+</html>
