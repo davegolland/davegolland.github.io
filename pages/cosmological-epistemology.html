@@ -23,13 +23,13 @@
   --blue: #4a8ec9;
   --blue-dim: #2a5580;
   --blue-glow: #4a8ec933;
-  --green: #4ac97a;
-  --green-dim: #2a7048;
-  --amber: #c98a4a;
-  --amber-dim: #7a5530;
-  --violet: #8a6ac9;
-  --violet-dim: #5040808;
-  --red-soft: #c96a6a;
+  --green: #7aaa8a;
+  --green-dim: #3a5a48;
+  --amber: #aa967a;
+  --amber-dim: #6a5a40;
+  --violet: #8a8aaa;
+  --violet-dim: #50506a;
+  --red-soft: #aa7a7a;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -280,63 +280,81 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* Evidence cards */
-.evidence-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+/* Evidence ladder */
+.evidence-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   margin: 32px 0;
+  position: relative;
 }
-@media (min-width: 600px) {
-  .evidence-grid { grid-template-columns: 1fr 1fr; }
+/* Vertical spine */
+.evidence-ladder::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--text-dim), var(--border-subtle));
 }
 
 .evidence-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 28px 20px 28px 52px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
+.evidence-card:last-child {
+  border-bottom: none;
+}
 .evidence-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-accent);
+  background: var(--bg-card);
 }
+/* Rung number dot on the spine */
 .evidence-card::before {
-  content: '';
+  content: attr(data-rung);
   position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 100%;
+  left: 12px;
+  top: 30px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 1;
 }
-.evidence-card[data-type="direct"]::before { background: var(--green); }
-.evidence-card[data-type="indirect"]::before { background: var(--amber); }
-.evidence-card[data-type="lab"]::before { background: var(--blue); }
-.evidence-card[data-type="theoretical"]::before { background: var(--violet); }
+.evidence-card[data-rung="1"]::before { background: var(--bg-deep); border: 1.5px solid var(--text-dim); color: var(--text-dim); }
+.evidence-card[data-rung="2"]::before { background: var(--bg-deep); border: 1.5px solid var(--text-dim); color: var(--text-dim); }
+.evidence-card[data-rung="3"]::before { background: var(--bg-deep); border: 1.5px solid var(--text-secondary); color: var(--text-secondary); }
+.evidence-card[data-rung="4"]::before { background: var(--bg-deep); border: 1.5px solid var(--text-bright); color: var(--text-bright); }
 
 .evidence-card .card-type {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  color: var(--text-dim);
 }
-.evidence-card[data-type="direct"] .card-type { color: var(--green); }
-.evidence-card[data-type="indirect"] .card-type { color: var(--amber); }
-.evidence-card[data-type="lab"] .card-type { color: var(--blue); }
-.evidence-card[data-type="theoretical"] .card-type { color: var(--violet); }
 
 .evidence-card h4 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--text-bright);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.evidence-card p {
+.evidence-card > p {
   font-size: 0.82rem;
   color: var(--text-secondary);
   line-height: 1.6;
@@ -367,6 +385,17 @@ body {
   transition: opacity 0.3s;
 }
 .evidence-card.expanded .expand-hint { opacity: 0; }
+
+/* Ladder direction label */
+.ladder-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 8px 0;
+}
 
 /* Power spectrum visualization */
 .power-spectrum {
@@ -477,7 +506,7 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--text-secondary);
   margin-bottom: 8px;
 }
 .spoke-card .spoke-value {
@@ -541,13 +570,12 @@ body {
   height: 8px;
   border-radius: 4px;
   background: linear-gradient(to right,
-    #1a1a2e 0%,
-    #2d1b4e 15%,
-    #4a2068 25%,
-    #7b3fa0 40%,
-    #3a8fd4 60%,
-    #2ecc71 85%,
-    #27ae60 100%
+    #1a1a22 0%,
+    #252530 20%,
+    #353540 40%,
+    #505058 60%,
+    #707078 80%,
+    #8890a8 100%
   );
   margin-bottom: 8px;
 }
@@ -668,7 +696,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 500;
-  color: var(--red-soft);
+  color: var(--text-bright);
   margin-bottom: 8px;
 }
 .unknown-card p {
@@ -887,28 +915,19 @@ body {
 
     <p>Cosmological knowledge rests on four types of evidence, each carrying different weight. Think of them as rungs — lower is more certain, higher is more speculative.</p>
 
-    <div class="evidence-grid">
-      <div class="evidence-card" data-type="direct" onclick="this.classList.toggle('expanded')">
-        <div class="card-type">Direct Observation</div>
-        <h4>We see it happening</h4>
-        <p>Light or particles from the event reach our instruments. The CMB is the premier example — actual photons from 380,000 years after the Big Bang.</p>
+    <div class="ladder-label">More speculative</div>
+    <div class="evidence-ladder">
+      <div class="evidence-card" data-rung="1" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Theoretical Framework</div>
+        <h4>Mathematically plausible</h4>
+        <p>The theory is self-consistent and solves known problems, but lacks observational confirmation.</p>
         <div class="card-detail">
-          <p>The CMB isn't an inference — it's light that has been traveling for 13.8 billion years and lands on our detectors. Galaxy surveys are also direct: we map millions of galaxies and measure their patterns. The catch: we can only observe events that left signals that survive to the present.</p>
+          <p>String theory, loop quantum gravity — beautiful mathematics, but no confirmed predictions about anything observable. The Planck era (before 10⁻⁴³ seconds) lives entirely here. We have frameworks, not knowledge.</p>
         </div>
         <span class="expand-hint">click to expand</span>
       </div>
 
-      <div class="evidence-card" data-type="lab" onclick="this.classList.toggle('expanded')">
-        <div class="card-type">Lab-Calibrated Physics</div>
-        <h4>Same physics, tested here</h4>
-        <p>Nuclear reactions, atomic transitions, particle interactions — all tested in terrestrial labs, then applied to early-universe conditions.</p>
-        <div class="card-detail">
-          <p>Nucleosynthesis uses nuclear cross-sections measured in labs. The atomic physics of recombination is the same physics as fluorescent lights. We're not guessing — we're applying well-tested laws in a new regime. The risk is that the laws might differ at extreme energies, but at nucleosynthesis scales (~MeV), they're thoroughly validated.</p>
-        </div>
-        <span class="expand-hint">click to expand</span>
-      </div>
-
-      <div class="evidence-card" data-type="indirect" onclick="this.classList.toggle('expanded')">
+      <div class="evidence-card" data-rung="2" onclick="this.classList.toggle('expanded')">
         <div class="card-type">Indirect Inference</div>
         <h4>Consistent with, but not unique</h4>
         <p>The observations are what we'd expect <em>if</em> the theory is true, but other explanations might also fit.</p>
@@ -918,18 +937,29 @@ body {
         <span class="expand-hint">click to expand</span>
       </div>
 
-      <div class="evidence-card" data-type="theoretical" onclick="this.classList.toggle('expanded')">
-        <div class="card-type">Theoretical Framework</div>
-        <h4>Mathematically plausible</h4>
-        <p>The theory is self-consistent and solves known problems, but lacks direct or indirect observational confirmation.</p>
+      <div class="evidence-card" data-rung="3" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Lab-Calibrated Physics</div>
+        <h4>Same physics, tested here</h4>
+        <p>Nuclear reactions, atomic transitions, particle interactions — all tested in terrestrial labs, then applied to early-universe conditions.</p>
         <div class="card-detail">
-          <p>String theory, loop quantum gravity — beautiful mathematics, but no confirmed predictions about anything observable. The Planck era (before 10⁻⁴³ seconds) lives entirely here. We have frameworks, not knowledge.</p>
+          <p>Nucleosynthesis uses nuclear cross-sections measured in labs. The atomic physics of recombination is the same physics as fluorescent lights. We're not guessing — we're applying well-tested laws in a new regime. The risk is that the laws might differ at extreme energies, but at nucleosynthesis scales (~MeV), they're thoroughly validated.</p>
+        </div>
+        <span class="expand-hint">click to expand</span>
+      </div>
+
+      <div class="evidence-card" data-rung="4" onclick="this.classList.toggle('expanded')">
+        <div class="card-type">Direct Observation</div>
+        <h4>We see it happening</h4>
+        <p>Light or particles from the event reach our instruments. The CMB is the premier example — actual photons from 380,000 years after the Big Bang.</p>
+        <div class="card-detail">
+          <p>The CMB isn't an inference — it's light that has been traveling for 13.8 billion years and lands on our detectors. Galaxy surveys are also direct: we map millions of galaxies and measure their patterns. The catch: we can only observe events that left signals that survive to the present.</p>
         </div>
         <span class="expand-hint">click to expand</span>
       </div>
     </div>
+    <div class="ladder-label">More certain</div>
 
-    <p>The critical skill is knowing which rung you're on. Public communication often fails here — treating inflation with the same confidence as nucleosynthesis. The gradient is steep. Acknowledging that is a feature, not a weakness.</p>
+    <p>The critical skill is knowing which rung you're on. Public communication often fails here, treating inflation with the same confidence as nucleosynthesis. The gradient is steep. Acknowledging it makes the whole framework more credible.</p>
   </section>
 
   <!-- CHAPTER 3: The CMB -->
@@ -982,7 +1012,7 @@ body {
   <section class="chapter" id="ch4">
     <div class="chapter-number">Chapter IV</div>
     <h2>Concordance: When <em>Independent</em> Lines Agree</h2>
-    <p class="chapter-lead">The deepest argument in cosmological epistemology isn't any single measurement. It's the pattern of agreement across measurements that have no business agreeing — unless the underlying story is true.</p>
+    <p class="chapter-lead">The deepest argument in cosmological epistemology is the pattern of agreement across measurements that have no business agreeing, unless the underlying story is true.</p>
 
     <p>Consider a single number: the <strong>baryon density of the universe</strong> — how much ordinary matter exists per cubic meter, on average. We can measure this three completely different ways:</p>
 
@@ -1024,7 +1054,7 @@ body {
       Independent convergence is the closest thing science has to proof. Each sightline alone is uncertain. Their intersection is sharp.
     </blockquote>
 
-    <p>The same logic convicts in court, diagnoses in medicine, and decodes in cryptography. Cosmology just happens to be an unusually clean case — the measurements are so independent that shared errors are implausible.</p>
+    <p>The same logic convicts in court and diagnoses in medicine. Cosmology is an unusually clean case; the measurements are so independent that shared errors are implausible.</p>
   </section>
 
   <!-- CHAPTER 5: Extrapolation and Its Limits -->
@@ -1074,7 +1104,7 @@ body {
 
     <div class="lesson-box">
       <h4>Key Epistemological Principle</h4>
-      <p>Confidence degrades <em>gracefully</em>, not suddenly. There's no sharp line between "known" and "unknown" — there's a gradient. Beware anyone who presents the entire timeline with uniform confidence.</p>
+      <p>Confidence degrades <em>gracefully</em>. There's no sharp line between "known" and "unknown," only a gradient. Beware anyone who presents the entire timeline with uniform confidence.</p>
     </div>
   </section>
 
@@ -1083,9 +1113,9 @@ body {
   <section class="chapter" id="ch6">
     <div class="chapter-number">Chapter VI</div>
     <h2>The Role of <em>Prediction</em></h2>
-    <p class="chapter-lead">Explaining what you already know is easy. Predicting what you haven't seen yet is the real test.</p>
+    <p class="chapter-lead">Predicting what you haven't seen yet is the real test of a theory.</p>
 
-    <p>There's an old distinction in philosophy of science: <strong>accommodation</strong> (building a theory to fit data you already have) versus <strong>prediction</strong> (using a theory to forecast data you haven't yet seen). Both matter, but prediction carries more weight — it rules out the possibility that the theory was quietly tuned to fit.</p>
+    <p>There's an old distinction in philosophy of science: <strong>accommodation</strong> (building a theory to fit data you already have) versus <strong>prediction</strong> (using a theory to forecast data you haven't yet seen). Both matter, but prediction carries more weight. It rules out the possibility that the theory was quietly tuned to fit.</p>
 
     <p>Cosmology has an impressive track record of <span class="anno" data-note="A 'novel prediction' is one made before the observation. This is stronger than retrodiction (explaining data that already exists) because it rules out the possibility that the theory was engineered to fit.">novel predictions</span>:</p>
 
@@ -1144,7 +1174,7 @@ body {
 
     <div class="lesson-box">
       <h4>Why Predictions Matter More Than Explanations</h4>
-      <p>A theory that only explains existing data might be a just-so story. A theory that predicts new data had to get the answer right <em>before seeing it</em>. The more ways a prediction could have gone wrong, the stronger the confirmation when it doesn't.</p>
+      <p>A theory that predicts new data had to get the answer right <em>before seeing it</em>. Explaining existing data might be a just-so story. The more ways a prediction could have gone wrong, the stronger the confirmation when it doesn't.</p>
     </div>
   </section>
 
@@ -1155,7 +1185,7 @@ body {
     <h2>What We <em>Don't</em> Know</h2>
     <p class="chapter-lead">Confidence in what we know coexists honestly with major open questions.</p>
 
-    <p>Cosmology is not a finished story. Several deep problems remain open. What's remarkable is that these unknowns don't undermine the knowns — they coexist.</p>
+    <p>Cosmology is not a finished story. Several deep problems remain open, and they coexist comfortably with what we do know.</p>
 
     <div class="unknown-grid">
       <div class="unknown-card">
@@ -1184,7 +1214,7 @@ body {
       </div>
     </div>
 
-    <p class="mt-m">A naive view says: if you don't know everything, you don't know anything. But we know the baryon density to 1% <em>and</em> we don't know what dark matter is. These aren't in tension. Knowledge is <strong>granular</strong>. The maturity of a field shows not in the absence of open questions, but in how clearly it distinguishes what it knows from what it doesn't.</p>
+    <p class="mt-m">A naive view says: if you don't know everything, you don't know anything. But we know the baryon density to 1% <em>and</em> we don't know what dark matter is. These aren't in tension. Knowledge is <strong>granular</strong>. The maturity of a field shows in how clearly it distinguishes what it knows from what it doesn't.</p>
   </section>
 
   <!-- CHAPTER 8: Lessons for Epistemology -->
@@ -1194,11 +1224,11 @@ body {
     <h2>Lessons for <em>Epistemology</em></h2>
     <p class="chapter-lead">What cosmology teaches us about the nature of knowledge itself.</p>
 
-    <p>The lessons here extend well beyond physics.</p>
+    <p>These lessons apply far outside physics.</p>
 
     <div class="lesson-box">
       <h4>Lesson 1 — Independent Convergence is the Gold Standard</h4>
-      <p>Any single piece of evidence can be doubted. But when independent lines — different methods, different physics — converge on the same answer, the chance they're all wrong in the same way becomes negligible. This works everywhere: medicine, law, engineering. Cosmology is just an unusually clean case.</p>
+      <p>Any single piece of evidence can be doubted. But when independent lines, different methods, different physics, converge on the same answer, the chance they're all wrong in the same way becomes negligible. This works in medicine and law. Cosmology is an unusually clean case.</p>
     </div>
 
     <div class="lesson-box">
@@ -1217,12 +1247,12 @@ body {
     </div>
 
     <div class="lesson-box">
-      <h4>Lesson 5 — Honest Uncertainty is Strength, Not Weakness</h4>
-      <p>Cosmology's credibility comes partly from saying "we don't know" about dark matter, dark energy, and quantum gravity — while defending what it does know. A field that claimed certainty about everything would be less trustworthy, not more. Acknowledging boundaries is what makes the claims within them believable.</p>
+      <h4>Lesson 5 — Honest Uncertainty Builds Credibility</h4>
+      <p>Cosmology's credibility comes partly from saying "we don't know" about dark matter, dark energy, and quantum gravity, while defending what it does know. A field that claimed certainty about everything would be less trustworthy. Acknowledging boundaries is what makes the claims within them believable.</p>
     </div>
 
     <blockquote>
-      The universe left receipts. They're internally consistent. And where they're not — where measurements disagree, where theories break down, where the data runs out — we say so. That's not a limitation of the method. That's the method working.
+      The universe left receipts. They're internally consistent. Where measurements disagree, where theories break down, where the data runs out, we say so. That <em>is</em> the method working.
     </blockquote>
   </section>
 
