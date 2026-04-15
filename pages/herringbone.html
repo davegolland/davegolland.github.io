@@ -209,27 +209,30 @@
     const fx = (w - fW) / 2;
     const fy = (h - fH) / 2;
 
-    // Outer path with notch on the right side
-    const notchX   = fx + fW * 0.62;     // how far the notch cuts inward
-    const notchY0  = fy + fH * 0.30;
-    const notchY1  = fy + fH * 0.62;
+    // Outer path: sideways T (⊢) — main rectangle on the left with a
+    // stub protruding outward on the middle-right edge.
+    const mainRight = fx + fW * 0.72;        // right edge of main body
+    const stubRight = fx + fW;               // right edge of protruding stub
+    const stubY0    = fy + fH * 0.30;        // stub top
+    const stubY1    = fy + fH * 0.62;        // stub bottom
     const outerD = [
       `M ${fx} ${fy}`,
-      `H ${fx + fW}`,
-      `V ${notchY0}`,
-      `H ${notchX}`,
-      `V ${notchY1}`,
-      `H ${fx + fW}`,
-      `V ${fy + fH}`,
-      `H ${fx}`,
+      `H ${mainRight}`,       // top edge of main body
+      `V ${stubY0}`,          // down to stub top
+      `H ${stubRight}`,       // outward to stub's far right
+      `V ${stubY1}`,          // down stub's right edge
+      `H ${mainRight}`,       // back in to main body
+      `V ${fy + fH}`,         // down to bottom-right of main
+      `H ${fx}`,              // across bottom
       `Z`
     ].join(' ');
 
-    // Inner rectangle — sits on the left portion of the outer shape
-    const irx = fx + fW * 0.09;
-    const iry = fy + fH * 0.08;
-    const irw = fW * 0.44;
+    // Inner rectangle — centered horizontally within the main body (left of stub)
+    const mainW = mainRight - fx;
+    const irw = mainW * 0.72;
     const irh = fH * 0.84;
+    const irx = fx + (mainW - irw) / 2;
+    const iry = fy + fH * 0.08;
     const innerD = `M ${irx} ${iry} h ${irw} v ${irh} h ${-irw} Z`;
 
     // Grout / background fill for the tiled band
