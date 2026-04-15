@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Herringbone Pattern</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    background: #0e0f12;
+    color: #e8e8ea;
+  }
+  aside {
+    background: #1b1d22;
+    padding: 24px;
+    border-right: 1px solid #2a2d33;
+    overflow-y: auto;
+  }
+  aside h1 {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+    color: #a9acb4;
+    font-weight: 600;
+  }
+  .control { margin-bottom: 24px; }
+  .control label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a9acb4;
+    margin-bottom: 10px;
+  }
+  .control label span {
+    color: #e8e8ea;
+    font-variant-numeric: tabular-nums;
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: #d96b4a;
+  }
+  .colors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  input[type="color"] {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #2a2d33;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    padding: 2px;
+  }
+  main {
+    overflow: hidden;
+    position: relative;
+  }
+  #stage { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<aside>
+  <h1>Herringbone</h1>
+
+  <div class="control">
+    <label>Brick size <span id="sizeVal">48</span></label>
+    <input type="range" id="size" min="16" max="160" value="48" />
+  </div>
+
+  <div class="control">
+    <label>Angle <span id="angleVal">45°</span></label>
+    <input type="range" id="angle" min="0" max="90" value="45" />
+  </div>
+
+  <div class="control">
+    <label>Colors</label>
+    <div class="colors">
+      <input type="color" id="color1" value="#d96b4a" />
+      <input type="color" id="color2" value="#a9b0b6" />
+    </div>
+  </div>
+
+  <div class="control">
+    <label>Stripes</label>
+    <select id="stripe" style="width:100%;padding:10px;background:#101114;color:#e8e8ea;border:1px solid #2a2d33;border-radius:6px;font-size:13px;">
+      <option value="orientation">By orientation (H vs V)</option>
+      <option value="k">Diagonal stripes ↘</option>
+      <option value="j">Diagonal stripes ↗</option>
+      <option value="kj">Checker of L-shapes</option>
+      <option value="brickRow">Horizontal rows (per brick)</option>
+      <option value="brickCol">Vertical columns (per brick)</option>
+    </select>
+  </div>
+</aside>
+
+<main>
+  <svg id="stage" xmlns="http://www.w3.org/2000/svg"></svg>
+</main>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('stage');
+  const sizeEl  = document.getElementById('size');
+  const angleEl = document.getElementById('angle');
+  const c1El    = document.getElementById('color1');
+  const c2El    = document.getElementById('color2');
+  const stripeEl = document.getElementById('stripe');
+  const sizeVal  = document.getElementById('sizeVal');
+  const angleVal = document.getElementById('angleVal');
+
+  function shade(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    let r = (n >> 16) & 0xff, g = (n >> 8) & 0xff, b = n & 0xff;
+    r = Math.max(0, Math.min(255, r + amt));
+    g = Math.max(0, Math.min(255, g + amt));
+    b = Math.max(0, Math.min(255, b + amt));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function gradient(id, color, horizontal) {
+    const g = document.createElementNS(NS, 'linearGradient');
+    g.setAttribute('id', id);
+    if (horizontal) {
+      g.setAttribute('x1', '0'); g.setAttribute('y1', '0');
+      g.setAttribute('x2', '0'); g.setAttribute('y2', '1');
+    } else {
+      g.setAttribute('x1', '0'); g.setAttribute('y1', '0');
+      g.setAttribute('x2', '1'); g.setAttribute('y2', '0');
+    }
+    g.innerHTML = `
+      <stop offset="0"   stop-color="${shade(color,  40)}"/>
+      <stop offset="0.45" stop-color="${color}"/>
+      <stop offset="1"   stop-color="${shade(color, -45)}"/>`;
+    return g;
+  }
+
+  function brick(x, y, w, h, fill, gap) {
+    const r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', x + gap / 2);
+    r.setAttribute('y', y + gap / 2);
+    r.setAttribute('width',  w - gap);
+    r.setAttribute('height', h - gap);
+    r.setAttribute('rx', Math.min(2, w * 0.03));
+    r.setAttribute('fill', fill);
+    r.setAttribute('stroke', 'rgba(0,0,0,0.22)');
+    r.setAttribute('stroke-width', '0.6');
+    return r;
+  }
+
+  function build() {
+    const size  = +sizeEl.value;
+    const angle = +angleEl.value;
+    const c1 = c1El.value;
+    const c2 = c2El.value;
+
+    sizeVal.textContent = size;
+    angleVal.textContent = angle + '°';
+
+    // Stage size
+    const w = svg.clientWidth  || window.innerWidth - 280;
+    const h = svg.clientHeight || window.innerHeight;
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+    // Brick dims (2:1 ratio)
+    const u  = size;         // short side
+    const bw = 2 * u;        // long side
+    const bh = u;
+    const gap = Math.max(1, u * 0.05);
+
+    // Clear
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    const defs = document.createElementNS(NS, 'defs');
+    // For each colour, make a horizontal-orientation and vertical-orientation gradient
+    defs.appendChild(gradient('g1h', c1, true));
+    defs.appendChild(gradient('g1v', c1, false));
+    defs.appendChild(gradient('g2h', c2, true));
+    defs.appendChild(gradient('g2v', c2, false));
+    svg.appendChild(defs);
+
+    // Page background
+    const pageRect = document.createElementNS(NS, 'rect');
+    pageRect.setAttribute('width', w);
+    pageRect.setAttribute('height', h);
+    pageRect.setAttribute('fill', '#f4efe7');
+    svg.appendChild(pageRect);
+
+    // --- Frame geometry (outer "T-like" rectangle with a right-side notch,
+    //     minus an inner rectangle). Tiles fill the region between. ---
+    // Target aspect: roughly 0.8 wide : 1.0 tall (sketch proportions).
+    const FRAME_ASPECT = 0.78;
+    const pad = 30;
+    const availW = w - 2 * pad;
+    const availH = h - 2 * pad;
+    let fW, fH;
+    if (availW / availH > FRAME_ASPECT) {
+      fH = availH; fW = fH * FRAME_ASPECT;
+    } else {
+      fW = availW; fH = fW / FRAME_ASPECT;
+    }
+    const fx = (w - fW) / 2;
+    const fy = (h - fH) / 2;
+
+    // Outer path with notch on the right side
+    const notchX   = fx + fW * 0.62;     // how far the notch cuts inward
+    const notchY0  = fy + fH * 0.30;
+    const notchY1  = fy + fH * 0.62;
+    const outerD = [
+      `M ${fx} ${fy}`,
+      `H ${fx + fW}`,
+      `V ${notchY0}`,
+      `H ${notchX}`,
+      `V ${notchY1}`,
+      `H ${fx + fW}`,
+      `V ${fy + fH}`,
+      `H ${fx}`,
+      `Z`
+    ].join(' ');
+
+    // Inner rectangle — sits on the left portion of the outer shape
+    const irx = fx + fW * 0.09;
+    const iry = fy + fH * 0.08;
+    const irw = fW * 0.44;
+    const irh = fH * 0.84;
+    const innerD = `M ${irx} ${iry} h ${irw} v ${irh} h ${-irw} Z`;
+
+    // Grout / background fill for the tiled band
+    const frameBg = document.createElementNS(NS, 'path');
+    frameBg.setAttribute('d', outerD + ' ' + innerD);
+    frameBg.setAttribute('fill-rule', 'evenodd');
+    frameBg.setAttribute('fill', '#1a1a1a');
+    svg.appendChild(frameBg);
+
+    // ClipPath for tiles — annular region (outer XOR inner)
+    const clip = document.createElementNS(NS, 'clipPath');
+    clip.setAttribute('id', 'frame-clip');
+    clip.setAttribute('clipPathUnits', 'userSpaceOnUse');
+    const clipPath = document.createElementNS(NS, 'path');
+    clipPath.setAttribute('d', outerD + ' ' + innerD);
+    clipPath.setAttribute('clip-rule', 'evenodd');
+    clip.appendChild(clipPath);
+    defs.appendChild(clip);
+
+    // Group that will be rotated around the frame's centre, then clipped.
+    const cx = fx + fW / 2;
+    const cy = fy + fH / 2;
+    const g = document.createElementNS(NS, 'g');
+    g.setAttribute('clip-path', 'url(#frame-clip)');
+    const gRotate = document.createElementNS(NS, 'g');
+    gRotate.setAttribute('transform', `rotate(${angle} ${cx} ${cy})`);
+    g.appendChild(gRotate);
+    svg.appendChild(g);
+
+    // We need to cover the rotated viewport: use the bounding diagonal.
+    const diag = Math.ceil(Math.sqrt(w * w + h * h)) + bw * 4;
+
+    // Herringbone tiling via L-trominoes on lattice
+    //   t1 = (3u, u), t2 = (u, -u)   (det = -4u² = one L per cell)
+    // L = { H: (0,0)-(2u, u), V: (2u, 0)-(3u, 2u) }
+    // Lattice point (k, j) -> origin ((3k + j)*u, (k - j)*u)
+    //
+    // Inverse mapping tells us that for |x|, |y| ≤ D/2, we need
+    // |k|, |j| ≤ D/(2u), so:
+    const N = Math.ceil(diag / (2 * u)) + 2;
+
+    for (let k = -N; k <= N; k++) {
+      for (let j = -N; j <= N; j++) {
+        const ox = cx + (3 * k + j) * u;
+        const oy = cy + (k - j) * u;
+
+        // Quick cull: skip if clearly outside the diag bounds around centre
+        if (Math.abs(ox - cx) > diag || Math.abs(oy - cy) > diag) continue;
+
+        // Decide each brick's colour based on the chosen stripe mode.
+        const mode = stripeEl.value;
+        const par = n => (((n % 2) + 2) % 2);
+
+        // H brick centre (in u units, relative to cx/cy): (ox + u, oy + u/2) → centre row = floor((oy + bh/2)/bh).
+        // V brick centre: (ox + bw + bh/2, oy + bw/2) → centre row = floor((oy + bw/2)/bh).
+        const hCentreRow = Math.floor(((oy - cy) + bh / 2) / bh);
+        const vCentreRow = Math.floor(((oy - cy) + bw / 2) / bh);
+        const hCentreCol = Math.floor(((ox - cx) + bw / 2) / bh);
+        const vCentreCol = Math.floor(((ox - cx) + bw + bh / 2) / bh);
+
+        function pickC(forH) {
+          switch (mode) {
+            case 'orientation': return forH;
+            case 'k':           return par(k) === 0;
+            case 'j':           return par(j) === 0;
+            case 'kj':          return par(k + j) === 0;
+            case 'brickRow':    return par(forH ? hCentreRow : vCentreRow) === 0;
+            case 'brickCol':    return par(forH ? hCentreCol : vCentreCol) === 0;
+          }
+          return forH;
+        }
+
+        const hFill = pickC(true)  ? 'url(#g1h)' : 'url(#g2h)';
+        const vFill = pickC(false) ? 'url(#g1v)' : 'url(#g2v)';
+
+        // Horizontal brick
+        gRotate.appendChild(brick(ox, oy, bw, bh, hFill, gap));
+        // Vertical brick attached to right of H
+        gRotate.appendChild(brick(ox + bw, oy, bh, bw, vFill, gap));
+      }
+    }
+
+    // Frame outlines drawn on top, so the boundary reads cleanly.
+    function outline(d, strokeW) {
+      const p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', d);
+      p.setAttribute('fill', 'none');
+      p.setAttribute('stroke', '#2a2a2a');
+      p.setAttribute('stroke-width', strokeW);
+      p.setAttribute('stroke-linejoin', 'miter');
+      svg.appendChild(p);
+    }
+    outline(outerD, 2);
+    outline(innerD, 2);
+  }
+
+  [sizeEl, angleEl, c1El, c2El].forEach(el => el.addEventListener('input', build));
+  stripeEl.addEventListener('change', build);
+  stripeEl.value = 'brickRow';
+  window.addEventListener('resize', build);
+  build();
+</script>
+</body>
+</html>
