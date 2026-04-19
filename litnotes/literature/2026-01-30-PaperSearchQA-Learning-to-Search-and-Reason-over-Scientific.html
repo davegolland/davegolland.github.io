@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR | Lit Notes"/><meta name="twitter:description" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR Source: arXiv:cs.IR Published: 2026-01-26 Rank: #4 (score: 0.99, max_sim: 0.82) Reading time: ~20 min Tags: LLM, RL, RAG, Search Abstract Search agents are language models (LMs) that reason and search knowledge bases (or t..."/><meta property="og:description" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR Source: arXiv:cs.IR Published: 2026-01-26 Rank: #4 (score: 0.99, max_sim: 0.82) Reading time: ~20 min Tags: LLM, RL, RAG, Search Abstract Search agents are language models (LMs) that reason and search knowledge bases (or t..."/><meta property="og:image:alt" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR Source: arXiv:cs.IR Published: 2026-01-26 Rank: #4 (score: 0.99, max_sim: 0.82) Reading time: ~20 min Tags: LLM, RL, RAG, Search Abstract Search agents are language models (LMs) that reason and search knowledge bases (or t..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-01-30-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-01-30-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR Source: arXiv:cs.IR Published: 2026-01-26 Rank: #4 (score: 0.99, max_sim: 0.82) Reading time: ~20 min Tags: LLM, RL, RAG, Search Abstract Search agents are language models (LMs) that reason and search knowledge bases (or t..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-01-30-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-180"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-180" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</h1><ul class="tags"><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li><li><a href="../tags/RAG" class="internal tag-link">RAG</a></li><li><a href="../tags/Search" class="internal tag-link">Search</a></li></ul></div></div><article class="popover-hint"><h1 id="papersearchqa-learning-to-search-and-reason-over-scientific-papers-with-rlvr">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#papersearchqa-learning-to-search-and-reason-over-scientific-papers-with-rlvr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="https://arxiv.org/abs/2601.18207v1" class="external">arXiv:cs.IR<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-01-26
+<strong>Rank:</strong> #4 (score: 0.99, max_sim: 0.82)
+<strong>Reading time:</strong> ~20 min
+<strong>Tags:</strong> LLM, RL, RAG, Search</p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Search agents are language models (LMs) that reason and search knowledge bases (or the web) to answer questions; recent methods supervise only the final answer accuracy using reinforcement learning with verifiable rewards (RLVR). Most RLVR search agents tackle general-domain QA, which limits their relevance to technical AI systems in science, engineering, and medicine. In this work we propose training agents to search and reason over scientific papers — this tests technical question-answering, it is directly relevant to real scientists, and the capabilities will be crucial to future AI Scientist systems. Concretely, we release a search corpus of 16 million biomedical paper abstracts and construct a challenging factoid QA dataset called PaperSearchQA with 60k samples answerable from the corpus, along with benchmarks. We train search agents in this environment to outperform non-RL retrieval baselines; we also perform further quantitative analysis and observe interesting agent behaviors like planning, reasoning, and self-verification. Our corpus, datasets, and benchmarks are usable with the popular Search-R1 codebase for RLVR training and released on <a href="https://huggingface.co/collections/jmhb/papersearchqa" class="external">https://huggingface.co/collections/jmhb/papersearchqa<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Finally, our data creation methods are scalable and easily extendable to other scientific domains.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Reinforcement learning with verifiable rewards (RLVR)</li>
+<li>search agents with language models</li>
+<li>PaperSearchQA dataset construction</li>
+<li>retrieval-based question answering over scientific corpora</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-01-29-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal alias" data-slug="literature/2026-01-29-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></td><td>0.79</td></tr><tr><td><a href="../literature/2026-02-01-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal alias" data-slug="literature/2026-02-01-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></td><td>0.79</td></tr><tr><td><a href="../literature/2026-02-05-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal alias" data-slug="literature/2026-02-05-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></td><td>0.77</td></tr><tr><td><a href="../literature/2026-01-31-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal alias" data-slug="literature/2026-01-31-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></td><td>0.72</td></tr><tr><td><a href="../literature/2026-01-28-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal alias" data-slug="literature/2026-01-28-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></td><td>0.64</td></tr></tbody></table></div>
+<h2 id="rlvr-search-agent-training-over-scientific-papers">RLVR Search Agent Training over Scientific Papers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rlvr-search-agent-training-over-scientific-papers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Training language models as search agents using reinforcement learning with verifiable rewards (RLVR), where agents learn to iteratively search and reason over scientific paper collections to answer complex questions.</p>
+<p><strong>Problem It Solves</strong>: Search agents trained via RLVR typically optimize only final answer accuracy on general-domain questions. This work extends RLVR to technical, multi-step reasoning tasks where intermediate steps (retrieval decisions, reasoning chains) matter as much as the final answer—crucial for scientific AI systems.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Agent Action Space</strong>: Define discrete actions: SEARCH(query) → returns ranked papers, READ(paper_id) → extracts content, REASON(evidence) → generates answer or plan.</li>
+<li><strong>Reward Signal</strong>: Verifiable reward r(trajectory) checks if final answer matches ground truth AND (optionally) if intermediate retrieval steps cite correct papers.</li>
+<li><strong>Policy Optimization</strong>: Use policy gradient methods (PPO or A3C) to maximize expected cumulative reward:
+<ul>
+<li><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:-0.591ex;" xmlns="http://www.w3.org/2000/svg" width="18.519ex" height="2.287ex" role="img" focusable="false" viewBox="0 -750 8185.5 1011.1" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D43D" d="M447 625Q447 637 354 637H329Q323 642 323 645T325 664Q329 677 335 683H352Q393 681 498 681Q541 681 568 681T605 682T619 682Q633 682 633 672Q633 670 630 658Q626 642 623 640T604 637Q552 637 545 623Q541 610 483 376Q420 128 419 127Q397 64 333 21T195 -22Q137 -22 97 8T57 88Q57 130 80 152T132 174Q177 174 182 130Q182 98 164 80T123 56Q115 54 115 53T122 44Q148 15 197 15Q235 15 271 47T324 130Q328 142 387 380T447 625Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-I-1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-D-1D53C" d="M12 666Q12 675 24 683H582Q590 680 593 672V588Q593 514 591 502T575 490Q567 490 563 495T555 517Q552 556 517 590Q486 623 445 634T340 648H282Q266 636 264 620T260 492V370H277Q329 375 358 391T404 439Q420 480 420 506Q420 529 436 529Q445 529 451 521Q455 517 455 361Q455 333 455 298T456 253Q456 217 453 207T437 197Q420 196 420 217Q420 240 406 270Q377 328 284 335H260V201Q261 174 261 134Q262 73 264 61T278 38Q281 36 282 35H331Q400 35 449 50Q571 93 602 179Q605 203 622 203Q629 203 634 197T640 183Q638 181 624 95T604 3L600 -1H24Q12 5 12 16Q12 35 51 35Q92 38 97 52Q102 60 102 341T97 632Q91 645 51 648Q12 648 12 666ZM137 341Q137 131 136 89T130 37Q129 36 129 35H235Q233 41 231 48L226 61V623L231 635L235 648H129Q132 641 133 638T135 603T137 517T137 341ZM557 603V648H504Q504 646 515 639Q527 634 542 619L557 603ZM420 317V397L406 383Q394 370 380 363L366 355Q373 350 382 346Q400 333 409 328L420 317ZM582 61L586 88Q585 88 582 83Q557 61 526 46L511 37L542 35H577Q577 36 578 39T580 49T582 61Z"></path><path id="MJX-1-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path><path id="MJX-1-TEX-N-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path><path id="MJX-1-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path><path id="MJX-1-TEX-N-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path id="MJX-1-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-1-TEX-N-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43D" xlink:href="#MJX-1-TEX-I-1D43D"></use></g><g data-mml-node="mo" transform="translate(633,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1022,0)"><use data-c="1D703" xlink:href="#MJX-1-TEX-I-1D703"></use></g><g data-mml-node="mo" transform="translate(1491,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2157.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(3213.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D53C" xlink:href="#MJX-1-TEX-D-1D53C"></use></g></g><g data-mml-node="TeXAtom" transform="translate(700,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-1-TEX-I-1D70F"></use></g><g data-mml-node="mo" transform="translate(517,0)"><use data-c="223C" xlink:href="#MJX-1-TEX-N-223C"></use></g><g data-mml-node="msub" transform="translate(1295,0)"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-1-TEX-I-1D70B"></use></g><g data-mml-node="mi" transform="translate(603,-150) scale(0.707)"><use data-c="1D703" xlink:href="#MJX-1-TEX-I-1D703"></use></g></g></g></g><g data-mml-node="mo" transform="translate(5575.5,0)"><use data-c="5B" xlink:href="#MJX-1-TEX-N-5B"></use></g><g data-mml-node="mi" transform="translate(5853.5,0)"><use data-c="1D445" xlink:href="#MJX-1-TEX-I-1D445"></use></g><g data-mml-node="mo" transform="translate(6612.5,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(7001.5,0)"><use data-c="1D70F" xlink:href="#MJX-1-TEX-I-1D70F"></use></g><g data-mml-node="mo" transform="translate(7518.5,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(7907.5,0)"><use data-c="5D" xlink:href="#MJX-1-TEX-N-5D"></use></g></g></g></svg></mjx-container> where <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:-0.029ex;" xmlns="http://www.w3.org/2000/svg" width="1.17ex" height="1.005ex" role="img" focusable="false" viewBox="0 -431 517 444" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-2-TEX-I-1D70F"></use></g></g></g></svg></mjx-container> is a trajectory of search/read/reason actions</li>
+</ul>
+</li>
+<li><strong>Exploration Strategy</strong>: Explore different search query formulations and reasoning paths early in training; converge to high-reward trajectories.</li>
+<li><strong>Agent Behaviors Emergence</strong>: Through RL, agents learn emergent behaviors like query planning (reformulating questions), multi-step reasoning, and self-verification (checking answers against retrieved evidence).</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    Q[\&quot;Question (input)\&quot;] --> Agent[\&quot;LM Agent&lt;br/>(policy π)\&quot;]\n    Agent -->|SEARCH| Retriever[\&quot;BM25/Dense&lt;br/>Retriever\&quot;]\n    Retriever --> Papers[\&quot;Paper&lt;br/>Corpus\&quot;]\n    Papers --> Agent\n    Agent -->|READ| Reader[\&quot;Context&lt;br/>Extractor\&quot;]\n    Reader --> Agent\n    Agent -->|REASON| Reasoner[\&quot;Answer&lt;br/>Generator\&quot;]\n    Reasoner --> A[\&quot;Answer (output)\&quot;]\n    A --> Reward[\&quot;Reward&lt;br/>Verifier\&quot;]\n    Reward -->|gradient| Agent&quot;">flowchart LR
+    Q[&quot;Question (input)&quot;] --> Agent[&quot;LM Agent&lt;br/>(policy π)&quot;]
+    Agent -->|SEARCH| Retriever[&quot;BM25/Dense&lt;br/>Retriever&quot;]
+    Retriever --> Papers[&quot;Paper&lt;br/>Corpus&quot;]
+    Papers --> Agent
+    Agent -->|READ| Reader[&quot;Context&lt;br/>Extractor&quot;]
+    Reader --> Agent
+    Agent -->|REASON| Reasoner[&quot;Answer&lt;br/>Generator&quot;]
+    Reasoner --> A[&quot;Answer (output)&quot;]
+    A --> Reward[&quot;Reward&lt;br/>Verifier&quot;]
+    Reward -->|gradient| Agent
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Training agents for multi-source scientific literature synthesis</li>
+<li>Building AI systems that can explain answers by citing retrieved papers</li>
+<li>Hybrid retrieval-generation systems that need to learn when to search vs. reason from memory</li>
+<li>Fact-checking and evidence grounding in technical domains</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Reward function must be verifiable (binary correctness); harder for open-ended questions (opinion, methodology comparison)</li>
+<li>Agent behavior is learned from final answers only; intermediate reasoning chains not explicitly supervised unless added to reward</li>
+<li>Computational cost: full RL requires thousands of rollouts per question to estimate policy gradients</li>
+<li>Generalization unclear: agents trained on PaperSearchQA biomedical papers may not transfer to other domains</li>
+<li>Search action space is large (millions of possible queries); exploration is inefficient without good initialization</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Training LLM-based ranking models that learn to prioritize papers based on query intent (vs. BM25’s lexical matching)</li>
+<li>Implementing self-improving search pipelines where user feedback on answer quality updates the reward function</li>
+<li>Multi-agent collaboration: teams of search agents that divide QA tasks and verify each other’s findings</li>
+</ul>
+<hr/>
+<h2 id="integration-with-search-r1-framework">Integration with Search-R1 Framework<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#integration-with-search-r1-framework" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Leveraging the popular Search-R1 codebase as a standardized training infrastructure for RLVR agents, enabling reproducible experiments and community contributions.</p>
+<p><strong>Problem It Solves</strong>: Custom implementations of RLVR training are brittle and hard to reproduce. Using Search-R1 as a common foundation reduces implementation variance and lowers the barrier for researchers to benchmark new retrieval corpora and reasoning strategies.</p>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Rapid prototyping of domain-specific search agents</li>
+<li>Community benchmarking (comparing agents trained on different datasets)</li>
+<li>Transfer learning experiments (pre-train on general QA, fine-tune on scientific papers)</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Dependent on Search-R1 API stability; framework updates may break existing experiments</li>
+<li>May constrain agent architecture choices (only designs compatible with Search-R1 can be easily evaluated)</li>
+</ul>
+<h2 id="discussions--references">Discussions &amp; References<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#discussions--references" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="https://huggingface.co/papers/2601.19897" class="external">huggingface.co<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul><style>
+mjx-container[jax=&quot;SVG&quot;] {
+  direction: ltr;
+}
+
+mjx-container[jax=&quot;SVG&quot;] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax=&quot;SVG&quot;] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax=&quot;SVG&quot;][display=&quot;true&quot;] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax=&quot;SVG&quot;][display=&quot;true&quot;][width=&quot;full&quot;] {
+  display: flex;
+}
+
+mjx-container[jax=&quot;SVG&quot;][justify=&quot;left&quot;] {
+  text-align: left;
+}
+
+mjx-container[jax=&quot;SVG&quot;][justify=&quot;right&quot;] {
+  text-align: right;
+}
+
+g[data-mml-node=&quot;merror&quot;] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node=&quot;merror&quot;] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > g > svg {
+  overflow: visible;
+}
+
+[jax=&quot;SVG&quot;] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax=&quot;SVG&quot;] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node=&quot;maction&quot;][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax=&quot;SVG&quot;] path[data-c], mjx-container[jax=&quot;SVG&quot;] use[data-c] {
+  stroke-width: 3;
+}
+</style></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-166" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#papersearchqa-learning-to-search-and-reason-over-scientific-papers-with-rlvr" data-for="papersearchqa-learning-to-search-and-reason-over-scientific-papers-with-rlvr">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#rlvr-search-agent-training-over-scientific-papers" data-for="rlvr-search-agent-training-over-scientific-papers">RLVR Search Agent Training over Scientific Papers</a></li><li class="depth-1"><a href="#integration-with-search-r1-framework" data-for="integration-with-search-r1-framework">Integration with Search-R1 Framework</a></li><li class="depth-1"><a href="#discussions--references" data-for="discussions--references">Discussions &amp; References</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-01-30" class="internal">Research Digest — Fri 2026-01-30</a></li><li><a href="../literature/2026-01-28-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li><a href="../literature/2026-01-28-SAGE-Steerable-Agentic-Data-Generation-for-Deep-Search-with" class="internal">SAGE: Steerable Agentic Data Generation for Deep Search with Execution Feedback</a></li><li><a href="../literature/2026-01-29-CooperBench-Why-Coding-Agents-Cannot-be-Your-Teammates-Yet" class="internal">CooperBench: Why Coding Agents Cannot be Your Teammates Yet</a></li><li><a href="../literature/2026-01-29-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li><a href="../literature/2026-01-31-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li><a href="../literature/2026-02-01-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li><a href="../literature/2026-02-04-To-Search-or-Not-to-Search-Aligning-the-Decision-Boundary-of" class="internal">To Search or Not to Search: Aligning the Decision Boundary of Deep Search Agents via Causal Intervention</a></li><li><a href="../literature/2026-02-05-PaperSearchQA-Learning-to-Search-and-Reason-over-Scientific" class="internal">PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR</a></li><li><a href="../literature/2026-02-10-Improving-Data-and-Reward-Design-for-Scientific-Reasoning-in" class="internal">Improving Data and Reward Design for Scientific Reasoning in Large Language Models</a></li><li><a href="../literature/2026-02-16-Look-Inward-to-Explore-Outward-Learning-Temperature-Policy-f" class="internal">Look Inward to Explore Outward: Learning Temperature Policy from LLM Internal States via Hierarchical RL</a></li><li><a href="../literature/2026-02-22-A-Picture-of-Agentic-Search" class="internal">A Picture of Agentic Search</a></li><li><a href="../literature/2026-02-22-ArXiv-to-Model-A-Practical-Study-of-Scientific-LM-Training" class="internal">ArXiv-to-Model: A Practical Study of Scientific LM Training</a></li><li><a href="../refs/agent-based-multi-source-retrieval-selection" class="internal">Agent-Based Multi-Source Retrieval Selection</a></li><li><a href="../refs/agentic-reasoning-main-takeaways-and-techniques" class="internal">Agentic Reasoning: Main Takeaways and Techniques</a></li><li><a href="../refs/rag-r1-incentivize-the-search-and-reasoning-capabilities-of-llm-through-multi-query-parallelism" class="internal">RAG-R1 – Incentivize the Search and Reasoning Capabilities of LLM through multi-query parallelism</a></li><li><a href="../refs/reasoning-aware-dense-retriever-pretraining" class="internal">Reasoning-Aware Dense Retriever Pretraining</a></li><li><a href="../refs/web-search-agent-with-query-breakdown-and-rerank" class="internal">Web-Search Agent with Query Breakdown and Rerank</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>OneMall: One Architecture, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="OneMall: One Architecture, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OneMall: One Architecture, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce | Lit Notes"/><meta name="twitter:description" content="OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce Source: arXiv:cs.IR Published: 2026-01-29 Rank: #9 (score: 0.95, max_sim: 0.84) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21770v2 Abstract In the wave of generative rec..."/><meta property="og:description" content="OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce Source: arXiv:cs.IR Published: 2026-01-29 Rank: #9 (score: 0.95, max_sim: 0.84) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21770v2 Abstract In the wave of generative rec..."/><meta property="og:image:alt" content="OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce Source: arXiv:cs.IR Published: 2026-01-29 Rank: #9 (score: 0.95, max_sim: 0.84) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21770v2 Abstract In the wave of generative rec..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-OneMall-One-Architecture-More-Scenarios----End-to-End-Genera"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-OneMall-One-Architecture-More-Scenarios----End-to-End-Genera"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce Source: arXiv:cs.IR Published: 2026-01-29 Rank: #9 (score: 0.95, max_sim: 0.84) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21770v2 Abstract In the wave of generative rec..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-03-OneMall-One-Architecture-More-Scenarios----End-to-End-Genera"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-272"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-272" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">OneMall: One Architecture, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce</h1></div></div><article class="popover-hint"><h1 id="onemall-one-architecture-more-scenarios--end-to-end-generative-recommender-family-at-kuaishou-e-commerce">OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#onemall-one-architecture-more-scenarios--end-to-end-generative-recommender-family-at-kuaishou-e-commerce" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2601.21770v2" class="external">arXiv:cs.IR<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-01-29
+<strong>Rank:</strong> #9 (score: 0.95, max_sim: 0.84)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2601.21770v2" class="external">https://arxiv.org/pdf/2601.21770v2<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>In the wave of generative recommendation, we present OneMall, an end-to-end generative recommendation framework tailored for e-commerce services at Kuaishou. Our OneMall systematically unifies the e-commerce’s multiple item distribution scenarios, such as Product-card, short-video and live-streaming. Specifically, it comprises three key components, aligning the entire model training pipeline to the LLM’s pre-training/post-training: (1) E-commerce Semantic Tokenizer: we provide a tokenizer solution that captures both real-world semantics and business-specific item relations across different scenarios; (2) Transformer-based Architecture: we largely utilize Transformer as our model backbone, e.g., employing Query-Former for long sequence compression, Cross-Attention for multi-behavior sequence fusion, and Sparse MoE for scalable auto-regressive generation; (3) Reinforcement Learning Pipeline: we further connect retrieval and ranking models via RL, enabling the ranking model to serve as a reward signal for end-to-end policy retrieval model optimization. Extensive experiments demonstrate that OneMall achieves consistent improvements across all e-commerce scenarios: +13.01% GMV in product-card, +15.32% Orders in Short-Video, and +2.78% Orders in Live-Streaming. OneMall has been deployed, serving over 400 million daily active users at Kuaishou.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>E-commerce Semantic Tokenizer</li>
+<li>Query-Former for sequence compression</li>
+<li>Reinforcement Learning Pipeline</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-02-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal alias" data-slug="literature/2026-02-02-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re">OneMall: One Model, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></td><td>0.77</td></tr><tr><td><a href="../literature/2026-02-01-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal alias" data-slug="literature/2026-02-01-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re">OneMall: One Model, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></td><td>0.77</td></tr><tr><td><a href="../literature/2026-01-30-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal alias" data-slug="literature/2026-01-30-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re">OneMall: One Model, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></td><td>0.60</td></tr><tr><td><a href="../literature/2026-01-31-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal alias" data-slug="literature/2026-01-31-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re">OneMall: One Model, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></td><td>0.59</td></tr><tr><td><a href="../literature/2026-02-04-SCASRec-A-Self-Correcting-and-Auto-Stopping-Model-for-Genera" class="internal alias" data-slug="literature/2026-02-04-SCASRec-A-Self-Correcting-and-Auto-Stopping-Model-for-Genera">SCASRec: A Self-Correcting and Auto-Stopping Model for Generative Route List Recommendation</a></td><td>0.25</td></tr></tbody></table></div>
+<h2 id="query-former-for-long-sequence-compression">Query-Former for Long Sequence Compression<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#query-former-for-long-sequence-compression" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: A Transformer-based module that compresses long user behavior sequences into fixed-length query representations by learning to aggregate the most relevant historical interactions into compact learnable tokens.</p>
+<p><strong>Problem It Solves</strong>: User behavior sequences in e-commerce can span hundreds of interactions, creating computational bottlenecks for Transformer models which have O(n²) complexity. Direct processing of full sequences is infeasible, yet truncation or simple pooling loses important behavioral context critical for accurate recommendations.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Input: Raw user behavior sequence B = [b₁, b₂, …, bₙ] where n is potentially large (hundreds of interactions)</li>
+<li>Initialize a fixed set of K learnable query tokens Q = [q₁, q₂, …, qₖ] (typically K &lt;&lt; n)</li>
+<li>Apply cross-attention from query tokens to the full behavior sequence: Attention(Q, B, B) = softmax(QBᵀ/√d)Bᵥ</li>
+<li>Output: Compressed representation C ∈ ℝᵏˣᵈ that captures essential behavioral patterns in fixed size</li>
+<li>Pass C to downstream recommendation modules (retrieval/ranking)</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;Long Behavior Sequence&lt;br/>b₁...bₙ\&quot;] --> B[\&quot;Cross-Attention&lt;br/>from Query Tokens\&quot;]\n    C[\&quot;Learnable Queries&lt;br/>q₁...qₖ\&quot;] --> B\n    B --> D[\&quot;Compressed Representation&lt;br/>K tokens\&quot;]\n    D --> E[\&quot;Downstream&lt;br/>Recommendation\&quot;]&quot;">flowchart LR
+    A[&quot;Long Behavior Sequence&lt;br/>b₁...bₙ&quot;] --> B[&quot;Cross-Attention&lt;br/>from Query Tokens&quot;]
+    C[&quot;Learnable Queries&lt;br/>q₁...qₖ&quot;] --> B
+    B --> D[&quot;Compressed Representation&lt;br/>K tokens&quot;]
+    D --> E[&quot;Downstream&lt;br/>Recommendation&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Compressing long user interaction histories in sequential recommendation</li>
+<li>Handling users with extensive browsing/purchase records without sequence truncation</li>
+<li>Real-time inference on mobile/edge where latency is critical</li>
+<li>Scaling Transformer-based rankers to production recommendation pipelines</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Compression ratio K/n must be carefully tuned; too aggressive compression loses signal</li>
+<li>Query initialization and training dynamics affect convergence</li>
+<li>Cross-attention is still O(Kn), so gains depend on compression rate relative to full O(n²)</li>
+<li>May lose tail interactions that could be important for niche recommendations</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>User encoder in two-tower retrieval models handling long-range dependencies</li>
+<li>Replacing fixed-size RNN hidden states with interpretable compressed query representations</li>
+<li>Pre-processing for MoE routing (next section) to handle variable sequence lengths efficiently</li>
+</ul>
+<hr/>
+<h2 id="cross-attention-for-multi-behavior-sequence-fusion">Cross-Attention for Multi-Behavior Sequence Fusion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cross-attention-for-multi-behavior-sequence-fusion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: A cross-attention mechanism that fuses multiple user behavior sequences (e.g., clicks, purchases, shares, likes) into a unified context representation by learning fine-grained interactions between different behavior types.</p>
+<p><strong>Problem It Solves</strong>: Users exhibit diverse behaviors in e-commerce (clicking, adding to cart, purchasing, sharing) that carry different semantic meanings and predictive signals. Naive concatenation or simple fusion loses the rich signal from cross-behavior dependencies (e.g., a purchased item’s relationship to previously clicked items). Multi-task or multi-head approaches lack explicit interaction modeling.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Input: M behavior sequences S = [S₁, S₂, …, Sₘ] where Sᵢ represents one behavior type (clicks, purchases, etc.)</li>
+<li>Embed each sequence: Eᵢ = Embed(Sᵢ) ∈ ℝⁿⁱˣᵈ (varying lengths nᵢ allowed)</li>
+<li>Apply cross-attention between pairs of behavior types: For each i,j: CrossAtt(Eᵢ, Eⱼ) = softmax(EᵢWQ·EⱼWKᵀ/√d)EⱼWV</li>
+<li>Learn implicit behavior relationships (e.g., which clicks led to purchases, which likes precede clicks)</li>
+<li>Output: Fused representation F ∈ ℝᵈ capturing all M behavior signals and their interactions</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;Click Sequence\&quot;] --> B[\&quot;Embedding\&quot;]\n    C[\&quot;Purchase Sequence\&quot;] --> D[\&quot;Embedding\&quot;]\n    E[\&quot;Like Sequence\&quot;] --> F[\&quot;Embedding\&quot;]\n    B --> G[\&quot;Cross-Attention&lt;br/>Fusion\&quot;]\n    D --> G\n    F --> G\n    G --> H[\&quot;Unified Multi-Behavior&lt;br/>Representation\&quot;]&quot;">flowchart LR
+    A[&quot;Click Sequence&quot;] --> B[&quot;Embedding&quot;]
+    C[&quot;Purchase Sequence&quot;] --> D[&quot;Embedding&quot;]
+    E[&quot;Like Sequence&quot;] --> F[&quot;Embedding&quot;]
+    B --> G[&quot;Cross-Attention&lt;br/>Fusion&quot;]
+    D --> G
+    F --> G
+    G --> H[&quot;Unified Multi-Behavior&lt;br/>Representation&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Multi-behavior recommendation (clicks, purchases, shares, comments, etc.)</li>
+<li>Capturing behavior hierarchies (e.g., clicks → cart adds → purchases)</li>
+<li>Sequential recommendation with heterogeneous feedback signals</li>
+<li>Context modeling in ranking systems with diverse user signals</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Behavior sequences may have highly imbalanced lengths (many clicks vs. few purchases)</li>
+<li>Cross-attention learns pairwise interactions; fully modeling M behavior types requires O(M²) attention computations</li>
+<li>Interpretation of learned cross-behavior weights can be opaque</li>
+<li>Behavior type embeddings must be compatible for meaningful cross-attention</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>User context encoder in retrieval models fusing implicit and explicit feedback</li>
+<li>Multi-signal ranking features replacing hand-crafted behavior aggregation</li>
+<li>Foundation for the RL reward signal (next section) which optimizes over fused behavior predictions</li>
+</ul>
+<hr/>
+<h2 id="sparse-mixture-of-experts-moe-for-auto-regressive-generation">Sparse Mixture of Experts (MoE) for Auto-Regressive Generation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sparse-mixture-of-experts-moe-for-auto-regressive-generation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: A scalable auto-regressive token generation architecture using Sparse MoE that routes each position’s generation decision to specialized expert sub-networks, enabling efficient scaling without dense computation across all parameters.</p>
+<p><strong>Problem It Solves</strong>: Generative recommendation requires auto-regressive token generation (producing ranking/retrieval decisions sequentially), but dense Transformer scaling becomes prohibitively expensive. Full Transformer decoding for each token position is O(d²) per step. Simple Transformer baselines cannot handle the parameter scale needed for modeling complex e-commerce scenarios across all 400M+ users.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Input: Compressed user representation U and previous generated tokens [t₁, t₂, …, tᵢ₋₁]</li>
+<li>At each generation step i, compute: hᵢ = Attention(U, [t₁, …, tᵢ₋₁])</li>
+<li>Compute routing logits: rᵢ = Router(hᵢ) ∈ ℝᴱ (E = number of experts)</li>
+<li>Select top-k experts via sparse gating: gᵢ = TopK(softmax(rᵢ)) (typically k=2)</li>
+<li>Route hidden state to selected experts: oᵢ = Σⱼ∈TopK gᵢⱼ·Expertⱼ(hᵢ)</li>
+<li>Generate next token: P(tᵢ|t₁…tᵢ₋₁,U) = softmax(oᵢWtoken)</li>
+<li>Repeat for auto-regressive decoding until stopping token</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;User Representation&lt;br/>+ Previous Tokens\&quot;] --> B[\&quot;Attention Encoder\&quot;]\n    B --> C[\&quot;Router Network\&quot;]\n    C --> D[\&quot;Sparse Gating&lt;br/>Top-k Selection\&quot;]\n    E[\&quot;Expert Pool&lt;br/>E₁...Eₙ\&quot;] --> D\n    D --> F[\&quot;Expert Computation&lt;br/>Weighted Sum\&quot;]\n    F --> G[\&quot;Token Generation&lt;br/>softmax\&quot;]\n    G --> H[\&quot;Next Token\&quot;]&quot;">flowchart LR
+    A[&quot;User Representation&lt;br/>+ Previous Tokens&quot;] --> B[&quot;Attention Encoder&quot;]
+    B --> C[&quot;Router Network&quot;]
+    C --> D[&quot;Sparse Gating&lt;br/>Top-k Selection&quot;]
+    E[&quot;Expert Pool&lt;br/>E₁...Eₙ&quot;] --> D
+    D --> F[&quot;Expert Computation&lt;br/>Weighted Sum&quot;]
+    F --> G[&quot;Token Generation&lt;br/>softmax&quot;]
+    G --> H[&quot;Next Token&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Large-scale auto-regressive recommendation ranking/retrieval</li>
+<li>Generative recommendation systems requiring dense parameter coverage with sparse computation</li>
+<li>Scaling recommendation models to millions of items/users without proportional compute cost</li>
+<li>Multi-scenario recommendation where different scenarios route through specialized experts</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Sparse routing can cause load balancing issues (some experts overused, others underutilized)</li>
+<li>Training instability: router gradients are discrete (hard routing) or biased (soft routing with gumbel-softmax)</li>
+<li>Communication overhead on distributed systems if experts are on different GPUs/TPUs</li>
+<li>Top-k selection destroys gradient flow to non-selected experts during training</li>
+<li>Expert specialization may not emerge without auxiliary balancing losses</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Auto-regressive ranking model where each step generates next item to rank</li>
+<li>Retrieval candidate generation that sequentially produces items</li>
+<li>Leveraging domain expertise: different experts for different scenarios (product-card expert, short-video expert, live-streaming expert)</li>
+<li>Connection point for RL optimization (next section) where MoE outputs enable discrete policy actions</li>
+</ul>
+<hr/>
+<h2 id="reinforcement-learning-pipeline-for-end-to-end-retrieval-ranking-optimization">Reinforcement Learning Pipeline for End-to-End Retrieval-Ranking Optimization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reinforcement-learning-pipeline-for-end-to-end-retrieval-ranking-optimization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: An RL framework that connects retrieval (candidate generation) and ranking models, enabling the ranking model’s predictions to serve as reward signals that directly optimize the retrieval policy end-to-end.</p>
+<p><strong>Problem It Solves</strong>: Traditional recommendation pipelines (retrieval → ranking) optimize components independently. Retrieval models maximize recall of diverse candidates; ranking models maximize relevance. This decomposition misses the downstream impact: retrieved candidates that ranking subsequently downranks are wasted computation. No mechanism propagates ranking quality back to improve retrieval, leading to retrieval-ranking mismatch and suboptimal GMV/conversion outcomes.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>State</strong>: User context state S = {user behavior, session context, scenario type}</li>
+<li><strong>Retrieval Policy</strong>: π_retrieval(a|S) generates candidate set A = {item₁, item₂, …, itemₖ} of size k through sparse MoE auto-regressive generation (previous section)</li>
+<li><strong>Ranking Oracle</strong>: Score candidates: R = rank_model(A, S), where rank_model outputs relevance scores or predicted CTR/conversion</li>
+<li><strong>Reward Signal</strong>: Define reward r(a) based on ranking output:
+<ul>
+<li>r(a) = predicted_CTR(a) for short-video scenario</li>
+<li>r(a) = predicted_conversion_rate(a) for product-card scenario</li>
+<li>r(a) = weighted combination for multi-objective (GMV-aware)</li>
+</ul>
+</li>
+<li><strong>RL Objective</strong>: Optimize retrieval policy via policy gradient: ∇J = 𝔼[∇log π_retrieval(a|S) · r(a)]</li>
+<li><strong>End-to-End Training</strong>: Backprop ranking rewards through retrieval via reinforce/actor-critic algorithms</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;User State S\&quot;] --> B[\&quot;Retrieval Policy&lt;br/>Auto-Regressive MoE\&quot;]\n    B --> C[\&quot;Candidate Set A\&quot;]\n    C --> D[\&quot;Ranking Model&lt;br/>Score Candidates\&quot;]\n    D --> E[\&quot;Reward Signal&lt;br/>CTR/Conversion\&quot;]\n    E --> F[\&quot;Policy Gradient&lt;br/>Optimization\&quot;]\n    F -->|Backprop| B&quot;">flowchart LR
+    A[&quot;User State S&quot;] --> B[&quot;Retrieval Policy&lt;br/>Auto-Regressive MoE&quot;]
+    B --> C[&quot;Candidate Set A&quot;]
+    C --> D[&quot;Ranking Model&lt;br/>Score Candidates&quot;]
+    D --> E[&quot;Reward Signal&lt;br/>CTR/Conversion&quot;]
+    E --> F[&quot;Policy Gradient&lt;br/>Optimization&quot;]
+    F -->|Backprop| B
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>End-to-end optimization of multi-stage recommendation systems</li>
+<li>Learning what types of candidates to retrieve based on actual ranking quality</li>
+<li>Handling exploration-exploitation in retrieval (RL naturally balances this)</li>
+<li>Multi-objective optimization (GMV, orders, engagement) where ranking encodes objectives</li>
+<li>Aligning business metrics (orders, GMV) directly into the retrieval learning signal</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires online interaction data or offline RL formulation; off-policy training is sample-inefficient</li>
+<li>Reward signal design is crucial; sparse/delayed rewards (purchase signal) require credit assignment</li>
+<li>Policy gradient methods have high variance; requires variance reduction (baseline, importance weighting)</li>
+<li>Ranking model must be differentiable or reward must be treated as blackbox (policy gradient only)</li>
+<li>Can amplify ranking biases back into retrieval (if ranker has systematic biases, RL learns to exploit them)</li>
+<li>Computational cost: must score full candidate set A with ranking model every step</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Learning retrieval strategies that maximize downstream ranking utility (not just diversity/coverage)</li>
+<li>Contextual bandit formulation for exploration in retrieval</li>
+<li>Connection to business KPIs: reward shaped from GMV/order metrics rather than engagement proxies</li>
+<li>Multi-scenario policy learning: single RL framework where reward definition varies by scenario (live-streaming vs. product-card)</li>
+</ul>
+<h2 id="analysis-onemalls-position-in-the-generative-recommender-landscape">Analysis: OneMall’s Position in the Generative Recommender Landscape<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#analysis-onemalls-position-in-the-generative-recommender-landscape" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>OneMall extends the foundational work of <a href="../refs/onerec/" class="internal alias" data-slug="refs/onerec/index">OneRec</a> and the broader generative recommendation paradigm by addressing a critical challenge that prior work acknowledged but didn’t fully solve: <strong>scenario fragmentation in e-commerce</strong>. While “The Rise of Generative Recommenders” highlighted how traditional multi-stage systems suffer from fragmentation across retrieval, ranking, and value modeling stages, OneMall tackles a different but equally important fragmentation—distributing recommendations across heterogeneous e-commerce scenarios (product cards, short-video, live-streaming). The paper bridges this gap by introducing an <strong>E-commerce Semantic Tokenizer</strong> that captures both semantic content and business-specific item relations across scenarios, effectively creating a unified representation layer. This is a natural evolution of the generative paradigm: if one unified model can replace the traditional three-stage pipeline, then one unified tokenizer can bridge multiple distribution channels—a scaling principle aligned with the <a href="../refs/2025-recommendation-system-research-paper-summary/" class="internal alias" data-slug="refs/2025-recommendation-system-research-paper-summary/index">2025 research trends</a> around the “One” series models.</p>
+<p>The technical architecture itself represents a sophisticated synthesis of LLM techniques applied to e-commerce constraints. OneMall employs <strong>Query-Former for long sequence compression</strong> and <strong>Sparse MoE for scalable auto-regressive generation</strong>—both techniques that mirror advances in LLM efficiency. The Cross-Attention mechanism for multi-behavior sequence fusion suggests a deeper insight: recommendation systems now operate on sequences of user behaviors much like language models operate on token sequences. However, OneMall’s innovation lies in its <strong>Reinforcement Learning Pipeline</strong>, which connects retrieval and ranking models where the ranking model serves as a reward signal. This represents a methodological advance beyond <a href="../refs/onerec/" class="internal alias" data-slug="refs/onerec/index">OneRec</a>’s basic end-to-end training: it creates a closed-loop optimization where downstream ranking performance directly informs upstream retrieval policy—solving a key tension in generative recommendation where you must trade off between diversity (retrieval) and conversion (ranking).</p>
+<p>The empirical results validate this architectural philosophy across all scenarios, with particularly strong improvements in structured product recommendations (+13.01% GMV), demonstrating that unified generative models can indeed handle the business-critical metrics that matter in real e-commerce operations. The scale of deployment—400 million daily active users—confirms that generative recommendation has moved from research prototype to production reality, but OneMall’s contribution is specifically showing that one architecture can serve multiple scenarios without degradation, which directly challenges the traditional assumption that different distribution channels require different models.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-258" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#onemall-one-architecture-more-scenarios--end-to-end-generative-recommender-family-at-kuaishou-e-commerce" data-for="onemall-one-architecture-more-scenarios--end-to-end-generative-recommender-family-at-kuaishou-e-commerce">OneMall: One Architecture, More Scenarios — End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#query-former-for-long-sequence-compression" data-for="query-former-for-long-sequence-compression">Query-Former for Long Sequence Compression</a></li><li class="depth-1"><a href="#cross-attention-for-multi-behavior-sequence-fusion" data-for="cross-attention-for-multi-behavior-sequence-fusion">Cross-Attention for Multi-Behavior Sequence Fusion</a></li><li class="depth-1"><a href="#sparse-mixture-of-experts-moe-for-auto-regressive-generation" data-for="sparse-mixture-of-experts-moe-for-auto-regressive-generation">Sparse Mixture of Experts (MoE) for Auto-Regressive Generation</a></li><li class="depth-1"><a href="#reinforcement-learning-pipeline-for-end-to-end-retrieval-ranking-optimization" data-for="reinforcement-learning-pipeline-for-end-to-end-retrieval-ranking-optimization">Reinforcement Learning Pipeline for End-to-End Retrieval-Ranking Optimization</a></li><li class="depth-1"><a href="#analysis-onemalls-position-in-the-generative-recommender-landscape" data-for="analysis-onemalls-position-in-the-generative-recommender-landscape">Analysis: OneMall’s Position in the Generative Recommender Landscape</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-02-03" class="internal">Research Digest — Tue 2026-02-03</a></li><li><a href="../literature/2026-01-30-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal">OneMall: One Model, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></li><li><a href="../literature/2026-01-31-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal">OneMall: One Model, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></li><li><a href="../literature/2026-02-01-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal">OneMall: One Model, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></li><li><a href="../literature/2026-02-02-OneMall-One-Model-More-Scenarios----End-to-End-Generative-Re" class="internal">OneMall: One Model, More Scenarios -- End-to-End Generative Recommender Family at Kuaishou E-Commerce</a></li><li><a href="../literature/2026-02-02-SpanNorm-Reconciling-Training-Stability-and-Performance-in-D" class="internal">SpanNorm: Reconciling Training Stability and Performance in Deep Transformers</a></li><li><a href="../literature/2026-02-04-SCASRec-A-Self-Correcting-and-Auto-Stopping-Model-for-Genera" class="internal">SCASRec: A Self-Correcting and Auto-Stopping Model for Generative Route List Recommendation</a></li><li><a href="../literature/2026-02-07-A-Task-Centric-Perspective-on-Recommendation-Systems" class="internal">A Task-Centric Perspective on Recommendation Systems</a></li><li><a href="../refs/2025-recommendation-system-research-paper-summary" class="internal">2025 Recommendation System Research Paper Summary</a></li><li><a href="../refs/end-to-end-training-for-recommendation-with-language-based-user-profile" class="internal">End-to-end Training for Recommendation with Language-based User Profile</a></li><li><a href="../refs/generative-large-recommendation-model-emerging-trends-in-llm-for-recommendation" class="internal">Generative Large Recommendation Model: Emerging Trends in LLM for Recommendation</a></li><li><a href="../refs/mini-lesson-llms-in-recommender-systems" class="internal">Mini-Lesson: LLMs in Recommender Systems</a></li><li><a href="../refs/onerec" class="internal">OneRec</a></li><li><a href="../refs/the-rise-of-generative-recommenders" class="internal">The Rise of Generative Recommenders</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

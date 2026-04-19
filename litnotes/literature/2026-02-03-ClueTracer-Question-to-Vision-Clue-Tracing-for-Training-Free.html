@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning | Lit Notes"/><meta name="twitter:description" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning Source: arXiv:cs.AI Published: 2026-02-02 Rank: #12 (score: 0.89, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02004v1 Abstract Large multimodal reasoni..."/><meta property="og:description" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning Source: arXiv:cs.AI Published: 2026-02-02 Rank: #12 (score: 0.89, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02004v1 Abstract Large multimodal reasoni..."/><meta property="og:image:alt" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning Source: arXiv:cs.AI Published: 2026-02-02 Rank: #12 (score: 0.89, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02004v1 Abstract Large multimodal reasoni..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-ClueTracer-Question-to-Vision-Clue-Tracing-for-Training-Free"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-ClueTracer-Question-to-Vision-Clue-Tracing-for-Training-Free"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning Source: arXiv:cs.AI Published: 2026-02-02 Rank: #12 (score: 0.89, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02004v1 Abstract Large multimodal reasoni..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-03-ClueTracer-Question-to-Vision-Clue-Tracing-for-Training-Free"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-261"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-261" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning</h1></div></div><article class="popover-hint"><h1 id="cluetracer-question-to-vision-clue-tracing-for-training-free-hallucination-suppression-in-multimodal-reasoning">ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cluetracer-question-to-vision-clue-tracing-for-training-free-hallucination-suppression-in-multimodal-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2602.02004v1" class="external">arXiv:cs.AI<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-02-02
+<strong>Rank:</strong> #12 (score: 0.89, max_sim: 0.81)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2602.02004v1" class="external">https://arxiv.org/pdf/2602.02004v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Large multimodal reasoning models solve challenging visual problems via explicit long-chain inference: they gather visual clues from images and decode clues into textual tokens. Yet this capability also increases hallucinations, where the model generates content that is not supported by the input image or the question. To understand this failure mode, we identify \emph{reasoning drift}: during clue gathering, the model over-focuses on question-irrelevant entities, diluting focus on task-relevant cues and gradually decoupling the reasoning trace from visual grounding. As a consequence, many inference-time localization or intervention methods developed for non-reasoning models fail to pinpoint the true clues in reasoning settings. Motivated by these insights, we introduce ClueRecall, a metric for assessing visual clue retrieval, and present ClueTracer, a training-free, parameter-free, and architecture-agnostic plugin for hallucination suppression. ClueTracer starts from the question and traces how key clues propagate along the model’s reasoning pathway (question <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:-0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-1-TEX-N-2192"></use></g></g></g></svg></mjx-container> outputs <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:-0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2192" xlink:href="#MJX-2-TEX-N-2192"></use></g></g></g></svg></mjx-container> visual tokens), thereby localizing task-relevant patches while suppressing spurious attention to irrelevant regions. Remarkably, \textbf{without any additional training}, ClueTracer improves all \textbf{reasoning} architectures (including \texttt{R1-OneVision}, \texttt{Ocean-R1}, \texttt{MM-Eureka}, \emph{etc}.) by <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:0;" xmlns="http://www.w3.org/2000/svg" width="6.385ex" height="1.482ex" role="img" focusable="false" viewBox="0 -655 2822 655" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-B-1D7CF" d="M481 0L294 3Q136 3 109 0H96V62H227V304Q227 546 225 546Q169 529 97 529H80V591H97Q231 591 308 647L319 655H333Q355 655 359 644Q361 640 361 351V62H494V0H481Z"></path><path id="MJX-3-TEX-B-2E" d="M74 85Q74 121 99 146T156 171Q200 171 222 143T245 85Q245 56 224 29T160 1Q118 1 96 27T74 85Z"></path><path id="MJX-3-TEX-B-1D7D0" d="M175 580Q175 578 185 572T205 551T215 510Q215 467 191 449T137 430Q107 430 83 448T58 511Q58 558 91 592T168 640T259 654Q328 654 383 637Q451 610 484 563T517 459Q517 401 482 360T368 262Q340 243 265 184L210 140H274Q416 140 429 145Q439 148 447 186T455 237H517V233Q516 230 501 119Q489 9 486 4V0H57V25Q57 51 58 54Q60 57 109 106T215 214T288 291Q364 377 364 458Q364 515 328 553T231 592Q214 592 201 589T181 584T175 580Z"></path><path id="MJX-3-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="1D7CF" xlink:href="#MJX-3-TEX-B-1D7CF"></use><use data-c="2E" xlink:href="#MJX-3-TEX-B-2E" transform="translate(575,0)"></use><use data-c="1D7D0" xlink:href="#MJX-3-TEX-B-1D7D0" transform="translate(894,0)"></use><use data-c="1D7CF" xlink:href="#MJX-3-TEX-B-1D7CF" transform="translate(1469,0)"></use></g><g data-mml-node="mo" transform="translate(2044,0)"><use data-c="D7" xlink:href="#MJX-3-TEX-N-D7"></use></g></g></g></g></svg></mjx-container> on reasoning benchmarks. When transferred to \textbf{non-reasoning} settings, it yields a <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align:0;" xmlns="http://www.w3.org/2000/svg" width="6.385ex" height="1.484ex" role="img" focusable="false" viewBox="0 -656 2822 656" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-B-1D7CF" d="M481 0L294 3Q136 3 109 0H96V62H227V304Q227 546 225 546Q169 529 97 529H80V591H97Q231 591 308 647L319 655H333Q355 655 359 644Q361 640 361 351V62H494V0H481Z"></path><path id="MJX-4-TEX-B-2E" d="M74 85Q74 121 99 146T156 171Q200 171 222 143T245 85Q245 56 224 29T160 1Q118 1 96 27T74 85Z"></path><path id="MJX-4-TEX-B-1D7D2" d="M531 0Q510 3 381 3Q238 3 214 0H201V62H313V155H32V217L205 434Q342 606 362 630T387 655L391 656Q395 656 401 656T414 656H427Q447 656 451 645Q453 641 453 429V217H542V155H453V62H542V0H531ZM324 217V494L103 218L213 217H324Z"></path><path id="MJX-4-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="1D7CF" xlink:href="#MJX-4-TEX-B-1D7CF"></use><use data-c="2E" xlink:href="#MJX-4-TEX-B-2E" transform="translate(575,0)"></use><use data-c="1D7CF" xlink:href="#MJX-4-TEX-B-1D7CF" transform="translate(894,0)"></use><use data-c="1D7D2" xlink:href="#MJX-4-TEX-B-1D7D2" transform="translate(1469,0)"></use></g><g data-mml-node="mo" transform="translate(2044,0)"><use data-c="D7" xlink:href="#MJX-4-TEX-N-D7"></use></g></g></g></g></svg></mjx-container> gain.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Based on the paper text</li>
+<li>here are the key techniques and methods:</li>
+</ul>
+<p>Reasoning drift identification</p>
+<ul>
+<li>ClueRecall metric</li>
+<li>ClueTracer plugin</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-10-Do-MLLMs-Really-See-It-Reinforcing-Visual-Attention-in-Multi" class="internal alias" data-slug="literature/2026-02-10-Do-MLLMs-Really-See-It-Reinforcing-Visual-Attention-in-Multi">Do MLLMs Really See It: Reinforcing Visual Attention in Multimodal LLMs</a></td><td>0.46</td></tr><tr><td><a href="../literature/2026-02-09-SPARC-Separating-Perception-And-Reasoning-Circuits-for-Test-" class="internal alias" data-slug="literature/2026-02-09-SPARC-Separating-Perception-And-Reasoning-Circuits-for-Test-">SPARC: Separating Perception And Reasoning Circuits for Test-time Scaling of VLMs</a></td><td>0.33</td></tr><tr><td><a href="../literature/2026-02-06-SwimBird-Eliciting-Switchable-Reasoning-Mode-in-Hybrid-Autor" class="internal alias" data-slug="literature/2026-02-06-SwimBird-Eliciting-Switchable-Reasoning-Mode-in-Hybrid-Autor">SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</a></td><td>0.33</td></tr><tr><td><a href="../literature/2026-02-17-VIPA-Visual-Informative-Part-Attention-for-Referring-Image-S" class="internal alias" data-slug="literature/2026-02-17-VIPA-Visual-Informative-Part-Attention-for-Referring-Image-S">VIPA: Visual Informative Part Attention for Referring Image Segmentation</a></td><td>0.32</td></tr><tr><td><a href="../literature/2026-02-13-Thinking-with-Drafting-Optical-Decompression-via-Logical-Rec" class="internal alias" data-slug="literature/2026-02-13-Thinking-with-Drafting-Optical-Decompression-via-Logical-Rec">Thinking with Drafting: Optical Decompression via Logical Reconstruction</a></td><td>0.32</td></tr></tbody></table></div>
+<h2 id="cluetracer-question-to-vision-clue-tracing">ClueTracer (Question-to-Vision Clue Tracing)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cluetracer-question-to-vision-clue-tracing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: A training-free, parameter-free plugin that suppresses hallucinations by back-tracing task-relevant visual clues from the model’s outputs through its reasoning pathway, then re-weighting or masking visual attention to amplify signal from grounded regions and suppress spurious attending.</p>
+<p><strong>Problem It Solves</strong>: During reasoning, multimodal models suffer from <em>reasoning drift</em>—over-focusing on question-irrelevant entities while gradually decoupling their inference trace from visual grounding. Standard localization/intervention methods (designed for non-reasoning models) fail to pinpoint true clues in long-chain reasoning settings because they don’t account for how attention propagates across reasoning steps.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Reverse trace from outputs to inputs</strong>: Start from the model’s generated output tokens (which may be hallucinated) and trace backward through the reasoning pathway to identify which visual tokens contributed to those outputs</li>
+<li><strong>Identify question-relevant clues</strong>: Use the original question to filter which visual regions are task-relevant (suppress attention to question-irrelevant entities)</li>
+<li><strong>Forward re-weighting</strong>: Propagate clue relevance forward through the reasoning chain, amplifying attention weights to grounded visual patches and attenuating spurious attended regions</li>
+<li><strong>Generate corrected output</strong>: Use the re-weighted attention distribution to guide token generation, reducing hallucination</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    Q[\&quot;Question\&quot;] --> Trace[\&quot;Back-trace from&lt;br/>outputs to inputs\&quot;]\n    Trace --> Filter[\&quot;Filter question-&lt;br/>relevant clues\&quot;]\n    Filter --> Reweight[\&quot;Forward re-weight&lt;br/>attention\&quot;]\n    Reweight --> Gen[\&quot;Generate&lt;br/>grounded output\&quot;]\n    I[\&quot;Image\&quot;] -.-> Trace\n    Gen --> Out[\&quot;Output\&quot;]&quot;">flowchart LR
+    Q[&quot;Question&quot;] --> Trace[&quot;Back-trace from&lt;br/>outputs to inputs&quot;]
+    Trace --> Filter[&quot;Filter question-&lt;br/>relevant clues&quot;]
+    Filter --> Reweight[&quot;Forward re-weight&lt;br/>attention&quot;]
+    Reweight --> Gen[&quot;Generate&lt;br/>grounded output&quot;]
+    I[&quot;Image&quot;] -.-> Trace
+    Gen --> Out[&quot;Output&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Inference-time hallucination suppression in multimodal reasoning models (LVLMs, VQA systems)</li>
+<li>Improving performance on reasoning benchmarks without retraining</li>
+<li>Enhancing factual grounding in long-chain visual reasoning tasks</li>
+<li>Can be applied post-hoc to any reasoning architecture (R1-OneVision, Ocean-R1, MM-Eureka, etc.)</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Relies on ability to inspect/access intermediate attention states and reasoning pathways (may be unavailable in some black-box APIs)</li>
+<li>Tracing accuracy depends on the quality of the model’s attention maps—noisy or diffuse attention can degrade clue recovery</li>
+<li>May over-suppress valid inferences in cases where question-relevant context requires attending to seemingly tangential regions</li>
+<li>Computational cost of tracing and re-weighting adds inference latency</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Ranking systems: Could suppress low-quality recommendations by back-tracing user intent (query) and filtering items by relevance to core user signals, not spurious clicked signals</li>
+<li>LLM reasoning: Suppressing reasoning drift in recommendation chains where models justify picks by over-focusing on recent/popular items instead of true user preference clues</li>
+<li>Multi-stage retrieval: Re-weighting candidate rankings post-retrieval by tracing which candidates contributed to top predictions, filtering hallucinated matches</li>
+</ul>
+<h2 id="analysis-cluetracer-and-related-work">Analysis: ClueTracer and Related Work<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#analysis-cluetracer-and-related-work" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Bridging Visual Grounding and Hallucination Mitigation</strong></p>
+<p>ClueTracer addresses a critical gap that emerges at the intersection of concerns raised by the matched notes. While MultiRAG and Multimodal Knowledge Graph Construction focus on mitigating hallucination through knowledge reconciliation and structural entity linking, ClueTracer identifies a more fundamental problem in <em>reasoning-specific</em> multimodal models: <strong>reasoning drift</strong>—the decoupling of reasoning traces from visual grounding. This extends prior hallucination mitigation work by pinpointing that standard localization methods fail in reasoning settings because they don’t account for how task-relevant cues propagate through long inference chains. ClueTracer’s question-to-vision tracing mechanism (question → outputs → visual tokens) directly addresses what MultiRAG treats implicitly: the need to validate that intermediate reasoning steps remain grounded in source information. Where MultiRAG aggregates and reconciles multi-source information, ClueTracer backtracks through the model’s <em>own reasoning pathway</em> to verify alignment—a training-free approach that complements knowledge-external approaches.</p>
+<p><strong>Methodological Novelty in Reasoning-Aware Grounding</strong></p>
+<p>The paper introduces two key methodological contributions missing from the matched notes: (1) <strong>ClueRecall</strong>, a metric specifically designed to assess visual clue retrieval in reasoning contexts, and (2) a parameter-free, architecture-agnostic plugin that works across reasoning architectures (R1-OneVision, Ocean-R1, MM-Eureka). This contrasts with the matched notes’ approaches, which either assume structured knowledge graphs exist (Multimodal Knowledge Graph Construction) or require offline reconciliation phases (MultiRAG). The Mind-Map Agent’s real-time knowledge graph construction shares ClueTracer’s dynamic tracking philosophy, but ClueTracer’s focus on question-to-vision propagation is more targeted—it doesn’t require maintaining persistent graph structures, making it genuinely plug-and-play for any reasoning model.</p>
+<p><strong>Integration Potential</strong></p>
+<p>Interestingly, ClueTracer’s approach could enhance the frameworks described in the matched notes. For instance, integrating ClueTracer’s question-conditioned visual cue localization into Multimodal Knowledge Graph Construction could improve the <strong>contextualized visual entity</strong> extraction phase by ensuring entity candidates align with task-relevant visual regions rather than being uniformly extracted. Similarly, ClueTracer’s reasoning drift detection could serve as a validation layer within MultiRAG’s multi-source aggregation, flagging when intermediate reasoning has diverged from supporting evidence. The paper thus contributes a novel <em>inference-time verification mechanism</em> that treats hallucination suppression not as a knowledge problem (how to get better sources) but as a <em>reasoning coherence problem</em> (ensuring multi-step inference stays visually grounded).</p><style>
+mjx-container[jax=&quot;SVG&quot;] {
+  direction: ltr;
+}
+
+mjx-container[jax=&quot;SVG&quot;] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax=&quot;SVG&quot;] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax=&quot;SVG&quot;][display=&quot;true&quot;] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax=&quot;SVG&quot;][display=&quot;true&quot;][width=&quot;full&quot;] {
+  display: flex;
+}
+
+mjx-container[jax=&quot;SVG&quot;][justify=&quot;left&quot;] {
+  text-align: left;
+}
+
+mjx-container[jax=&quot;SVG&quot;][justify=&quot;right&quot;] {
+  text-align: right;
+}
+
+g[data-mml-node=&quot;merror&quot;] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node=&quot;merror&quot;] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node=&quot;mtable&quot;] > g > svg {
+  overflow: visible;
+}
+
+[jax=&quot;SVG&quot;] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax=&quot;SVG&quot;] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node=&quot;maction&quot;][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax=&quot;SVG&quot;] path[data-c], mjx-container[jax=&quot;SVG&quot;] use[data-c] {
+  stroke-width: 3;
+}
+</style></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-247" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#cluetracer-question-to-vision-clue-tracing-for-training-free-hallucination-suppression-in-multimodal-reasoning" data-for="cluetracer-question-to-vision-clue-tracing-for-training-free-hallucination-suppression-in-multimodal-reasoning">ClueTracer: Question-to-Vision Clue Tracing for Training-Free Hallucination Suppression in Multimodal Reasoning</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#cluetracer-question-to-vision-clue-tracing" data-for="cluetracer-question-to-vision-clue-tracing">ClueTracer (Question-to-Vision Clue Tracing)</a></li><li class="depth-1"><a href="#analysis-cluetracer-and-related-work" data-for="analysis-cluetracer-and-related-work">Analysis: ClueTracer and Related Work</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-02-03" class="internal">Research Digest — Tue 2026-02-03</a></li><li><a href="../literature/2026-02-03-Nano-vLLM-How-a-vLLM-style-inference-engine-works" class="internal">Nano-vLLM: How a vLLM-style inference engine works</a></li><li><a href="../literature/2026-02-06-SwimBird-Eliciting-Switchable-Reasoning-Mode-in-Hybrid-Autor" class="internal">SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</a></li><li><a href="../literature/2026-02-09-SPARC-Separating-Perception-And-Reasoning-Circuits-for-Test-" class="internal">SPARC: Separating Perception And Reasoning Circuits for Test-time Scaling of VLMs</a></li><li><a href="../literature/2026-02-10-Do-MLLMs-Really-See-It-Reinforcing-Visual-Attention-in-Multi" class="internal">Do MLLMs Really See It: Reinforcing Visual Attention in Multimodal LLMs</a></li><li><a href="../literature/2026-02-18-The-Vision-Wormhole-Latent-Space-Communication-in-Heterogene" class="internal">The Vision Wormhole: Latent-Space Communication in Heterogeneous Multi-Agent Systems</a></li><li><a href="../literature/2026-02-19-Balancing-Faithfulness-and-Performance-in-Reasoning-via-Mult" class="internal">Balancing Faithfulness and Performance in Reasoning via Multi-Listener Soft Execution</a></li><li><a href="../refs/hierarchical-reasoning-model" class="internal">Hierarchical Reasoning Model</a></li><li><a href="../refs/mind-map-agent" class="internal">Mind-Map Agent</a></li><li><a href="../refs/multi-source-knowledge-line-graph-prompting-mklgp" class="internal">Multi-source Knowledge Line Graph Prompting (MKLGP)</a></li><li><a href="../refs/multimodal-knowledge-graph-construction-with-contextualized-visual-entities" class="internal">Multimodal Knowledge Graph Construction with Contextualized Visual Entities</a></li><li><a href="../refs/multirag-knowledge-guided-mitigation-of-hallucination-in-multi-source-retrieval-augmented-generation" class="internal">MultiRAG: Knowledge-guided Mitigation of Hallucination in Multi-source Retrieval Augmented Generation</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

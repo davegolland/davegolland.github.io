@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval | Lit Notes"/><meta name="twitter:description" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval Source: arXiv:cs.CL Published: 2026-02-18 Rank: #7 (score: 0.99, max_sim: 0.83) Reading time: ~20 min Tags: RAG, LLM Abstract The rapid proliferation of Large Language Models (LLMs) has revolutionize..."/><meta property="og:description" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval Source: arXiv:cs.CL Published: 2026-02-18 Rank: #7 (score: 0.99, max_sim: 0.83) Reading time: ~20 min Tags: RAG, LLM Abstract The rapid proliferation of Large Language Models (LLMs) has revolutionize..."/><meta property="og:image:alt" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval Source: arXiv:cs.CL Published: 2026-02-18 Rank: #7 (score: 0.99, max_sim: 0.83) Reading time: ~20 min Tags: RAG, LLM Abstract The rapid proliferation of Large Language Models (LLMs) has revolutionize..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-19-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-19-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval Source: arXiv:cs.CL Published: 2026-02-18 Rank: #7 (score: 0.99, max_sim: 0.83) Reading time: ~20 min Tags: RAG, LLM Abstract The rapid proliferation of Large Language Models (LLMs) has revolutionize..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-19-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-513"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-513" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</h1><ul class="tags"><li><a href="../tags/RAG" class="internal tag-link">RAG</a></li><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li></ul></div></div><article class="popover-hint"><h1 id="quecto-v1-empirical-analysis-of-8-bit-quantized-small-language-models-for-on-device-legal-retrieval">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quecto-v1-empirical-analysis-of-8-bit-quantized-small-language-models-for-on-device-legal-retrieval" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2602.16640v1" class="external">arXiv:cs.CL<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-02-18
+<strong>Rank:</strong> #7 (score: 0.99, max_sim: 0.83)
+<strong>Reading time:</strong> ~20 min
+<strong>Tags:</strong> RAG, LLM</p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The rapid proliferation of Large Language Models (LLMs) has revolutionized Natural Language Processing (NLP) but has simultaneously created a “resource divide.” State-of-the-art legal intelligence systems typically rely on massive parameter counts (7B+) and cloud-based inference, rendering them inaccessible to practitioners in resource-constrained environments and posing significant data sovereignty risks. This paper introduces Quecto-V1, a domain-specific Small Language Model (SLM) engineered to democratize access to Indian legal intelligence. Built upon a custom configuration of the GPT-2 architecture (124 million parameters), Quecto-V1 was trained from scratch exclusively on a corpus of Indian statutes, including the Indian Penal Code (IPC), the Code of Criminal Procedure (CrPC), and the Constitution of India. Unlike generalist models, which prioritize broad world knowledge, our approach maximizes “lexical density” within the legal domain. Furthermore, we address the deployment bottleneck by applying post-training 8-bit quantization (GGUF format), compressing the model to a memory footprint of under 150 MB. Our empirical analysis demonstrates that Quecto-V1 achieves high fidelity in retrieving statutory definitions and penal provisions, outperforming general-purpose SLMs in domain-specific exact match tasks while running entirely offline on consumer-grade CPUs. We further present an ablation study showing that 8-bit quantization yields a 74% reduction in model size with less than 3.5% degradation in retrieval accuracy compared to full-precision baselines. These findings suggest that for specialized, high-stakes domains like law, domain-specific training coupled with aggressive quantization offers a viable, privacy-preserving alternative to monolithic cloud models.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Domain-specific training on Indian legal corpus</li>
+<li>custom GPT-2 architecture</li>
+<li>8-bit quantization (GGUF format)</li>
+<li>lexical density maximization</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-22-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua" class="internal alias" data-slug="literature/2026-02-22-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</a></td><td>0.85</td></tr><tr><td><a href="../literature/2026-02-03-Domain-Adaptive-and-Scalable-Dense-Retrieval-for-Content-Bas" class="internal alias" data-slug="literature/2026-02-03-Domain-Adaptive-and-Scalable-Dense-Retrieval-for-Content-Bas">Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation</a></td><td>0.17</td></tr><tr><td><a href="../literature/2026-02-05-BPDQ-Bit-Plane-Decomposition-Quantization-on-a-Variable-Grid" class="internal alias" data-slug="literature/2026-02-05-BPDQ-Bit-Plane-Decomposition-Quantization-on-a-Variable-Grid">BPDQ: Bit-Plane Decomposition Quantization on a Variable Grid for Large Language Models</a></td><td>0.15</td></tr><tr><td><a href="../literature/2026-02-18-1-Bit-Wonder-Improving-QAT-Performance-in-the-Low-Bit-Regime" class="internal alias" data-slug="literature/2026-02-18-1-Bit-Wonder-Improving-QAT-Performance-in-the-Low-Bit-Regime">1-Bit Wonder: Improving QAT Performance in the Low-Bit Regime through K-Means Quantization</a></td><td>0.15</td></tr><tr><td><a href="../literature/2026-02-04-Reshape-and-Adapt-for-Output-Quantization-RAOQ-Quantization-" class="internal alias" data-slug="literature/2026-02-04-Reshape-and-Adapt-for-Output-Quantization-RAOQ-Quantization-">Reshape and Adapt for Output Quantization (RAOQ): Quantization-aware Training for In-memory Computing Systems</a></td><td>0.14</td></tr></tbody></table></div>
+<h2 id="domain-specific-slm-quantization-pipeline-quecto-v1">Domain-Specific SLM Quantization Pipeline (Quecto-V1)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#domain-specific-slm-quantization-pipeline-quecto-v1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Train a compact GPT-2-scale language model from scratch on a narrow legal corpus, then apply post-training 8-bit quantization (GGUF format) to produce a sub-150 MB model capable of offline statutory retrieval on consumer CPUs.</p>
+<p><strong>Problem It Solves</strong>: State-of-the-art legal NLP systems require 7B+ parameter cloud-hosted models, creating a resource divide that excludes practitioners in constrained environments and introduces data sovereignty risks when sensitive legal queries must leave the device.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Corpus construction</strong>: Curate a high-lexical-density domain corpus (Indian Penal Code, Code of Criminal Procedure, Constitution of India) — no general web text, maximizing token budget on statutory language.</li>
+<li><strong>From-scratch pretraining</strong>: Train a 124M-parameter GPT-2 architecture on this corpus; no general-purpose pretraining or fine-tuning — the full parameter budget encodes only legal domain knowledge.</li>
+<li><strong>Post-training 8-bit quantization</strong>: Convert the full-precision checkpoint to GGUF format with 8-bit integer quantization, reducing model size by ~74% with &lt;3.5% degradation on domain-specific exact-match retrieval tasks.</li>
+<li><strong>On-device inference</strong>: Deploy the quantized model (&lt;150 MB) for offline CPU inference, serving statutory definition and penal provision retrieval without network dependency.</li>
+</ol>
+<p><strong>Architecture</strong> (if applicable):</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[Indian Legal Corpus\\nIPC / CrPC / Constitution] --> B[GPT-2 124M\\nFrom-Scratch Training]\n    B --> C[Full-Precision Checkpoint\\nFP32]\n    C --> D[Post-Training Quantization\\n8-bit GGUF]\n    D --> E[Offline CPU Inference\\n&lt;150 MB]\n    E --> F[Statutory Retrieval\\nExact Match Output]&quot;">flowchart LR
+    A[Indian Legal Corpus\nIPC / CrPC / Constitution] --> B[GPT-2 124M\nFrom-Scratch Training]
+    B --> C[Full-Precision Checkpoint\nFP32]
+    C --> D[Post-Training Quantization\n8-bit GGUF]
+    D --> E[Offline CPU Inference\n&lt;150 MB]
+    E --> F[Statutory Retrieval\nExact Match Output]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Privacy-sensitive legal query answering where queries cannot leave the device</li>
+<li>Low-resource legal aid tools in jurisdictions with limited cloud infrastructure</li>
+<li>Edge deployment of domain-specific QA in regulated industries (healthcare, finance) with similar sovereignty constraints</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Extremely narrow generalization: model has no world knowledge outside the training statutes, so cross-domain or common-law queries will degrade sharply</li>
+<li>GPT-2 architecture lacks modern advances (RoPE, GQA, SwiGLU) — retrieval fidelity ceiling is lower than equivalently-sized modern SLMs</li>
+<li>Exact-match evaluation metric may overstate practical utility; semantic correctness and hallucination are not measured</li>
+<li>124M parameters is insufficient for multi-hop reasoning across long statutory documents</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li><strong>Retrieval pipeline compression</strong>: The quantization-first deployment pattern applies directly to on-device dense retrievers — embed a domain-fine-tuned bi-encoder, quantize to INT8/GGUF, serve candidate retrieval without cloud round-trips</li>
+<li><strong>Domain lexical density as a training signal</strong>: The corpus curation philosophy (maximize in-domain token density, exclude general text) is transferable to vertical RecSys embedding models where general pretraining noise hurts niche-domain ranking</li>
+<li><strong>Ablation methodology</strong>: The size-vs-accuracy ablation (74% size reduction, &lt;3.5% accuracy drop) is a reusable evaluation template for quantizing any retrieval or reranking model before production deployment</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-499" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#quecto-v1-empirical-analysis-of-8-bit-quantized-small-language-models-for-on-device-legal-retrieval" data-for="quecto-v1-empirical-analysis-of-8-bit-quantized-small-language-models-for-on-device-legal-retrieval">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#domain-specific-slm-quantization-pipeline-quecto-v1" data-for="domain-specific-slm-quantization-pipeline-quecto-v1">Domain-Specific SLM Quantization Pipeline (Quecto-V1)</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../literature/2026-02-22-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua" class="internal">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</a></li><li><a href="../refs/infinite-retrieval-attention-enhanced-llms-in-long-context-processing" class="internal">Infinite Retrieval: Attention Enhanced LLMs in Long-Context Processing</a></li><li><a href="../refs/instruction-based-dense-retrieval-with-llm-encoders" class="internal">Instruction-Based Dense Retrieval with LLM Encoders</a></li><li><a href="../refs/lengthy-context-retrieval-via-llm-pretraining" class="internal">Lengthy Context Retrieval via LLM Pretraining</a></li><li><a href="../refs/llm-based-fine-grained-retrieval-in-ensemble-framework" class="internal">LLM-based Fine-grained Retrieval (in Ensemble Framework)</a></li><li><a href="../refs/llm-ql-llm-query-likelihood-maximization" class="internal">LLM-QL (LLM Query Likelihood Maximization)</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching | Lit Notes"/><meta name="twitter:description" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching Source: arXiv:cs.CL Published: 2026-01-29 Rank: #5 (score: 0.93, max_sim: 0.82) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21927v1 Abstract The linear growth of Key-Value (KV) cache remains a bot..."/><meta property="og:description" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching Source: arXiv:cs.CL Published: 2026-01-29 Rank: #5 (score: 0.93, max_sim: 0.82) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21927v1 Abstract The linear growth of Key-Value (KV) cache remains a bot..."/><meta property="og:image:alt" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching Source: arXiv:cs.CL Published: 2026-01-29 Rank: #5 (score: 0.93, max_sim: 0.82) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21927v1 Abstract The linear growth of Key-Value (KV) cache remains a bot..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-02-SONIC-Segmented-Optimized-Nexus-for-Information-Compression"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-02-SONIC-Segmented-Optimized-Nexus-for-Information-Compression"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching Source: arXiv:cs.CL Published: 2026-01-29 Rank: #5 (score: 0.93, max_sim: 0.82) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2601.21927v1 Abstract The linear growth of Key-Value (KV) cache remains a bot..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-02-SONIC-Segmented-Optimized-Nexus-for-Information-Compression"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-254"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-254" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</h1></div></div><article class="popover-hint"><h1 id="sonic-segmented-optimized-nexus-for-information-compression-in-key-value-caching">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sonic-segmented-optimized-nexus-for-information-compression-in-key-value-caching" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2601.21927v1" class="external">arXiv:cs.CL<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-01-29
+<strong>Rank:</strong> #5 (score: 0.93, max_sim: 0.82)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2601.21927v1" class="external">https://arxiv.org/pdf/2601.21927v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The linear growth of Key-Value (KV) cache remains a bottleneck for multi-turn LLM deployment. Existing KV cache compression methods often fail to account for the structural properties of multi-turn dialogues, relying on heuristic eviction that risks losing critical context. We propose \textbf{SONIC}, a learning-based framework that compresses historical segments into compact and semantically rich \textbf{Nexus} tokens. By integrating dynamic budget training, SONIC allows flexible adaptation to varying memory constraints without retraining. Experiments show that at compression ratios of 80% and 50%, SONIC consistently outperforms baselines such as H2O and StreamingLLM on four diverse multi-turn benchmarks. Specifically, on the widely used MTBench101 benchmark, SONIC achieves an average score improvement of 35.55% over state-of-the-art baselines, validating its effectiveness in sustaining coherent multi-turn dialogues. Furthermore, SONIC enhances deployment efficiency, accelerating the overall inference process by 50.1% compared to full-context generation.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Nexus tokens</li>
+<li>dynamic budget training</li>
+<li>learning-based KV cache compression</li>
+<li>semantic compression</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-01-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal alias" data-slug="literature/2026-02-01-SONIC-Segmented-Optimized-Nexus-for-Information-Compression">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></td><td>0.75</td></tr><tr><td><a href="../literature/2026-01-31-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal alias" data-slug="literature/2026-01-31-SONIC-Segmented-Optimized-Nexus-for-Information-Compression">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></td><td>0.72</td></tr><tr><td><a href="../literature/2026-01-30-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal alias" data-slug="literature/2026-01-30-SONIC-Segmented-Optimized-Nexus-for-Information-Compression">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></td><td>0.63</td></tr><tr><td><a href="../literature/2026-02-04-ATACompressor-Adaptive-Task-Aware-Compression-for-Efficient" class="internal alias" data-slug="literature/2026-02-04-ATACompressor-Adaptive-Task-Aware-Compression-for-Efficient">ATACompressor: Adaptive Task-Aware Compression for Efficient Long-Context Processing in LLMs</a></td><td>0.32</td></tr><tr><td><a href="../literature/2026-02-03-Data-Distribution-Matters-A-Data-Centric-Perspective-on-Cont" class="internal alias" data-slug="literature/2026-02-03-Data-Distribution-Matters-A-Data-Centric-Perspective-on-Cont">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Model</a></td><td>0.28</td></tr></tbody></table></div>
+<h2 id="dynamic-budget-training">Dynamic Budget Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dynamic-budget-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: A training procedure that enables the learned compression model to adapt flexibly to different memory/compression budgets without requiring separate retraining for each target compression ratio.</p>
+<p><strong>Problem It Solves</strong>: Fixed-budget training forces retraining for each new compression target (80%, 50%, etc.), preventing adaptive deployment across varying memory constraints (mobile vs. server, real-time vs. batch).</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>During training, sample a range of target compression budgets uniformly (e.g., compression ratio from 20% to 100% of original cache size)</li>
+<li>For each training batch, randomly select one budget target</li>
+<li>Modify the compression function to output a variable number of Nexus tokens (or scale compression loss) based on the selected budget</li>
+<li>Train end-to-end with this budget-agnostic loss, forcing the model to learn how to compress effectively across the entire budget spectrum</li>
+<li>At inference time, specify the desired compression ratio and the trained model adapts its output accordingly</li>
+</ol>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Production systems with heterogeneous hardware (phones, tablets, servers)</li>
+<li>Serving multiple QoS tiers (latency-critical vs. throughput-optimized)</li>
+<li>Dynamic resource allocation where available memory varies over time</li>
+<li>A/B testing compression trade-offs without retraining</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>May require larger model capacity to learn the full budget spectrum; performance at extreme ratios could degrade</li>
+<li>Hyperparameter tuning (budget sampling distribution, loss scaling) affects generalization across budgets</li>
+<li>No guarantee that intermediate budgets interpolate smoothly; may have discontinuities</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Adaptive cache compression in ranking models deployed across devices with varying memory</li>
+<li>Dynamic context pruning in multi-stage retrieval pipelines based on available compute budget</li>
+<li>Budget-aware session state compression for recommender systems</li>
+</ul>
+<hr/>
+<h2 id="segment-based-kv-cache-compression-framework">Segment-Based KV Cache Compression Framework<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#segment-based-kv-cache-compression-framework" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Organize KV cache compression around dialogue/interaction segments (rather than individual tokens) to exploit structural properties of multi-turn conversations and preserve dialogue coherence.</p>
+<p><strong>Problem It Solves</strong>: Token-level compression (e.g., H2O’s heavy-hitter detection, StreamingLLM’s sink token retention) ignores turn boundaries and dialogue structure, leading to fragmented context loss; segment-level approach respects conversation boundaries and allows learning what entire turns/exchanges are critical.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Segment the input dialogue history into logical units (e.g., each user-assistant turn pair, or groups of turns)</li>
+<li>Retain all tokens from recent segments uncompressed (e.g., last N turns remain in full cache)</li>
+<li>Apply compression (via Nexus tokens) to older segments, aggregating their information</li>
+<li>Maintain segment boundaries during attention computation so that multi-head attention respects turn structure</li>
+<li>Evaluate compression quality using multi-turn benchmarks (MTBench101) rather than single-turn metrics</li>
+</ol>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Multi-turn conversational systems (chatbots, dialogue assistants)</li>
+<li>Long-running user sessions with distinct logical phases</li>
+<li>Structured interactions (e.g., multi-step problem-solving, negotiation)</li>
+<li>Benchmarking on dialogue-aware metrics (coherence, turn-level accuracy)</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires manual or learned segmentation; poor segmentation hurts performance</li>
+<li>Assumes dialogue has clear structure; unstructured free-form interactions may not benefit as much</li>
+<li>Segment boundaries must be identified at inference time, adding latency</li>
+<li>Performance heavily depends on which segments are chosen for compression</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Ranking multi-turn search/recommendation dialogue contexts efficiently</li>
+<li>Session-state compression in bandit-style recommender systems</li>
+<li>Turn-aware caching in conversational search and retrieval</li>
+</ul>
+<p>Based on the paper’s contributions, <strong>SONIC introduces three core technical innovations</strong>: (1) learning-based Nexus token compression tailored to segment structure, (2) dynamic budget training for adaptive deployment, and (3) segment-aware KV cache organization exploiting dialogue properties. These together enable 35% better performance than baselines on multi-turn benchmarks with 50% inference speedup.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-240" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#sonic-segmented-optimized-nexus-for-information-compression-in-key-value-caching" data-for="sonic-segmented-optimized-nexus-for-information-compression-in-key-value-caching">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#dynamic-budget-training" data-for="dynamic-budget-training">Dynamic Budget Training</a></li><li class="depth-1"><a href="#segment-based-kv-cache-compression-framework" data-for="segment-based-kv-cache-compression-framework">Segment-Based KV Cache Compression Framework</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-02-02" class="internal">Research Digest — Mon 2026-02-02</a></li><li><a href="../literature/2026-01-28-Less-Is-More----Until-It-Breaks-Security-Pitfalls-of-Vision" class="internal">Less Is More -- Until It Breaks: Security Pitfalls of Vision Token Compression in Large Vision-Language Models</a></li><li><a href="../literature/2026-01-29-Dialogical-Reasoning-Across-AI-Architectures-A-Multi-Model-F" class="internal">Dialogical Reasoning Across AI Architectures: A Multi-Model Framework for Testing AI Alignment Strategies</a></li><li><a href="../literature/2026-01-30-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></li><li><a href="../literature/2026-01-31-Dont-be-so-Stief-Learning-KV-Cache-low-rank-approximation-ov" class="internal">Don't be so Stief! Learning KV Cache low-rank approximation over the Stiefel manifold</a></li><li><a href="../literature/2026-01-31-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></li><li><a href="../literature/2026-02-01-SONIC-Segmented-Optimized-Nexus-for-Information-Compression" class="internal">SONIC: Segmented Optimized Nexus for Information Compression in Key-Value Caching</a></li><li><a href="../literature/2026-02-03-Data-Distribution-Matters-A-Data-Centric-Perspective-on-Cont" class="internal">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Model</a></li><li><a href="../literature/2026-02-03-Read-As-Human-Compressing-Context-via-Parallelizable-Close-R" class="internal">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</a></li><li><a href="../literature/2026-02-04-ATACompressor-Adaptive-Task-Aware-Compression-for-Efficient" class="internal">ATACompressor: Adaptive Task-Aware Compression for Efficient Long-Context Processing in LLMs</a></li><li><a href="../literature/2026-02-04-Context-Compression-via-Explicit-Information-Transmission" class="internal">Context Compression via Explicit Information Transmission</a></li><li><a href="../literature/2026-02-10-DeltaKV-Residual-Based-KV-Cache-Compression-via-Long-Range-S" class="internal">DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity</a></li><li><a href="../literature/2026-02-11-When-Less-is-More-The-LLM-Scaling-Paradox-in-Context-Compres" class="internal">When Less is More: The LLM Scaling Paradox in Context Compression</a></li><li><a href="../literature/2026-02-19-COMPOT-Calibration-Optimized-Matrix-Procrustes-Orthogonaliza" class="internal">COMPOT: Calibration-Optimized Matrix Procrustes Orthogonalization for Transformers Compression</a></li><li><a href="../refs/heavy-hitter-oracle-h2o" class="internal">Heavy Hitter Oracle (H2O)</a></li><li><a href="../refs/instruction-based-dense-retrieval-with-llm-encoders" class="internal">Instruction-Based Dense Retrieval with LLM Encoders</a></li><li><a href="../refs/llm-embedding-caching-and-utilization" class="internal">LLM Embedding Caching and Utilization</a></li><li><a href="../refs/llm-inference-performance-the-team-mental-model-experiment-playbook" class="internal">LLM Inference Performance: The Team Mental Model + Experiment Playbook</a></li><li><a href="../refs/sparse-attention-retrieval-augmented-kv-cache-integration" class="internal">Sparse Attention Retrieval-Augmented KV Cache Integration</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

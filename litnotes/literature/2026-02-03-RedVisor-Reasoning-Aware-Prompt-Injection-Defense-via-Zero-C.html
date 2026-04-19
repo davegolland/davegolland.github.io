@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse | Lit Notes"/><meta name="twitter:description" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse Source: arXiv:cs.AI Published: 2026-02-02 Rank: #3 (score: 0.59, max_sim: 0.79) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.01795v1 Abstract Large Language Models (LLMs) are increasingly vulnerable ..."/><meta property="og:description" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse Source: arXiv:cs.AI Published: 2026-02-02 Rank: #3 (score: 0.59, max_sim: 0.79) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.01795v1 Abstract Large Language Models (LLMs) are increasingly vulnerable ..."/><meta property="og:image:alt" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse Source: arXiv:cs.AI Published: 2026-02-02 Rank: #3 (score: 0.59, max_sim: 0.79) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.01795v1 Abstract Large Language Models (LLMs) are increasingly vulnerable ..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-RedVisor-Reasoning-Aware-Prompt-Injection-Defense-via-Zero-C"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-RedVisor-Reasoning-Aware-Prompt-Injection-Defense-via-Zero-C"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse Source: arXiv:cs.AI Published: 2026-02-02 Rank: #3 (score: 0.59, max_sim: 0.79) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.01795v1 Abstract Large Language Models (LLMs) are increasingly vulnerable ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-03-RedVisor-Reasoning-Aware-Prompt-Injection-Defense-via-Zero-C"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-277"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-277" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse</h1></div></div><article class="popover-hint"><h1 id="redvisor-reasoning-aware-prompt-injection-defense-via-zero-copy-kv-cache-reuse">RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#redvisor-reasoning-aware-prompt-injection-defense-via-zero-copy-kv-cache-reuse" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2602.01795v1" class="external">arXiv:cs.AI<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-02-02
+<strong>Rank:</strong> #3 (score: 0.59, max_sim: 0.79)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2602.01795v1" class="external">https://arxiv.org/pdf/2602.01795v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Large Language Models (LLMs) are increasingly vulnerable to Prompt Injection (PI) attacks, where adversarial instructions hidden within retrieved contexts hijack the model’s execution flow. Current defenses typically face a critical trade-off: prevention-based fine-tuning often degrades general utility via the “alignment tax”, while detection-based filtering incurs prohibitive latency and memory costs. To bridge this gap, we propose RedVisor, a unified framework that synthesizes the explainability of detection systems with the seamless integration of prevention strategies. To the best of our knowledge, RedVisor is the first approach to leverage fine-grained reasoning paths to simultaneously detect attacks and guide the model’s safe response. We implement this via a lightweight, removable adapter positioned atop the frozen backbone. This adapter serves a dual function: it first generates an explainable analysis that precisely localizes the injection and articulates the threat, which then explicitly conditions the model to reject the malicious command. Uniquely, the adapter is active only during this reasoning phase and is effectively muted during the subsequent response generation. This architecture yields two distinct advantages: (1) it mathematically preserves the backbone’s original utility on benign inputs; and (2) it enables a novel KV Cache Reuse strategy, eliminating the redundant prefill computation inherent to decoupled pipelines. We further pioneer the integration of this defense into the vLLM serving engine with custom kernels. Experiments demonstrate that RedVisor outperforms state-of-the-art defenses in detection accuracy and throughput while incurring negligible utility loss.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Based on the paper text provided</li>
+<li>here are the key techniques or methods:</li>
+</ul>
+<p>Fine-tuned adapter mechanism</p>
+<ul>
+<li>Explainable reasoning paths</li>
+<li>KV Cache Reuse strategy</li>
+<li>Dual-phase architecture (reasoning + response generation)</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L" class="internal alias" data-slug="literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L">PrefillShare: A Shared Prefill Module for KV Reuse in Multi-LLM Disaggregated Serving</a></td><td>0.27</td></tr><tr><td><a href="../literature/2026-02-04-LRAgent-Efficient-KV-Cache-Sharing-for-Multi-LoRA-LLM-Agents" class="internal alias" data-slug="literature/2026-02-04-LRAgent-Efficient-KV-Cache-Sharing-for-Multi-LoRA-LLM-Agents">LRAgent: Efficient KV Cache Sharing for Multi-LoRA LLM Agents</a></td><td>0.26</td></tr><tr><td><a href="../literature/2026-02-02-Towards-Resiliency-in-Large-Language-Model-Serving-with-Kevl" class="internal alias" data-slug="literature/2026-02-02-Towards-Resiliency-in-Large-Language-Model-Serving-with-Kevl">Towards Resiliency in Large Language Model Serving with KevlarFlow</a></td><td>0.25</td></tr><tr><td><a href="../literature/2026-02-10-DeltaKV-Residual-Based-KV-Cache-Compression-via-Long-Range-S" class="internal alias" data-slug="literature/2026-02-10-DeltaKV-Residual-Based-KV-Cache-Compression-via-Long-Range-S">DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity</a></td><td>0.22</td></tr><tr><td><a href="../literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management" class="internal alias" data-slug="literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management">SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</a></td><td>0.21</td></tr></tbody></table></div>
+<h2 id="zero-copy-kv-cache-reuse-strategy">Zero-Copy KV Cache Reuse Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zero-copy-kv-cache-reuse-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Eliminate redundant prefill computation in decoupled reasoning-response pipelines by reusing the Key-Value cache from the reasoning phase during response generation, avoiding duplicate forward passes over the same context.</p>
+<p><strong>Problem It Solves</strong>: Traditional detection-response pipelines require two separate forward passes—one for analysis and one for response generation—both processing identical context tokens. This doubles memory bandwidth and compute cost. KV cache reuse eliminates this redundancy by keeping attention cache entries valid across phases.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Reasoning Phase</strong>: During adapter-guided reasoning, the backbone computes and caches Key-Value (KV) pairs for all input tokens (including context and query), storing them in the vLLM KV cache</li>
+<li><strong>Cache Preservation</strong>: The cached KV pairs remain valid in GPU memory across the phase boundary because the input context does not change between reasoning and response phases</li>
+<li><strong>Response Generation</strong>: During response generation, the backbone skips the prefill stage (which would recompute KV for input tokens) and directly begins decoding from the cached KV state, restoring only the output tokens generated during reasoning to the cache and reusing all context KVs</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    A[\&quot;Input Tokens&lt;br/>(context + query)\&quot;] --> B[\&quot;Prefill + KV Compute&lt;br/>(Reasoning Phase)\&quot;]\n    B --> C[\&quot;KV Cache Stored&lt;br/>in GPU Memory\&quot;]\n    C --> D[\&quot;Response Decoding Phase\&quot;]\n    D --> E[\&quot;Reuse Cached KV&lt;br/>Skip Prefill\&quot;]\n    E --> F[\&quot;Output Tokens\&quot;]\n    style C fill:#99ff99\n    style E fill:#99ff99&quot;">flowchart TD
+    A[&quot;Input Tokens&lt;br/>(context + query)&quot;] --> B[&quot;Prefill + KV Compute&lt;br/>(Reasoning Phase)&quot;]
+    B --> C[&quot;KV Cache Stored&lt;br/>in GPU Memory&quot;]
+    C --> D[&quot;Response Decoding Phase&quot;]
+    D --> E[&quot;Reuse Cached KV&lt;br/>Skip Prefill&quot;]
+    E --> F[&quot;Output Tokens&quot;]
+    style C fill:#99ff99
+    style E fill:#99ff99
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Serving inference pipelines where reasoning and response generation are sequential (detection-then-respond patterns)</li>
+<li>vLLM and other KV-cache-aware inference engines with custom kernel support</li>
+<li>High-throughput LLM serving where latency and memory bandwidth are bottlenecks</li>
+<li>Any multi-stage decoding pipeline where intermediate states are cached</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires careful synchronization between phase boundaries to ensure cache coherence; kernel-level integration is necessary for correctness</li>
+<li>Benefit is marginal for very short contexts where prefill is already negligible relative to decoding cost</li>
+<li>Compatibility depends on the inference engine’s support for mid-generation cache manipulation (not all inference stacks support this)</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li><strong>Multi-stage ranking pipelines</strong>: Cache context features during initial ranking pass, reuse during scoring/calibration stage in two-stage ranking systems</li>
+<li><strong>Streaming RAG systems</strong>: Reuse cached embeddings and KV states across retrievals and re-rankings without recomputing context prefills</li>
+<li><strong>Interactive recommendation refinement</strong>: Store user profile KV cache during initial filtering, reuse during personalization ranking to avoid recomputation</li>
+</ul>
+<hr/>
+<h2 id="integration-with-vllm-serving-engine">Integration with vLLM Serving Engine<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#integration-with-vllm-serving-engine" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Implement RedVisor’s reasoning adapter and KV cache reuse as custom kernels within the vLLM serving engine, enabling efficient, batched inference with multi-phase request handling.</p>
+<p><strong>Problem It Solves</strong>: A naive implementation of reasoning-aware defense as a post-hoc wrapper incurs significant overhead due to redundant context loading, unbatched adapter execution, and cache format mismatches. Direct vLLM integration enables (1) seamless request batching across multiple phases, (2) zero-copy cache transfers, and (3) hardware-optimized kernel execution.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Request Queuing</strong>: Incoming requests are batched and routed to the reasoning phase; the vLLM scheduler queues adapter inference on the backbone, with requests grouped by context length for efficient computation</li>
+<li><strong>Adapter Execution</strong>: Custom vLLM kernels execute the adapter module within the same GPU memory space as the backbone, preserving KV cache locality</li>
+<li><strong>Phase Transition</strong>: After reasoning, the same batched requests are transitioned to response generation; the scheduler maintains KV cache ownership and skips prefill, directly dispatching decoding kernels</li>
+</ol>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Production LLM serving infrastructure (vLLM, TensorRT-LLM, SGLang, etc.)</li>
+<li>Multi-tenant serving scenarios where request batching across security phases improves hardware utilization</li>
+<li>Deployments requiring transparent integration into existing inference pipelines</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires custom kernel development and deep knowledge of the serving engine’s internals; not portable across different inference frameworks without additional engineering</li>
+<li>Debugging and profiling multi-phase batched execution is complex and less transparent than simple sequential execution</li>
+<li>Vendor lock-in to vLLM ecosystem; changes to vLLM’s cache management or scheduling may require adapter maintenance</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li><strong>Batch recommendation ranking</strong>: Integrate RedVisor into vLLM-based ranking services to defend batch inference on retrieved candidate sets while maintaining high throughput</li>
+<li><strong>Collaborative filtering with LLM explanations</strong>: Protect explanation generation pipeline in vLLM-served personalized recommendation systems from injection attacks</li>
+<li><strong>Large-scale content moderation</strong>: Implement reasoning-aware moderation detection at serving scale using vLLM’s batching capabilities</li>
+</ul>
+<h2 id="analysis-redvisor-in-context-of-prior-work">Analysis: RedVisor in Context of Prior Work<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#analysis-redvisor-in-context-of-prior-work" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>RedVisor addresses a fundamental tension in LLM defense that becomes especially critical when viewed through the lens of <strong>LLM Inference Performance</strong>. The paper’s key innovation—the “zero-copy KV cache reuse” strategy—directly tackles the decode-phase bottleneck identified in the Team Mental Model. Traditional detection-based defenses create two separate inference passes (one for reasoning/detection, one for response generation), which means redundant prefill computation and multiple KV cache instantiations. RedVisor’s adapter-based approach that is “active only during the reasoning phase and muted during response generation” cleverly exploits the inference pipeline structure: by reusing the KV cache from the detection phase, it converts what would be two full prefill operations into a single prefill with a lightweight reasoning pass. This is a concrete instantiation of the principle that “everything works by shrinking one of those terms”—in this case, the attention-on-context and KV-cache-reads terms for the second pass.</p>
+<p>The connection to <strong>Early-Exit Language Models</strong> is more subtle but important. Both papers recognize that not all computation is equally necessary across the inference pipeline. Early-exit systems ask whether we can terminate early on “easy” inputs; RedVisor asks whether we can selectively activate/deactivate reasoning capacity based on threat detection needs. The adapter mechanism mirrors the early-exit pattern of conditional computation: maintaining a frozen backbone while adding lightweight, removable logic that operates conditionally. However, RedVisor’s motivation differs—it’s not about confidence thresholds on normal inputs, but about injecting reasoning paths that explicitly guide safe behavior when adversarial content is detected.</p>
+<p>Finally, RedVisor’s approach of decomposing the defense into fine-grained reasoning that localizes attacks echoes the principles in <strong>Recursive Language Models</strong>, which emphasize that LLMs can “programmatically examine, decompose, and recursively call itself.” While RLMs apply this to handle context-length constraints, RedVisor applies recursive reasoning to handle adversarial constraints—the model must examine the prompt structure, identify injected instructions, and recursively condition its response generation on that analysis. Both papers leverage the insight that LLMs’ reasoning capabilities can be structured and controlled through careful prompt/architecture design. RedVisor’s novel contribution is demonstrating that this structured reasoning can simultaneously serve defense (detecting attacks) and efficiency (avoiding redundant computation through KV reuse) without incurring the “alignment tax” of prevention-based fine-tuning.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-263" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#redvisor-reasoning-aware-prompt-injection-defense-via-zero-copy-kv-cache-reuse" data-for="redvisor-reasoning-aware-prompt-injection-defense-via-zero-copy-kv-cache-reuse">RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#zero-copy-kv-cache-reuse-strategy" data-for="zero-copy-kv-cache-reuse-strategy">Zero-Copy KV Cache Reuse Strategy</a></li><li class="depth-1"><a href="#integration-with-vllm-serving-engine" data-for="integration-with-vllm-serving-engine">Integration with vLLM Serving Engine</a></li><li class="depth-1"><a href="#analysis-redvisor-in-context-of-prior-work" data-for="analysis-redvisor-in-context-of-prior-work">Analysis: RedVisor in Context of Prior Work</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-02-03" class="internal">Research Digest — Tue 2026-02-03</a></li><li><a href="../literature/2026-01-29-Beyond-Speedup----Utilizing-KV-Cache-for-Sampling-and-Reason" class="internal">Beyond Speedup -- Utilizing KV Cache for Sampling and Reasoning</a></li><li><a href="../literature/2026-01-31-EWSJF-An-Adaptive-Scheduler-with-Hybrid-Partitioning-for-Mix" class="internal">EWSJF: An Adaptive Scheduler with Hybrid Partitioning for Mixed-Workload LLM Inference</a></li><li><a href="../literature/2026-01-31-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></li><li><a href="../literature/2026-02-02-Towards-Resiliency-in-Large-Language-Model-Serving-with-Kevl" class="internal">Towards Resiliency in Large Language Model Serving with KevlarFlow</a></li><li><a href="../literature/2026-02-03-Nano-vLLM-How-a-vLLM-style-inference-engine-works" class="internal">Nano-vLLM: How a vLLM-style inference engine works</a></li><li><a href="../literature/2026-02-04-LRAgent-Efficient-KV-Cache-Sharing-for-Multi-LoRA-LLM-Agents" class="internal">LRAgent: Efficient KV Cache Sharing for Multi-LoRA LLM Agents</a></li><li><a href="../literature/2026-02-13-Deep-Kernel-Fusion-for-Transformers" class="internal">Deep Kernel Fusion for Transformers</a></li><li><a href="../literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L" class="internal">PrefillShare: A Shared Prefill Module for KV Reuse in Multi-LLM Disaggregated Serving</a></li><li><a href="../refs/adversarial-foil-construction-for-bias-interplay-evaluation" class="internal">Adversarial Foil Construction for Bias Interplay Evaluation</a></li><li><a href="../refs/early-exit-large-language-models" class="internal">Early-Exit Large Language Models</a></li><li><a href="../refs/layerwise-embedding-injection-in-llms" class="internal">Layerwise Embedding Injection in LLMs</a></li><li><a href="../refs/llm-inference-performance-the-team-mental-model-experiment-playbook" class="internal">LLM Inference Performance: The Team Mental Model + Experiment Playbook</a></li><li><a href="../refs/recursive-language-models" class="internal">Recursive Language Models</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

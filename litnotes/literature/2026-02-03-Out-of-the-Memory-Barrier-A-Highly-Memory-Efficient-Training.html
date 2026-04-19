@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts | Lit Notes"/><meta name="twitter:description" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts Source: arXiv:cs.CL Published: 2026-02-02 Rank: #1 (score: 0.93, max_sim: 0.86) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02108v1 Abstract Training Large Language Models ..."/><meta property="og:description" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts Source: arXiv:cs.CL Published: 2026-02-02 Rank: #1 (score: 0.93, max_sim: 0.86) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02108v1 Abstract Training Large Language Models ..."/><meta property="og:image:alt" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts Source: arXiv:cs.CL Published: 2026-02-02 Rank: #1 (score: 0.93, max_sim: 0.86) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02108v1 Abstract Training Large Language Models ..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-Out-of-the-Memory-Barrier-A-Highly-Memory-Efficient-Training"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-Out-of-the-Memory-Barrier-A-Highly-Memory-Efficient-Training"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts Source: arXiv:cs.CL Published: 2026-02-02 Rank: #1 (score: 0.93, max_sim: 0.86) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.02108v1 Abstract Training Large Language Models ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-03-Out-of-the-Memory-Barrier-A-Highly-Memory-Efficient-Training"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-273"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-273" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts</h1></div></div><article class="popover-hint"><h1 id="out-of-the-memory-barrier-a-highly-memory-efficient-training-system-for-llms-with-million-token-contexts">Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#out-of-the-memory-barrier-a-highly-memory-efficient-training-system-for-llms-with-million-token-contexts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2602.02108v1" class="external">arXiv:cs.CL<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-02-02
+<strong>Rank:</strong> #1 (score: 0.93, max_sim: 0.86)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2602.02108v1" class="external">https://arxiv.org/pdf/2602.02108v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Training Large Language Models (LLMs) on long contexts is severely constrained by prohibitive GPU memory overhead, not training time. The primary culprits are the activations, whose memory footprints scale linearly with sequence length. We introduce OOMB, a highly memory-efficient training system that directly confronts this barrier. Our approach employs a chunk-recurrent training framework with on-the-fly activation recomputation, which maintains a constant activation memory footprint (O(1)) and shifts the primary bottleneck to the growing KV cache. To manage the KV cache, OOMB integrates a suite of synergistic optimizations: a paged memory manager for both the KV cache and its gradients to eliminate fragmentation, asynchronous CPU offloading to hide data transfer latency, and page-level sparse attention to reduce both computational complexity and communication overhead. The synergy of these techniques yields exceptional efficiency. Our empirical results show that for every additional 10K tokens of context, the end-to-end training memory overhead increases by a mere 10MB for Qwen2.5-7B. This allows training Qwen2.5-7B with a 4M-token context on a single H200 GPU, a feat that would otherwise require a large cluster using context parallelism. This work represents a substantial advance in resource efficiency for long-context LLM training. The source code is available at <a href="https://github.com/wenhaoli-xmu/OOMB" class="external">https://github.com/wenhaoli-xmu/OOMB<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Chunk-recurrent training framework</li>
+<li>on-the-fly activation recomputation</li>
+<li>paged memory manager</li>
+<li>asynchronous CPU offloading</li>
+<li>page-level sparse attention</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-05-HySparse-A-Hybrid-Sparse-Attention-Architecture-with-Oracle" class="internal alias" data-slug="literature/2026-02-05-HySparse-A-Hybrid-Sparse-Attention-Architecture-with-Oracle">HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing</a></td><td>0.26</td></tr><tr><td><a href="../literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management" class="internal alias" data-slug="literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management">SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</a></td><td>0.26</td></tr><tr><td><a href="../literature/2026-02-10-ParisKV-Fast-and-Drift-Robust-KV-Cache-Retrieval-for-Long-Co" class="internal alias" data-slug="literature/2026-02-10-ParisKV-Fast-and-Drift-Robust-KV-Cache-Retrieval-for-Long-Co">ParisKV: Fast and Drift-Robust KV-Cache Retrieval for Long-Context LLMs</a></td><td>0.24</td></tr><tr><td><a href="../literature/2026-01-28-Superlinear-Multi-Step-Attention" class="internal alias" data-slug="literature/2026-01-28-Superlinear-Multi-Step-Attention">Superlinear Multi-Step Attention</a></td><td>0.23</td></tr><tr><td><a href="../literature/2026-02-04-HySparse-A-Hybrid-Sparse-Attention-Architecture-with-Oracle" class="internal alias" data-slug="literature/2026-02-04-HySparse-A-Hybrid-Sparse-Attention-Architecture-with-Oracle">HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing</a></td><td>0.23</td></tr></tbody></table></div>
+<h2 id="paged-memory-manager-for-kv-cache-and-gradients">Paged Memory Manager for KV Cache and Gradients<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#paged-memory-manager-for-kv-cache-and-gradients" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Organize KV cache and gradient memory into fixed-size pages with dynamic allocation, eliminating fragmentation and enabling efficient offloading to CPU memory.</p>
+<p><strong>Problem It Solves</strong>: KV cache grows linearly with sequence length and becomes the dominant memory bottleneck after activations are eliminated. Contiguous memory allocation leads to fragmentation and external memory fragmentation, preventing efficient use of available GPU memory and CPU offloading.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Allocate KV cache in fixed-size pages (similar to virtual memory paging in operating systems)</li>
+<li>Maintain a page allocation table tracking which pages are in use and their memory locations</li>
+<li>For sequences longer than GPU memory allows, allocate overflow pages in CPU RAM</li>
+<li>Track page locations (GPU vs CPU) during forward/backward passes</li>
+<li>Pages are deallocated and freed for reuse as tokens are processed and context windows shift</li>
+<li>Gradient pages follow the same paging mechanism, allowing gradients to also spill to CPU if needed</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    A[\&quot;KV Cache Request&lt;br/>Size = seq_len * d_model\&quot;] --> B{\&quot;Page&lt;br/>Available?\&quot;}\n    B -->|Yes| C[\&quot;Allocate from GPU&lt;br/>Page Pool\&quot;]\n    B -->|No| D{\&quot;GPU Memory&lt;br/>Full?\&quot;}\n    D -->|No| C\n    D -->|Yes| E[\&quot;Allocate from CPU&lt;br/>Page Pool\&quot;]\n    C --> F[\&quot;Track Page Location&lt;br/>in Allocation Table\&quot;]\n    E --> F\n    F --> G[\&quot;Return Page Handle&lt;br/>to Model\&quot;]&quot;">flowchart TD
+    A[&quot;KV Cache Request&lt;br/>Size = seq_len * d_model&quot;] --> B{&quot;Page&lt;br/>Available?&quot;}
+    B -->|Yes| C[&quot;Allocate from GPU&lt;br/>Page Pool&quot;]
+    B -->|No| D{&quot;GPU Memory&lt;br/>Full?&quot;}
+    D -->|No| C
+    D -->|Yes| E[&quot;Allocate from CPU&lt;br/>Page Pool&quot;]
+    C --> F[&quot;Track Page Location&lt;br/>in Allocation Table&quot;]
+    E --> F
+    F --> G[&quot;Return Page Handle&lt;br/>to Model&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Training on sequences exceeding single GPU memory capacity</li>
+<li>Systems with heterogeneous memory (GPU + CPU RAM available)</li>
+<li>Long-context inference scenarios where KV cache grows unbounded</li>
+<li>Batch training where KV cache varies significantly across examples</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Page-based allocation introduces indexing overhead during access</li>
+<li>CPU offloading introduces PCIe bandwidth bottleneck for data transfer</li>
+<li>Page size selection affects fragmentation vs. overhead trade-off</li>
+<li>Gradient computation may need to be stalled if gradient pages are on CPU while weights are on GPU</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Managing cache for long user sequences in recommendation systems</li>
+<li>Training ranking models with variable-length context windows without manual sequence padding</li>
+</ul>
+<hr/>
+<h2 id="asynchronous-cpu-offloading-with-latency-hiding">Asynchronous CPU Offloading with Latency Hiding<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#asynchronous-cpu-offloading-with-latency-hiding" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Proactively transfer KV cache pages to CPU memory asynchronously during computation phases, overlapping data movement latency with computation to maintain GPU utilization.</p>
+<p><strong>Problem It Solves</strong>: When KV cache overflows to CPU due to GPU memory constraints, synchronous transfers block computation, creating idle GPU time. Naive offloading strategies result in significant performance degradation as GPUs wait for data transfers.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Predict which KV cache pages will not be needed in the next N computation steps</li>
+<li>Initiate asynchronous PCIe transfers to move these pages from GPU to CPU VRAM during forward/backward computation</li>
+<li>Overlap transfer latency with GPU computation on independent data</li>
+<li>When a page on CPU is needed again, prefetch it back to GPU asynchronously before it’s actually required</li>
+<li>Use a scheduling algorithm to coordinate transfers such that data arrives just-in-time without stalling computation</li>
+<li>Maintain a pool of available GPU memory pages for rapid re-loading of frequently-accessed offloaded pages</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;Computation Queue&lt;br/>Steps t:t+N\&quot;] --> B[\&quot;Identify Unused&lt;br/>Pages in t:t+N\&quot;]\n    B --> C[\&quot;Async Transfer:&lt;br/>GPU → CPU\&quot;]\n    D[\&quot;GPU Computation&lt;br/>Progress\&quot;] --> E{\&quot;Transfer&lt;br/>Complete?\&quot;}\n    E -->|Yes| F[\&quot;Page in CPU Memory\&quot;]\n    E -->|No| D\n    G[\&quot;Future Step t+N&lt;br/>Needs Page\&quot;] --> H[\&quot;Async Transfer:&lt;br/>CPU → GPU\&quot;]\n    H --> I[\&quot;Page Ready&lt;br/>for Computation\&quot;]&quot;">flowchart LR
+    A[&quot;Computation Queue&lt;br/>Steps t:t+N&quot;] --> B[&quot;Identify Unused&lt;br/>Pages in t:t+N&quot;]
+    B --> C[&quot;Async Transfer:&lt;br/>GPU → CPU&quot;]
+    D[&quot;GPU Computation&lt;br/>Progress&quot;] --> E{&quot;Transfer&lt;br/>Complete?&quot;}
+    E -->|Yes| F[&quot;Page in CPU Memory&quot;]
+    E -->|No| D
+    G[&quot;Future Step t+N&lt;br/>Needs Page&quot;] --> H[&quot;Async Transfer:&lt;br/>CPU → GPU&quot;]
+    H --> I[&quot;Page Ready&lt;br/>for Computation&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>GPU systems with access to large CPU RAM pools</li>
+<li>Scenarios where context length grows dynamically during training</li>
+<li>Batch inference with variable sequence lengths per example</li>
+<li>Multi-GPU training where some GPUs have less memory than others</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires accurate prediction of future page access patterns (mispredictions cause stalls)</li>
+<li>PCIe bandwidth limits the rate of offloading (typically 16-32 GB/s, much slower than GPU memory)</li>
+<li>Asynchronous operations add complexity and potential synchronization bugs</li>
+<li>Effective only if computation can be overlapped; small models may not have enough work to hide latency</li>
+<li>Overhead grows with distance between GPU and CPU memory (NUMA effects on larger systems)</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Training recommendation models with long user history where most recent interactions compute while older ones offload</li>
+<li>Multi-turn conversational models where early context is offloaded during processing of recent turns</li>
+</ul>
+<hr/>
+<h2 id="page-level-sparse-attention">Page-Level Sparse Attention<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#page-level-sparse-attention" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Apply sparse attention patterns at the granularity of pages (blocks of tokens) rather than individual tokens, reducing both computational complexity and KV cache access overhead.</p>
+<p><strong>Problem It Solves</strong>: Full attention over millions of tokens requires O(n²) computations and memory access, which remains prohibitively expensive even with KV cache on CPU. Sparse attention reduces complexity, but token-level sparsity introduces irregular memory access patterns and poor hardware utilization.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Organize tokens into fixed-size pages (e.g., 64 or 128 tokens per page)</li>
+<li>Define sparse attention pattern at page level: which query pages can attend to which key-value pages</li>
+<li>For each query page, compute attention only over a sparse subset of KV cache pages (e.g., local pages + summary pages)</li>
+<li>Within selected pages, optionally apply dense attention (all tokens in query page attend to all tokens in selected KV pages)</li>
+<li>This two-level hierarchy (sparse at page level, dense within pages) exploits both sequential locality and hardware efficiency</li>
+<li>Pattern can be block-diagonal, strided, local-window-plus-summary, or custom based on task requirements</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;KV Cache Pages&lt;br/>P1, P2, P3...Pn\&quot;] --> B[\&quot;Sparse Pattern&lt;br/>at Page Level\&quot;]\n    C[\&quot;Query Pages&lt;br/>Q1, Q2, Q3\&quot;] --> D[\&quot;Page Attention&lt;br/>Matrix\&quot;]\n    B --> D\n    D --> E[\&quot;Select KV Pages&lt;br/>for Each Q Page\&quot;]\n    E --> F[\&quot;Dense Attention&lt;br/>Within Selected Pages\&quot;]\n    F --> G[\&quot;Output&lt;br/>Attention Scores\&quot;]&quot;">flowchart LR
+    A[&quot;KV Cache Pages&lt;br/>P1, P2, P3...Pn&quot;] --> B[&quot;Sparse Pattern&lt;br/>at Page Level&quot;]
+    C[&quot;Query Pages&lt;br/>Q1, Q2, Q3&quot;] --> D[&quot;Page Attention&lt;br/>Matrix&quot;]
+    B --> D
+    D --> E[&quot;Select KV Pages&lt;br/>for Each Q Page&quot;]
+    E --> F[&quot;Dense Attention&lt;br/>Within Selected Pages&quot;]
+    F --> G[&quot;Output&lt;br/>Attention Scores&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Training extremely long-context models (1M-10M tokens) where full attention is infeasible</li>
+<li>Retrieval-augmented generation where only relevant context pages matter</li>
+<li>Time-series or document analysis where locality is important</li>
+<li>Any attention-based model where full O(n²) attention is prohibitive</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Reduces model expressiveness compared to full attention (some token pairs never interact)</li>
+<li>Sparse pattern design is task-dependent; wrong pattern choice hurts performance</li>
+<li>Page size selection affects the sparsity-computation trade-off</li>
+<li>May require careful tuning to avoid ignoring important long-range dependencies</li>
+<li>Implementation complexity increases compared to standard dense attention</li>
+<li>Sparse patterns with irregular access can still have poor cache locality if not carefully designed</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Long-context ranking where candidate relevance is determined by recent interactions (local pages) and historical patterns (summary pages)</li>
+<li>Multi-document retrieval ranking where attention only focuses on relevant documents (pages) rather than all tokens</li>
+</ul>
+<h2 id="extending-long-context-training-beyond-efficient-attention">Extending Long-Context Training Beyond Efficient Attention<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#extending-long-context-training-beyond-efficient-attention" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>While the matched notes on “Efficient Attention Mechanisms for Large Language Model: A Survey” focus on reducing the <em>computational</em> complexity of attention through linear approximations and architectural innovations (like Mamba and RetNet), OOMB addresses a complementary but distinct bottleneck: the <em>memory overhead of training</em> with long contexts. The survey emphasizes how linear attention variants achieve linear time/space scaling for inference, but OOMB’s insight is that even with efficient attention, the activation memory during training scales linearly with sequence length. By introducing O(1) activation memory through chunk-recurrent training with on-the-fly recomputation, OOMB sidesteps the assumption that longer context windows necessarily require more activation storage—a perspective that complements rather than contradicts efficient attention research. The two approaches are synergistic: efficient attention mechanisms can reduce per-token computation, while OOMB reduces per-token activation memory, together enabling practical long-context training.</p>
+<h2 id="bridging-pretraining-context-and-training-feasibility">Bridging Pretraining Context and Training Feasibility<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bridging-pretraining-context-and-training-feasibility" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The “Lengthy Context Retrieval via LLM Pretraining” note describes leveraging LLMs pre-trained on large context windows to enable long-context inference without expensive fine-tuning. OOMB directly addresses the inverse problem: <em>how to make long-context pretraining itself feasible</em>. The note assumes that large-context pretraining is already possible (e.g., 8k+ token windows), but OOMB’s contribution is making this assumption practical for resource-constrained settings—enabling 4M-token context pretraining on a single H200 GPU. This reframes the relationship: OOMB provides the infrastructure that makes the pretraining stage of the pipeline in the matched note economically viable, particularly for organizations without massive compute clusters. The paged KV cache memory manager and asynchronous CPU offloading are specifically engineered solutions to the training-time constraints that Lengthy Context Retrieval takes as solved.</p>
+<h2 id="addressing-context-rot-through-training-infrastructure">Addressing Context Rot Through Training Infrastructure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#addressing-context-rot-through-training-infrastructure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The “Long Context Degradation in LLMs” note warns that current benchmarks like Needle in a Haystack obscure real performance degradation on semantically complex tasks with distractors—a phenomenon called context rot. OOMB’s significance here is methodological: by making long-context training dramatically more accessible (eliminating the cluster requirement), it enables broader empirical investigation of context degradation across model scales and training regimes. Previously, studying context rot at million-token scales required institutional-scale compute; OOMB democratizes this investigation. Furthermore, the paper’s chunk-recurrent framework with page-level sparse attention may naturally induce different attention patterns than full-context training, potentially offering a fresh angle on understanding <em>why</em> context degradation occurs and whether certain training approaches mitigate it better than others.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-259" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#out-of-the-memory-barrier-a-highly-memory-efficient-training-system-for-llms-with-million-token-contexts" data-for="out-of-the-memory-barrier-a-highly-memory-efficient-training-system-for-llms-with-million-token-contexts">Out of the Memory Barrier: A Highly Memory Efficient Training System for LLMs with Million-Token Contexts</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#paged-memory-manager-for-kv-cache-and-gradients" data-for="paged-memory-manager-for-kv-cache-and-gradients">Paged Memory Manager for KV Cache and Gradients</a></li><li class="depth-1"><a href="#asynchronous-cpu-offloading-with-latency-hiding" data-for="asynchronous-cpu-offloading-with-latency-hiding">Asynchronous CPU Offloading with Latency Hiding</a></li><li class="depth-1"><a href="#page-level-sparse-attention" data-for="page-level-sparse-attention">Page-Level Sparse Attention</a></li><li class="depth-1"><a href="#extending-long-context-training-beyond-efficient-attention" data-for="extending-long-context-training-beyond-efficient-attention">Extending Long-Context Training Beyond Efficient Attention</a></li><li class="depth-1"><a href="#bridging-pretraining-context-and-training-feasibility" data-for="bridging-pretraining-context-and-training-feasibility">Bridging Pretraining Context and Training Feasibility</a></li><li class="depth-1"><a href="#addressing-context-rot-through-training-infrastructure" data-for="addressing-context-rot-through-training-infrastructure">Addressing Context Rot Through Training Infrastructure</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management" class="internal">SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</a></li><li><a href="../literature/2026-01-29-TokenSeek-Memory-Efficient-Fine-Tuning-via-Instance-Aware-To" class="internal">TokenSeek: Memory Efficient Fine Tuning via Instance-Aware Token Ditching</a></li><li><a href="../literature/2026-01-30-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></li><li><a href="../literature/2026-02-10-ParisKV-Fast-and-Drift-Robust-KV-Cache-Retrieval-for-Long-Co" class="internal">ParisKV: Fast and Drift-Robust KV-Cache Retrieval for Long-Context LLMs</a></li><li><a href="../refs/context-rot" class="internal">context rot</a></li><li><a href="../refs/efficient-attention-mechanisms-for-large-language-model-a-survey" class="internal">Efficient Attention Mechanisms for Large Language Model: A Survey</a></li><li><a href="../refs/infinite-retrieval-attention-enhanced-llms-in-long-context-processing" class="internal">Infinite Retrieval: Attention Enhanced LLMs in Long-Context Processing</a></li><li><a href="../refs/lengthy-context-retrieval-via-llm-pretraining" class="internal">Lengthy Context Retrieval via LLM Pretraining</a></li><li><a href="../refs/liger-kernel-empowering-an-open-source-ecosystem-of-triton-kernels-for-efficient-llm-training" class="internal">Liger-Kernel: Empowering an open source ecosystem of Triton Kernels for Efficient LLM Training</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

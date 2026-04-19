@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference | Lit Notes"/><meta name="twitter:description" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference Source: arXiv:cs.AI Published: 2026-01-29 Rank: #1 (score: 0.71, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Abstract AI agent inference is driving an inference heavy datacenter future and exposes bottlenecks b..."/><meta property="og:description" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference Source: arXiv:cs.AI Published: 2026-01-29 Rank: #1 (score: 0.71, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Abstract AI agent inference is driving an inference heavy datacenter future and exposes bottlenecks b..."/><meta property="og:image:alt" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference Source: arXiv:cs.AI Published: 2026-01-29 Rank: #1 (score: 0.71, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Abstract AI agent inference is driving an inference heavy datacenter future and exposes bottlenecks b..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-01-31-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-01-31-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference Source: arXiv:cs.AI Published: 2026-01-29 Rank: #1 (score: 0.71, max_sim: 0.81) Reading time: ~0 min Tags: Uncategorized Abstract AI agent inference is driving an inference heavy datacenter future and exposes bottlenecks b..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-01-31-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-200"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-200" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</h1></div></div><article class="popover-hint"><h1 id="heterogeneous-computing-the-key-to-powering-the-future-of-ai-agent-inference">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#heterogeneous-computing-the-key-to-powering-the-future-of-ai-agent-inference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="https://arxiv.org/abs/2601.22001v1" class="external">arXiv:cs.AI<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-01-29
+<strong>Rank:</strong> #1 (score: 0.71, max_sim: 0.81)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized</p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>AI agent inference is driving an inference heavy datacenter future and exposes bottlenecks beyond compute - especially memory capacity, memory bandwidth and high-speed interconnect. We introduce two metrics - Operational Intensity (OI) and Capacity Footprint (CF) - that jointly explain regimes the classic roofline analysis misses, including the memory capacity wall. Across agentic workflows (chat, coding, web use, computer use) and base model choices (GQA/MLA, MoE, quantization), OI/CF can shift dramatically, with long context KV cache making decode highly memory bound. These observations motivate disaggregated serving and system level heterogeneity: specialized prefill and decode accelerators, broader scale up networking, and decoupled compute-memory enabled by optical I/O. We further hypothesize agent-hardware co design, multiple inference accelerators within one system, and high bandwidth, large capacity memory disaggregation as foundations for adaptation to evolving OI/CF. Together, these directions chart a path to sustain efficiency and capability for large scale agentic AI inference.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Operational Intensity (OI) and Capacity Footprint (CF) metrics</li>
+<li>disaggregated serving architecture</li>
+<li>specialized prefill and decode accelerators</li>
+<li>agent-hardware co-design</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-02-01-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal alias" data-slug="literature/2026-02-01-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></td><td>0.80</td></tr><tr><td><a href="../literature/2026-01-30-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal alias" data-slug="literature/2026-01-30-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></td><td>0.77</td></tr><tr><td><a href="../literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L" class="internal alias" data-slug="literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L">PrefillShare: A Shared Prefill Module for KV Reuse in Multi-LLM Disaggregated Serving</a></td><td>0.38</td></tr><tr><td><a href="../literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management" class="internal alias" data-slug="literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management">SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</a></td><td>0.21</td></tr><tr><td><a href="../literature/2026-02-03-RedVisor-Reasoning-Aware-Prompt-Injection-Defense-via-Zero-C" class="internal alias" data-slug="literature/2026-02-03-RedVisor-Reasoning-Aware-Prompt-Injection-Defense-via-Zero-C">RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse</a></td><td>0.20</td></tr></tbody></table></div>
+<h2 id="disaggregated-serving-with-specialized-prefilldecode-accelerators">Disaggregated Serving with Specialized Prefill/Decode Accelerators<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#disaggregated-serving-with-specialized-prefilldecode-accelerators" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Separate inference infrastructure for prefill (processing prompt tokens) and decode (generating output tokens) phases, using hardware specialized for each phase’s distinct OI/CF characteristics.</p>
+<p><strong>Problem It Solves</strong>: Prefill (high OI, compute-bound) and decode (low OI, memory bandwidth-bound with high CF) have fundamentally different computational characteristics; a single accelerator architecture wastes resources by being over-provisioned for one phase and under-provisioned for the other.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Partition agentic inference workflow into two stages:
+<ul>
+<li>Prefill: Process all input prompt tokens in parallel (e.g., N tokens in ~log(N) iterations), high arithmetic intensity</li>
+<li>Decode: Generate output tokens sequentially, one token per step, low arithmetic intensity</li>
+</ul>
+</li>
+<li>Route prefill requests to accelerators optimized for high compute density and throughput (e.g., high FLOPs/watt, larger on-chip caches)</li>
+<li>Route decode requests to accelerators optimized for memory bandwidth and low-latency response (e.g., wide memory buses, high GB/s per core)</li>
+<li>Use request scheduling layer to balance load across prefill and decode clusters based on incoming request characteristics (prompt length, expected output length)</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;Agentic Request&lt;br/>(prompt + context)\&quot;] --> B{Scheduler}\n    B -->|Prefill Phase| C[\&quot;Prefill Cluster&lt;br/>(compute-optimized)\&quot;]\n    C -->|KV Cache| D[\&quot;Shared Memory&lt;br/>(optical I/O)\&quot;]\n    B -->|Decode Phase| E[\&quot;Decode Cluster&lt;br/>(bandwidth-optimized)\&quot;]\n    D -->|KV Cache| E\n    E -->|Output Tokens| F[\&quot;Response\&quot;]&quot;">flowchart LR
+    A[&quot;Agentic Request&lt;br/>(prompt + context)&quot;] --> B{Scheduler}
+    B -->|Prefill Phase| C[&quot;Prefill Cluster&lt;br/>(compute-optimized)&quot;]
+    C -->|KV Cache| D[&quot;Shared Memory&lt;br/>(optical I/O)&quot;]
+    B -->|Decode Phase| E[&quot;Decode Cluster&lt;br/>(bandwidth-optimized)&quot;]
+    D -->|KV Cache| E
+    E -->|Output Tokens| F[&quot;Response&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Large-scale inference serving for chat, coding assistants, and web agents with variable input/output lengths</li>
+<li>Multi-tenant datacenters where request mixing (short prompts, long outputs vs. long prompts, short outputs) requires flexible resources</li>
+<li>Long-context agentic workflows where KV cache becomes memory capacity bottleneck during decode</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Requires careful scheduling to minimize latency overhead of request routing between clusters</li>
+<li>Prefill cluster idle time when decode-heavy requests dominate (or vice versa) reduces overall utilization</li>
+<li>Shared state (KV cache) must be transferred between clusters, creating dependency on interconnect bandwidth</li>
+<li>Operational complexity increases compared to monolithic inference cluster</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Ranking systems with variable input feature counts and output ranks per request</li>
+<li>LLM-based retrieval where query processing (prefill) and result ranking/re-ranking (decode-like) have different hardware needs</li>
+</ul>
+<hr/>
+<h2 id="system-level-heterogeneity-with-compute-memory-disaggregation-via-optical-io">System-Level Heterogeneity with Compute-Memory Disaggregation via Optical I/O<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#system-level-heterogeneity-with-compute-memory-disaggregation-via-optical-io" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Decouple compute and memory into separate system components connected by high-speed optical interconnects, enabling flexible matching of specialized compute accelerators to memory hierarchies based on workload characteristics.</p>
+<p><strong>Problem It Solves</strong>: Monolithic accelerators (e.g., single GPU) bundle compute and memory in fixed ratios; agentic inference requires flexible compute-to-memory ratios that vary across prefill/decode phases and model architectures (MoE, quantization, long-context), creating silicon waste and reduced efficiency.</p>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li>Partition system into compute pools (specialized prefill/decode accelerators) and memory pools (DRAM, high-bandwidth memory hierarchies)</li>
+<li>Connect via optical I/O fabric providing high-throughput, low-latency interconnect (overcoming electrical I/O bottlenecks that limit disaggregation viability)</li>
+<li>Workload-aware mapping: route prefill requests to compute-heavy accelerators with modest memory attachment; route decode to bandwidth-optimized memory pools</li>
+<li>Enable multiple inference accelerators per system to work in concert, each specialized for specific OI/CF regime</li>
+<li>Allow dynamic reconfiguration of compute-memory bindings as agentic workflow phases transition</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TB\n    A[\&quot;Request Scheduler\&quot;] --> B[\&quot;Prefill&lt;br/>Accelerator 1\&quot;]\n    A --> C[\&quot;Prefill&lt;br/>Accelerator 2\&quot;]\n    A --> D[\&quot;Decode&lt;br/>Accelerator 1\&quot;]\n    A --> E[\&quot;Decode&lt;br/>Accelerator 2\&quot;]\n    \n    B --> F[\&quot;Optical I/O&lt;br/>Interconnect&lt;br/>High BW, Low Latency\&quot;]\n    C --> F\n    D --> F\n    E --> F\n    \n    F --> G[\&quot;Large Capacity&lt;br/>Memory Pool\&quot;]\n    F --> H[\&quot;High BW&lt;br/>Memory Pool\&quot;]&quot;">flowchart TB
+    A[&quot;Request Scheduler&quot;] --> B[&quot;Prefill&lt;br/>Accelerator 1&quot;]
+    A --> C[&quot;Prefill&lt;br/>Accelerator 2&quot;]
+    A --> D[&quot;Decode&lt;br/>Accelerator 1&quot;]
+    A --> E[&quot;Decode&lt;br/>Accelerator 2&quot;]
+    
+    B --> F[&quot;Optical I/O&lt;br/>Interconnect&lt;br/>High BW, Low Latency&quot;]
+    C --> F
+    D --> F
+    E --> F
+    
+    F --> G[&quot;Large Capacity&lt;br/>Memory Pool&quot;]
+    F --> H[&quot;High BW&lt;br/>Memory Pool&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Hyperscale inference datacenters serving diverse agentic workloads (chat, coding, web use, computer use)</li>
+<li>Scenarios requiring dynamic hardware adaptation as model architectures evolve (GQA → MLA, dense → MoE)</li>
+<li>Multi-tenant inference where heterogeneous request patterns justify specialized hardware</li>
+<li>Future AI systems with hardware-software co-design constraints</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Optical I/O technology currently immature; deployment risk and integration complexity</li>
+<li>Adds architectural complexity in memory coherence, scheduling, and fault tolerance</li>
+<li>Requires new software stacks for workload-aware placement and dynamic reconfiguration</li>
+<li>Higher upfront capital costs before achieving efficiency gains at scale</li>
+<li>Optical interconnect may have latency overhead for very small (single-token) operations</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>Building RecSys inference pipelines where candidate retrieval (compute-heavy) and ranking (memory-heavy with large feature sets) benefit from separate acceleration</li>
+<li>Scaling LLM-based agents that alternate between reasoning (compute-bound, small state) and retrieval (memory-bound, large context)</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-186" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#heterogeneous-computing-the-key-to-powering-the-future-of-ai-agent-inference" data-for="heterogeneous-computing-the-key-to-powering-the-future-of-ai-agent-inference">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#disaggregated-serving-with-specialized-prefilldecode-accelerators" data-for="disaggregated-serving-with-specialized-prefilldecode-accelerators">Disaggregated Serving with Specialized Prefill/Decode Accelerators</a></li><li class="depth-1"><a href="#system-level-heterogeneity-with-compute-memory-disaggregation-via-optical-io" data-for="system-level-heterogeneity-with-compute-memory-disaggregation-via-optical-io">System-Level Heterogeneity with Compute-Memory Disaggregation via Optical I/O</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../literature/2026-01-29-SuperInfer-SLO-Aware-Rotary-Scheduling-and-Memory-Management" class="internal">SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</a></li><li><a href="../literature/2026-01-30-EWSJF-An-Adaptive-Scheduler-with-Hybrid-Partitioning-for-Mix" class="internal">EWSJF: An Adaptive Scheduler with Hybrid Partitioning for Mixed-Workload LLM Inference</a></li><li><a href="../literature/2026-01-30-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></li><li><a href="../literature/2026-02-01-EWSJF-An-Adaptive-Scheduler-with-Hybrid-Partitioning-for-Mix" class="internal">EWSJF: An Adaptive Scheduler with Hybrid Partitioning for Mixed-Workload LLM Inference</a></li><li><a href="../literature/2026-02-01-Heterogeneous-Computing-The-Key-to-Powering-the-Future-of-AI" class="internal">Heterogeneous Computing: The Key to Powering the Future of AI Agent Inference</a></li><li><a href="../literature/2026-02-13-PrefillShare-A-Shared-Prefill-Module-for-KV-Reuse-in-Multi-L" class="internal">PrefillShare: A Shared Prefill Module for KV Reuse in Multi-LLM Disaggregated Serving</a></li><li><a href="../refs/agentic-rag-memory-management" class="internal">Agentic RAG: Memory Management</a></li><li><a href="../refs/agentic-rag-taxonomy-of-architectures" class="internal">Agentic RAG: Taxonomy of Architectures</a></li><li><a href="../refs/consolidated-memory-architectures-in-agentic-rag" class="internal">Consolidated Memory Architectures in Agentic RAG</a></li><li><a href="../refs/human-artificial-interaction-in-agentic-ai" class="internal">Human-Artificial Interaction in Agentic AI</a></li><li><a href="../refs/llm-inference-performance-the-team-mental-model-experiment-playbook" class="internal">LLM Inference Performance: The Team Mental Model + Experiment Playbook</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>

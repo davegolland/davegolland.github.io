@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation | Lit Notes</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Source Serif 4:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Lit Notes"/><meta property="og:title" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation | Lit Notes"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation | Lit Notes"/><meta name="twitter:description" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation Source: arXiv:cs.IR Published: 2026-01-31 Rank: #2 (score: 0.95, max_sim: 0.85) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.00899v1 Abstract E-commerce recommendation and search commonly rely on spars..."/><meta property="og:description" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation Source: arXiv:cs.IR Published: 2026-01-31 Rank: #2 (score: 0.95, max_sim: 0.85) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.00899v1 Abstract E-commerce recommendation and search commonly rely on spars..."/><meta property="og:image:alt" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation Source: arXiv:cs.IR Published: 2026-01-31 Rank: #2 (score: 0.95, max_sim: 0.85) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.00899v1 Abstract E-commerce recommendation and search commonly rely on spars..."/><meta property="og:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:url" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta name="twitter:image" content="https://davegolland.github.io/litnotes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="davegolland.github.io/litnotes"/><meta property="og:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-Domain-Adaptive-and-Scalable-Dense-Retrieval-for-Content-Bas"/><meta property="twitter:url" content="https://davegolland.github.io/litnotes/literature/2026-02-03-Domain-Adaptive-and-Scalable-Dense-Retrieval-for-Content-Bas"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation Source: arXiv:cs.IR Published: 2026-01-31 Rank: #2 (score: 0.95, max_sim: 0.85) Reading time: ~0 min Tags: Uncategorized Code: arxiv.org/pdf/2602.00899v1 Abstract E-commerce recommendation and search commonly rely on spars..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbGl0bm90ZXMvbGl0bm90ZXMvc291cmNlL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://davegolland.github.io/litnotes/index.xml"/></head><body data-slug="literature/2026-02-03-Domain-Adaptive-and-Scalable-Dense-Retrieval-for-Content-Bas"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Lit Notes</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{if(a.isFolder&amp;&amp;!b.isFolder)return-1;if(!a.isFolder&amp;&amp;b.isFolder)return 1;if(a.isFolder&amp;&amp;b.isFolder){let order={digest:0,literature:1},aOrder=order[a.displayName]??99,bOrder=order[b.displayName]??99;if(aOrder!==bOrder)return aOrder-bOrder}return b.displayName.localeCompare(a.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;})}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;refs\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-265"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div id="explorer-265" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><h1 class="article-title">Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation</h1></div></div><article class="popover-hint"><h1 id="domain-adaptive-and-scalable-dense-retrieval-for-content-based-recommendation">Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#domain-adaptive-and-scalable-dense-retrieval-for-content-based-recommendation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Source:</strong> <a href="http://arxiv.org/abs/2602.00899v1" class="external">arXiv:cs.IR<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>Published:</strong> 2026-01-31
+<strong>Rank:</strong> #2 (score: 0.95, max_sim: 0.85)
+<strong>Reading time:</strong> ~0 min
+<strong>Tags:</strong> Uncategorized
+<strong>Code:</strong> <a href="https://arxiv.org/pdf/2602.00899v1" class="external">https://arxiv.org/pdf/2602.00899v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="abstract">Abstract<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#abstract" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>E-commerce recommendation and search commonly rely on sparse keyword matching (e.g., BM25), which breaks down under vocabulary mismatch when user intent has limited lexical overlap with product metadata. We cast content-based recommendation as recommendation-as-retrieval: given a natural-language intent signal (a query or review), retrieve the top-K most relevant items from a large catalog via semantic similarity.   We present a scalable dense retrieval system based on a two-tower bi-encoder, fine-tuned on the Amazon Reviews 2023 (Fashion) subset using supervised contrastive learning with Multiple Negatives Ranking Loss. We construct training pairs from review text (as a query proxy) and item metadata (as the positive document) and fine-tune on 50,000 sampled interactions with a maximum sequence length of 500 tokens.   For efficient serving, we combine FAISS HNSW indexing with an ONNX Runtime inference pipeline using INT8 dynamic quantization. On a review-to-title benchmark over 826,402 catalog items, our approach improves Recall@10 from 0.26 (BM25) to 0.66, while meeting practical latency and model-size constraints: 6.1 ms median CPU inference latency (batch size 1) and a 4x reduction in model size.   Overall, we provide an end-to-end, reproducible blueprint for taking domain-adapted dense retrieval from offline training to CPU-efficient serving at catalog scale.</p>
+<h2 id="key-techniques">Key Techniques<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-techniques" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Dense retrieval with bi-encoders</li>
+<li>Supervised contrastive learning with Multiple Negatives Ranking Loss</li>
+<li>FAISS HNSW indexing with INT8 dynamic quantization</li>
+</ul>
+<h2 id="related-litnotes">Related Litnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-litnotes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Note</th><th>Similarity</th></tr></thead><tbody><tr><td><a href="../literature/2026-01-27-LLM-powered-Real-time-Patent-Citation-Recommendation-for-Fin" class="internal alias" data-slug="literature/2026-01-27-LLM-powered-Real-time-Patent-Citation-Recommendation-for-Fin">LLM-powered Real-time Patent Citation Recommendation for Financial Technologies</a></td><td>0.24</td></tr><tr><td><a href="../literature/2026-02-19-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index" class="internal alias" data-slug="literature/2026-02-19-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index">Rethinking ANN-based Retrieval: Multifaceted Learnable Index for Large-scale Recommendation System</a></td><td>0.23</td></tr><tr><td><a href="../literature/2026-02-22-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index" class="internal alias" data-slug="literature/2026-02-22-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index">Rethinking ANN-based Retrieval: Multifaceted Learnable Index for Large-scale Recommendation System</a></td><td>0.21</td></tr><tr><td><a href="../literature/2026-02-14-Semantic-Search-At-LinkedIn-LLM-Driven-Autonomous-Optimizati" class="internal alias" data-slug="literature/2026-02-14-Semantic-Search-At-LinkedIn-LLM-Driven-Autonomous-Optimizati">Semantic Search At LinkedIn, LLM-Driven Autonomous Optimization for Industrial-Scale Recommendation Systems, and More!</a></td><td>0.20</td></tr><tr><td><a href="../literature/2026-02-18-jina-embeddings-v5-text-Task-Targeted-Embedding-Distillation" class="internal alias" data-slug="literature/2026-02-18-jina-embeddings-v5-text-Task-Targeted-Embedding-Distillation">jina-embeddings-v5-text: Task-Targeted Embedding Distillation</a></td><td>0.20</td></tr></tbody></table></div>
+<h2 id="faiss-hnsw-indexing-for-approximate-nearest-neighbor-search">FAISS HNSW Indexing for Approximate Nearest Neighbor Search<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#faiss-hnsw-indexing-for-approximate-nearest-neighbor-search" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Use Hierarchical Navigable Small World (HNSW) graphs indexed via FAISS to enable sub-linear retrieval latency across 826,402 catalog items by organizing embeddings into a hierarchical graph structure supporting efficient approximate nearest-neighbor queries.</p>
+<p><strong>Problem It Solves</strong>:</p>
+<ul>
+<li>Exact nearest-neighbor search in high dimensions requires O(n) similarity computations per query, infeasible at catalog scale</li>
+<li>Brute-force retrieval bottlenecks CPU serving latency; HNSW trades negligible recall loss for 100-1000x speedup</li>
+<li>FAISS provides optimized, production-ready indexing without custom implementation overhead</li>
+</ul>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Offline Indexing</strong>: Encode all 826,402 items via document encoder E_d; insert embeddings into FAISS HNSW index with M (max connections per node) and ef_construction (expansion factor) tuned for latency-recall tradeoff</li>
+<li><strong>Query Execution</strong>: At inference time, encode incoming query; HNSW performs hierarchical graph traversal starting from randomly selected entry point, greedily navigating to nearest neighbors at each level</li>
+<li><strong>Top-K Retrieval</strong>: Return top-K items (K=10 in the paper’s benchmark) with highest embedding similarity to query, found via HNSW graph traversal in ~O(log n) expected time</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    A[\&quot;Query Embedding\&quot;] --> B[\&quot;HNSW Entry Point\&quot;]\n    B --> C[\&quot;Graph Traversal (Level 0..L)\&quot;]\n    C --> D[\&quot;Candidate Pool Expansion\&quot;]\n    D --> E[\&quot;Sort by Similarity\&quot;]\n    E --> F[\&quot;Top-K Results\&quot;]&quot;">flowchart TD
+    A[&quot;Query Embedding&quot;] --> B[&quot;HNSW Entry Point&quot;]
+    B --> C[&quot;Graph Traversal (Level 0..L)&quot;]
+    C --> D[&quot;Candidate Pool Expansion&quot;]
+    D --> E[&quot;Sort by Similarity&quot;]
+    E --> F[&quot;Top-K Results&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Large-scale dense retrieval (100K+ items) where latency is critical</li>
+<li>Production recommendation systems requiring sub-10ms retrieval</li>
+<li>Any semantic search application (search engines, QA, document retrieval)</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Approximate search: achieves 0.66 Recall@10 vs. 1.0 for exact search (though sparse BM25 baseline only reaches 0.26)</li>
+<li>Index construction is sequential and memory-intensive; rebuilding on catalog updates requires offline reindexing</li>
+<li>HNSW hyperparameters (M, ef_construction, ef_search) must be tuned per dataset; poor tuning degrades both latency and recall</li>
+<li>No learned component; index structure is independent of downstream ranking objectives</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>RecSys candidate retrieval: Use HNSW to retrieve 100-1000 candidates efficiently, feed to neural ranker for final ranking</li>
+<li>LLM-based recommendation: Retrieve semantically similar items before prompting LLM for personalized ranking</li>
+<li>A/B testing infrastructure: HNSW enables fast baseline serving for dense retrieval experiments vs. sparse methods</li>
+</ul>
+<hr/>
+<h2 id="onnx-runtime-int8-dynamic-quantization-for-cpu-efficient-serving">ONNX Runtime INT8 Dynamic Quantization for CPU-Efficient Serving<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#onnx-runtime-int8-dynamic-quantization-for-cpu-efficient-serving" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Core Idea</strong>: Convert floating-point encoder weights and activations to 8-bit integers at inference time using ONNX Runtime’s dynamic quantization, achieving 4x model size reduction and CPU-compatible latency (6.1 ms per query, batch size 1) with minimal recall loss.</p>
+<p><strong>Problem It Solves</strong>:</p>
+<ul>
+<li>Full-precision dense retrievers (typically 100-500 MB) exceed memory budgets on CPU-only serving infrastructure</li>
+<li>GPU serving incurs latency SLO violations and operational cost for real-time retrieval; CPU inference is preferred when feasible</li>
+<li>Static quantization requires calibration on representative data; dynamic quantization avoids this offline step</li>
+</ul>
+<p><strong>How It Works</strong>:</p>
+<ol>
+<li><strong>Model Export</strong>: Serialize trained bi-encoder (query and document encoders) to ONNX format, preserving weights in FP32</li>
+<li><strong>Dynamic Quantization</strong>: At load time, ONNX Runtime converts FP32 weights → INT8 and activations to INT8 during forward pass; quantization parameters (scale, zero-point) computed per-tensor based on observed activation ranges</li>
+<li><strong>Inference Execution</strong>: Run quantized forward pass on CPU; ONNX Runtime automatically dequantizes outputs back to FP32 for downstream similarity computation</li>
+<li><strong>Size Reduction</strong>: INT8 weights are 4x smaller (1 byte vs. 4 bytes per parameter), reducing memory footprint from ~200-400 MB → ~50-100 MB</li>
+</ol>
+<p><strong>Architecture</strong>:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    A[\&quot;Input Text\&quot;] --> B[\&quot;ONNX Tokenizer\&quot;]\n    B --> C[\&quot;INT8 Encoder Weights\&quot;]\n    C --> D[\&quot;Quantized MatMul\&quot;]\n    D --> E[\&quot;INT8 Activation\&quot;]\n    E --> F[\&quot;Dequantize to FP32\&quot;]\n    F --> G[\&quot;Query/Doc Embedding\&quot;]&quot;">flowchart LR
+    A[&quot;Input Text&quot;] --> B[&quot;ONNX Tokenizer&quot;]
+    B --> C[&quot;INT8 Encoder Weights&quot;]
+    C --> D[&quot;Quantized MatMul&quot;]
+    D --> E[&quot;INT8 Activation&quot;]
+    E --> F[&quot;Dequantize to FP32&quot;]
+    F --> G[&quot;Query/Doc Embedding&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>Where It’s Useful</strong>:</p>
+<ul>
+<li>Edge and on-device inference (mobile, IoT) where model size is critical</li>
+<li>CPU-only serving environments (cloud VMs without GPU, cost-sensitive deployments)</li>
+<li>Low-latency serving where full batch processing is infeasible and per-sample latency &lt; 10ms is required</li>
+</ul>
+<p><strong>Limitations / Caveats</strong>:</p>
+<ul>
+<li>Quantization noise degrades ranking quality; recall typically drops 1-5% depending on model and quantization scheme</li>
+<li>Dynamic quantization adds per-inference overhead for activation range computation; not suitable for GPU inference (GPU static quantization is faster)</li>
+<li>INT8 compute benefits only realized on CPUs with specialized instructions (AVX2, AVX-512); older CPUs may show no latency gain</li>
+<li>Tradeoff: achieves 4x size reduction but absolute latency (6.1 ms) still exceeds streaming latency budgets for real-time personalization</li>
+</ul>
+<p><strong>Internal Use Cases</strong>:</p>
+<ul>
+<li>RecSys production serving: Deploy quantized encoders on CPU-only nodes for candidate retrieval in two-stage pipelines</li>
+<li>LLM inference: Use quantized dense retrievers to fetch context documents before LLM generation, reducing total latency</li>
+<li>Cost optimization: Replace GPU serving with quantized CPU inference for batch retrieval jobs (e.g., pre-computing embeddings for 1M+ new items)</li>
+</ul>
+<h2 id="analysis-domain-adaptive-dense-retrieval-and-the-evolving-landscape-of-information-retrieval">Analysis: Domain-Adaptive Dense Retrieval and the Evolving Landscape of Information Retrieval<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#analysis-domain-adaptive-dense-retrieval-and-the-evolving-landscape-of-information-retrieval" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This paper operationalizes <strong>Transformer-based Dense Retrieval</strong> in a practical e-commerce setting, demonstrating how the theoretical advantages of semantic similarity-based ranking translate to real-world recommendation systems. While the matched notes describe dual-encoder BERT architectures encoding queries and documents individually for similarity comparison, this paper grounds that concept in a concrete pipeline: it fine-tunes a two-tower bi-encoder on Amazon product-review pairs, achieving a Recall@10 of 0.66 versus BM25’s 0.26. Crucially, it addresses a gap left implicit in the dense retrieval literature—the scalability and efficiency requirements of serving these models at catalog scale (826K+ items). By integrating FAISS HNSW indexing with INT8 dynamic quantization and ONNX Runtime, the paper extends dense retrieval from a research concept to a deployable system, reducing model size by 4x while maintaining 6.1ms CPU inference latency. This bridges the abstraction gap between the “how it works” description in the matched notes and the “how it ships” reality of production systems.</p>
+<p>The paper’s use of <strong>supervised contrastive learning with Multiple Negatives Ranking Loss</strong> implicitly aligns with the intent-aware spirit of <strong>Instruction-Based Dense Retrieval with LLM Encoders</strong>, though through a different mechanism. Rather than explicit natural-language instructions, this work uses review text as an implicit signal of user intent, treating reviews as query proxies paired with item metadata. This is a domain adaptation technique: it doesn’t require external instructions but instead leverages the existing signal structure within reviews themselves. The distinction is subtle but important—while instruction-based approaches ask models to follow explicit commands, this paper shows that domain-specific signals (review-to-product matching) can serve as equally powerful supervisory signals for fine-tuning. Both approaches attempt to inject task-specific understanding into dense retrievers, but this paper does so through data curation and loss formulation rather than through instruction augmentation.</p>
+<p>Finally, this work extends the <strong>LLM Empowered Agents for Recommendation and Search</strong> survey implicitly by demonstrating that dense retrieval can work effectively without large language models. Rather than deploying LLM agents as described in the matched notes—where agents compose multi-step reasoning over retrieval results—this paper shows that a smaller, fine-tuned transformer bi-encoder can be more practical for e-commerce at scale. It represents a pragmatic alternative: domain adaptation via supervised contrastive learning often yields better latency-accuracy tradeoffs than LLM-based approaches for well-defined retrieval tasks with bounded catalogs. This perspective challenges the implicit assumption in LLM-agent literature that larger, more sophisticated models are always necessary, showing instead that task-specific fine-tuning on domain data can be more efficient.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-251" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#domain-adaptive-and-scalable-dense-retrieval-for-content-based-recommendation" data-for="domain-adaptive-and-scalable-dense-retrieval-for-content-based-recommendation">Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation</a></li><li class="depth-1"><a href="#abstract" data-for="abstract">Abstract</a></li><li class="depth-1"><a href="#key-techniques" data-for="key-techniques">Key Techniques</a></li><li class="depth-1"><a href="#related-litnotes" data-for="related-litnotes">Related Litnotes</a></li><li class="depth-1"><a href="#faiss-hnsw-indexing-for-approximate-nearest-neighbor-search" data-for="faiss-hnsw-indexing-for-approximate-nearest-neighbor-search">FAISS HNSW Indexing for Approximate Nearest Neighbor Search</a></li><li class="depth-1"><a href="#onnx-runtime-int8-dynamic-quantization-for-cpu-efficient-serving" data-for="onnx-runtime-int8-dynamic-quantization-for-cpu-efficient-serving">ONNX Runtime INT8 Dynamic Quantization for CPU-Efficient Serving</a></li><li class="depth-1"><a href="#analysis-domain-adaptive-dense-retrieval-and-the-evolving-landscape-of-information-retrieval" data-for="analysis-domain-adaptive-dense-retrieval-and-the-evolving-landscape-of-information-retrieval">Analysis: Domain-Adaptive Dense Retrieval and the Evolving Landscape of Information Retrieval</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../digest/2026-02-03" class="internal">Research Digest — Tue 2026-02-03</a></li><li><a href="../literature/2026-01-26-LLM-powered-Real-time-Patent-Citation-Recommendation-for-Fin" class="internal">LLM-powered Real-time Patent Citation Recommendation for Financial Technologies</a></li><li><a href="../literature/2026-01-27-LLM-powered-Real-time-Patent-Citation-Recommendation-for-Fin" class="internal">LLM-powered Real-time Patent Citation Recommendation for Financial Technologies</a></li><li><a href="../literature/2026-01-28-LLM-powered-Real-time-Patent-Citation-Recommendation-for-Fin" class="internal">LLM-powered Real-time Patent Citation Recommendation for Financial Technologies</a></li><li><a href="../literature/2026-02-12-Compute-Only-Once-UG-Separation-for-Efficient-Large-Recommen" class="internal">Compute Only Once: UG-Separation for Efficient Large Recommendation Models</a></li><li><a href="../literature/2026-02-13-Improving-Neural-Retrieval-with-Attribution-Guided-Query-Rew" class="internal">Improving Neural Retrieval with Attribution-Guided Query Rewriting</a></li><li><a href="../literature/2026-02-18-jina-embeddings-v5-text-Task-Targeted-Embedding-Distillation" class="internal">jina-embeddings-v5-text: Task-Targeted Embedding Distillation</a></li><li><a href="../literature/2026-02-19-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua" class="internal">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</a></li><li><a href="../literature/2026-02-19-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index" class="internal">Rethinking ANN-based Retrieval: Multifaceted Learnable Index for Large-scale Recommendation System</a></li><li><a href="../literature/2026-02-22-Pailitao-VL-Unified-Embedding-and-Reranker-for-Real-Time-Mul" class="internal">Pailitao-VL: Unified Embedding and Reranker for Real-Time Multi-Modal Industrial Search</a></li><li><a href="../literature/2026-02-22-Quecto-V1-Empirical-Analysis-of-8-bit-Quantized-Small-Langua" class="internal">Quecto-V1: Empirical Analysis of 8-bit Quantized Small Language Models for On-Device Legal Retrieval</a></li><li><a href="../literature/2026-02-22-Rethinking-ANN-based-Retrieval-Multifaceted-Learnable-Index" class="internal">Rethinking ANN-based Retrieval: Multifaceted Learnable Index for Large-scale Recommendation System</a></li><li><a href="../literature/2026-02-22-The-Case-for-Multi-Vector-Contrastive-Pre-Training-Eliminati" class="internal">The Case for Multi-Vector Contrastive Pre-Training, Eliminating Approximate Nearest Neighbor Search in Large-Scale Recommendation, and More!</a></li><li><a href="../refs/a-survey-of-large-language-model-empowered-agents-for-recommendation-and-search-towards-next-generation-information-retrieval" class="internal">A Survey of Large Language Model Empowered Agents for Recommendation and Search: Towards Next-Generation Information Retrieval</a></li><li><a href="../refs/approximate-nearest-neighbor-search-for-dense-retrieval" class="internal">Approximate Nearest Neighbor Search for Dense Retrieval</a></li><li><a href="../refs/instruction-based-dense-retrieval-with-llm-encoders" class="internal">Instruction-Based Dense Retrieval with LLM Encoders</a></li><li><a href="../refs/item-centric-exploration-for-cold-start-problem" class="internal">Item-centric Exploration for Cold Start Problem</a></li><li><a href="../refs/transformer-based-dense-retrieval" class="internal">Transformer-based Dense Retrieval</a></li><li class="overflow-end"></li></ul></div></div></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(i,e){if(!i)return;function t(r){r.target===this&&(r.preventDefault(),r.stopPropagation(),e())}function n(r){r.key.startsWith("Esc")&&(r.preventDefault(),e())}i?.addEventListener("click",t),window.addCleanup(()=>i?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),r=this.onTouchStart.bind(this),o=this.onTouchMove.bind(this),a=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",r,{passive:!1}),document.addEventListener("touchmove",o,{passive:!1}),document.addEventListener("touchend",a),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",r),()=>document.removeEventListener("touchmove",o),()=>document.removeEventListener("touchend",a),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),r=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(r),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),r=n.width/2,o=n.height/2,a=t-this.scale;this.currentPan.x-=r*a,this.currentPan.y-=o*a,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,r=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-r)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y="/static/mermaid.min.js";function C(){let i=window;return i.mermaid?Promise.resolve(i.mermaid):(i.__mermaidLoading||(i.__mermaidLoading=new Promise((e,t)=>{let n=document.querySelector(`script[src="${y}"]`);if(n){n.addEventListener("load",()=>e(window.mermaid)),n.addEventListener("error",t);return}let r=document.createElement("script");r.src=y,r.async=!0,r.onload=()=>e(window.mermaid),r.onerror=t,document.head.appendChild(r)})),i.__mermaidLoading)}document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;let t=await C(),n=new WeakMap;for(let o of e)n.set(o,o.innerText);async function r(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let o=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),a=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:a?"dark":"base",themeVariables:{fontFamily:o["--codeFont"],primaryColor:o["--light"],primaryTextColor:o["--darkgray"],primaryBorderColor:o["--tertiary"],lineColor:o["--darkgray"],secondaryColor:o["--secondary"],tertiaryColor:o["--tertiary"],clusterBkg:o["--light"],edgeLabelBackground:o["--highlight"]}}),await t.run({nodes:e})}await r(),document.addEventListener("themechange",r),window.addCleanup(()=>document.removeEventListener("themechange",r));for(let o=0;o<e.length;o++){let v=function(){let g=d.querySelector("#mermaid-space"),m=d.querySelector(".mermaid-content");if(!m)return;f(m);let w=a.querySelector("svg").cloneNode(!0);m.appendChild(w),d.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){d.classList.remove("active"),u?.cleanup(),u=null},a=e[o],s=a.parentElement,c=s.querySelector(".clipboard-button"),l=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");l.style.right=`calc(${L}px + 0.3rem)`,s.prepend(l);let d=s.querySelector("#mermaid-container");if(!d)return;let u=null;l.addEventListener("click",v),E(d,M),window.addCleanup(()=>{u?.cleanup(),l.removeEventListener("click",v)})}});
+</script><script src="../postscript.js" type="module" data-persist="true"></script></html>
