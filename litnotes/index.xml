@@ -10,7 +10,13 @@
     <link>https://davegolland.github.io/litnotes/</link>
     <guid>https://davegolland.github.io/litnotes/</guid>
     <description><![CDATA[  Literature Digest . ]]></description>
-    <pubDate>Mon, 20 Apr 2026 11:04:03 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 11:05:18 GMT</pubDate>
+  </item><item>
+    <title>Research Narrative — 2026-04-20</title>
+    <link>https://davegolland.github.io/litnotes/digest/2026-04-20</link>
+    <guid>https://davegolland.github.io/litnotes/digest/2026-04-20</guid>
+    <description><![CDATA[ Research Narrative — 2026-04-20 Source: logs/narrative/2026-04-20.prep.json · crawl 2026-04-20 (prior: 2026-04-19) · corpus through 2026-02-19 TL;DR — investment tilts Investigate: today’s classifier flip. ]]></description>
+    <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>1  bird’s‑eye view</title>
     <link>https://davegolland.github.io/litnotes/refs/1-bird-s-eye-view</link>
@@ -58,12 +64,6 @@
     <link>https://davegolland.github.io/litnotes/refs/2024-10-11-on-generative-agents-in-recommendation</link>
     <guid>https://davegolland.github.io/litnotes/refs/2024-10-11-on-generative-agents-in-recommendation</guid>
     <description><![CDATA[ 1 note mention this concept: 2026-01-26 · MirrorBench: An Extensible Framework to Evaluate User-Proxy Agents for Human-Likeness . ]]></description>
-    <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>2024-10-16 Negative Sampling for Contrastive Repre</title>
-    <link>https://davegolland.github.io/litnotes/refs/2024-10-16-negative-sampling-for-contrastive-repre</link>
-    <guid>https://davegolland.github.io/litnotes/refs/2024-10-16-negative-sampling-for-contrastive-repre</guid>
-    <description><![CDATA[ 3 notes mention this concept: 2026-01-27 · Shortcut Learning in Binary Classifier Black Boxes: Applications to Voice Anti-Spoofing and Biometrics 2026-01-27 · Learned harmonic mean estimation of the marginal likelihood for multimodal posteriors with flow matching 2026-01-27 · Facial Emotion Recognit... ]]></description>
     <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
